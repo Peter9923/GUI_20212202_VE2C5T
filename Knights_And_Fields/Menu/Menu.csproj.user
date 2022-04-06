@@ -7,7 +7,33 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="MainWindow.xaml">
+    <Compile Update="Windows\Description.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Load.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\NewGame.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Scoreboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Menu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Description.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Load.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\NewGame.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Scoreboard.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

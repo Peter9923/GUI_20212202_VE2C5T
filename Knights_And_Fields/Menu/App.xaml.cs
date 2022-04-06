@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Menu.Logic;
+using Menu.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.Messaging;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +18,14 @@ namespace Menu
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Ioc.Default.ConfigureServices(
+                new ServiceCollection()
+                .AddSingleton<IMenuLogic, MenuLogic>()
+                .AddSingleton<IOpenNewWindowService, OpenNewWindowViaWindow>()
+                .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
+                .BuildServiceProvider());
+        }
     }
 }
