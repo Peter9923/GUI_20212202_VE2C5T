@@ -7,6 +7,34 @@
         mc:Ignorable="d"
         Title="Load" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.RowSpan="3">
+            <ListBox Grid.RowSpan="3">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <Label Content="Mentés 1." />
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
         
+        <Button Content="Load" Margin="10,40" Grid.Row="0" Grid.Column="1"/>
+        
+        <Button Content="Delete" Margin="10,40" Grid.Row="1" Grid.Column="1"/>
+        
+        <Button Content="Close" Margin="10,40" Grid.Row="2" Grid.Column="1"/>
+
+
     </Grid>
 </Window>

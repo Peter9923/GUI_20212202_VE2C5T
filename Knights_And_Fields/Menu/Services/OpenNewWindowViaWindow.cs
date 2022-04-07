@@ -15,8 +15,8 @@ namespace Menu.Services
             switch (type)
             {
                 case FunctionTypeOfMenu.NewGame: new NewGame().ShowDialog(); break;
-                case FunctionTypeOfMenu.LoadGame: new Load().ShowDialog(); break;
-                case FunctionTypeOfMenu.Description: new Description().ShowDialog(); break;
+                case FunctionTypeOfMenu.LoadGame: new Load().Show() ; break;
+                case FunctionTypeOfMenu.Description: new Description().Show(); break;
                 case FunctionTypeOfMenu.Scoreboard: new Scoreboard().ShowDialog(); break;
             }
         }

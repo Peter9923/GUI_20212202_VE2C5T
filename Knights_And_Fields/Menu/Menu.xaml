@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Menu"
         xmlns:vms="clr-namespace:Menu.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="400"
+        Title="Menu" Height="700" Width="400"
         FontSize="20"
         >
     <Window.Background>
