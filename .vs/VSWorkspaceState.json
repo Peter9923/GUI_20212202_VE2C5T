@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Knights_And_Fields",
-    "\\Knights_And_Fields\\Menu",
-    "\\Knights_And_Fields\\Menu\\Windows"
+    ""
   ],
-  "SelectedNode": "\\Knights_And_Fields\\Menu\\Windows\\Description.xaml.cs",
+  "SelectedNode": "\\Knights_And_Fields.sln",
   "PreviewInSolutionExplorer": false
 }
