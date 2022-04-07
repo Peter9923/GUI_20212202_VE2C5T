@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "vxKqTIbmzkr1/c5wfqK56x+03xv6q7WCECw2t+oTzFb/HGWdzZ9tX2I5MoJNScYXoA95VusZfIYaCYigxVIX/Q==",
+  "dgSpecHash": "F0UnMfZegv3aOnoKUTD6pnm4zLwlSZPq+uUzceUt/xtAleynObLvRyWF7oafikNqP6N7v7Jwc9aGYSsPMx+GWA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Menu\\Menu.csproj",
+  "projectFilePath": "E:\\2022\\Egyetem\\prog4\\FF\\git\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Menu\\Menu.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
-    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\microsoft.toolkit.mvvm\\7.1.2\\microsoft.toolkit.mvvm.7.1.2.nupkg.sha512",
-    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\Domi\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
+    "C:\\Users\\Domi\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Domi\\.nuget\\packages\\microsoft.toolkit.mvvm\\7.1.2\\microsoft.toolkit.mvvm.7.1.2.nupkg.sha512",
+    "C:\\Users\\Domi\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

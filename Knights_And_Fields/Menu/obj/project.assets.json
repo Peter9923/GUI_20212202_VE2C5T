@@ -163,19 +163,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\": {}
+    "C:\\Users\\Domi\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Menu\\Menu.csproj",
+      "projectUniqueName": "E:\\2022\\Egyetem\\prog4\\FF\\git\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Menu\\Menu.csproj",
       "projectName": "Menu",
-      "projectPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Menu\\Menu.csproj",
-      "packagesPath": "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Menu\\obj\\",
+      "projectPath": "E:\\2022\\Egyetem\\prog4\\FF\\git\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Menu\\Menu.csproj",
+      "packagesPath": "C:\\Users\\Domi\\.nuget\\packages\\",
+      "outputPath": "E:\\2022\\Egyetem\\prog4\\FF\\git\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Menu\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Szilágyi Péter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Domi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -228,7 +233,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
