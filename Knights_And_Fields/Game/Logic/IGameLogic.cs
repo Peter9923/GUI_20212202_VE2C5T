@@ -9,10 +9,10 @@ namespace Game.Logic
         List<Knight> Knights { get; set; }
 
         void AddEnemy(double x, double y);
-        void AddKnight(double x, double y);
         Enemy EnemyBuilder(List<Enemy> others, double X, double Y);
         Knight KnightBuilder(List<Knight> others, double X, double Y);
         bool ClickIsRightPosition(double X, double Y);
+        void CreateOrUpgradeKnight(double X, double Y);
         void TimeStep();
     }
 }

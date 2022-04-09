@@ -26,9 +26,14 @@ namespace Game.Display
         private void Display_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Point mousePos = e.GetPosition(this);
+            
+
+            
 
             if (logic.ClickIsRightPosition(mousePos.X, mousePos.Y) == true){
-                logic.AddKnight(mousePos.X, mousePos.Y);
+
+                //we should check our click is in an existing knight..
+                logic.CreateOrUpgradeKnight(mousePos.X, mousePos.Y);
             }
             else{
                 // user click the wall or enemy spawn area..

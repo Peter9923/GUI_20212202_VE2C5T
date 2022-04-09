@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Game.Logic
 {
@@ -82,25 +83,47 @@ namespace Game.Logic
 
 
         //Knights thins
-        public void AddKnight(double x, double y)
-        {
+        public void CreateOrUpgradeKnight(double X, double Y) {
             for (int i = 0; i < Config.RowNumber; i++)
             {
-                if (y >= (i * Config.Height / Config.RowNumber) && y <= ((i + 1) * Config.Height / Config.RowNumber))
+                if (Y >= (i * Config.Height / Config.RowNumber) && Y <= ((i + 1) * Config.Height / Config.RowNumber))
                 {
-                    y = i * Config.Height / Config.RowNumber;
-                    break;
+                    Y = i * Config.Height / Config.RowNumber;
                 }
             }
 
-            for (int i = 0; i < Config.ColumnNumber; i++)
+            for (int i = 1; i < Config.ColumnNumber-1; i++)
             {
-                if (x >= (i * Config.Widht / Config.ColumnNumber) && x <= ((i + 1) * Config.Widht / Config.ColumnNumber))
+                if (X >= (i * Config.Widht / Config.ColumnNumber) && X <= ((i + 1) * Config.Widht / Config.ColumnNumber))
                 {
-                    x = i * Config.Widht / Config.ColumnNumber;
-                    break;
+                    X = i * Config.Widht / Config.ColumnNumber;
                 }
             }
+
+            
+            int index = IsHereAnExistingKnight(X, Y);
+
+            if (index == -1){
+                AddKnight(X, Y);
+            }
+            else{
+                //UPGRADE KNIGHT
+                MessageBox.Show("UPGRADe", "UPGRADE", MessageBoxButton.OKCancel);
+            }
+        }
+        private int IsHereAnExistingKnight(double X, double Y) {
+            for (int i = 0; i < Knights.Count(); i++)
+            {
+                if (Knights[i].Area.Bounds.Left == X && Knights[i].Area.Bounds.Top == Y){
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public void AddKnight(double x, double y)
+        {
+           
 
             Knight knight = KnightBuilder(Knights, x, y);
 
@@ -149,7 +172,7 @@ namespace Game.Logic
 
 
 
-
+        //left clicks..
         public bool ClickIsRightPosition(double X, double Y) {
             
             if (MouseClickPositionIsInTheWall(X) || MouseClickPositonIsEnemySpawnArea(X))
@@ -176,6 +199,8 @@ namespace Game.Logic
             }
             return false;
         }
+
+
 
         //other things
         public void TimeStep()
