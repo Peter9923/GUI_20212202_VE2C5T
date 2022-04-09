@@ -20,13 +20,13 @@ namespace Game.Windows
     /// </summary>
     public partial class KnightCreatorWindow : Window
     {
-        Knight Knight;
+        ILivingGameItem Knight;
         public KnightCreatorWindow()
         {
             InitializeComponent();
         }
 
-        public KnightCreatorWindow(Knight knight) : this()
+        public KnightCreatorWindow(ILivingGameItem knight) : this()
         {
             Knight = knight;
             Knight = null;

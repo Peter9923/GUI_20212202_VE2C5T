@@ -9,6 +9,6 @@ namespace Game.Services
 {
     public interface ICreateNewKnightService
     {
-        void OpenKnightCreatorWindoe(Knight knight);
+        void OpenKnightCreatorWindoe(ILivingGameItem knight);
     }
 }

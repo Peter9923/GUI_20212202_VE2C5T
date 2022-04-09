@@ -8,19 +8,20 @@ using System.Windows.Media;
 
 namespace Game.Models
 {
-    public class Knight : IGameItem
+    public class Knight : ILivingGameItem
     {
         private double centerX;
         private double centerY;
 
         private int speedX;
         private int speedY;
-
-        private int life;
         private int level;
-        private int cost;
+
+        public double MaxLife { get; set; }
+        public double ActualLife { get; set; }
+        public int Cost { get { return 100; } }
         public int Damage { get { return level * 5; } }
-        public int UpgradeCost { get { return level * cost; } }
+        public int UpgradeCost { get { return level * Cost; } }
 
         public Knight(double centerX, double centerY)
         {
@@ -29,9 +30,8 @@ namespace Game.Models
             this.speedX = 0; //cant move
             this.speedY = 0; //cant move
 
-            life = 150;
+            MaxLife = 10;
             level = 1;
-            cost = 100;
         }
 
         public Geometry Area
@@ -41,6 +41,8 @@ namespace Game.Models
                 return new RectangleGeometry(new Rect(centerX, centerY, Config.NegyzetWidth, Config.NegyzetHeight));
             }
         }
+
+        
 
         public bool IsCollision(IGameItem other)
         {
@@ -57,7 +59,7 @@ namespace Game.Models
         //what happen when collision
         public void Collision()
         {
-            life -= 10;
+            ActualLife -= 10;
         }
 
 

@@ -13,20 +13,20 @@ namespace Game.Logic
     {
         ICreateNewKnightService service;
         static Random r = new Random();
-        
+
 
         public List<Enemy> Enemies { get; set; }
-        public List<Knight> Knights { get; set; }
+        public List<ILivingGameItem> Knights { get; set; }
 
         public GameLogic()
         {
             this.service = new CreateNewKnightService();
             Enemies = new List<Enemy>();
-            Knights = new List<Knight>();
-          
+            Knights = new List<ILivingGameItem>();
+
         }
 
-       
+
 
 
         //Enemy things
@@ -83,7 +83,8 @@ namespace Game.Logic
 
 
         //Knights thins
-        public void CreateOrUpgradeKnight(double X, double Y) {
+        public void CreateOrUpgradeKnight(double X, double Y)
+        {
             for (int i = 0; i < Config.RowNumber; i++)
             {
                 if (Y >= (i * Config.Height / Config.RowNumber) && Y <= ((i + 1) * Config.Height / Config.RowNumber))
@@ -92,7 +93,7 @@ namespace Game.Logic
                 }
             }
 
-            for (int i = 1; i < Config.ColumnNumber-1; i++)
+            for (int i = 1; i < Config.ColumnNumber - 1; i++)
             {
                 if (X >= (i * Config.Widht / Config.ColumnNumber) && X <= ((i + 1) * Config.Widht / Config.ColumnNumber))
                 {
@@ -100,21 +101,25 @@ namespace Game.Logic
                 }
             }
 
-            
+
             int index = IsHereAnExistingKnight(X, Y);
 
-            if (index == -1){
+            if (index == -1)
+            {
                 AddKnight(X, Y);
             }
-            else{
+            else
+            {
                 //UPGRADE KNIGHT
                 MessageBox.Show("UPGRADe", "UPGRADE", MessageBoxButton.OKCancel);
             }
         }
-        private int IsHereAnExistingKnight(double X, double Y) {
+        private int IsHereAnExistingKnight(double X, double Y)
+        {
             for (int i = 0; i < Knights.Count(); i++)
             {
-                if (Knights[i].Area.Bounds.Left == X && Knights[i].Area.Bounds.Top == Y){
+                if (Knights[i].Area.Bounds.Left == X && Knights[i].Area.Bounds.Top == Y)
+                {
                     return i;
                 }
             }
@@ -123,21 +128,21 @@ namespace Game.Logic
 
         public void AddKnight(double x, double y)
         {
-           
 
-            Knight knight = KnightBuilder(Knights, x, y);
+
+            ILivingGameItem knight = KnightBuilder(Knights, x, y);
 
             if (knight != null)
             {
                 Knights.Add(knight);
             }
 
-            
+
             //RefreshScreen?.Invoke(this, EventArgs.Empty);
         }
-        public Knight KnightBuilder(List<Knight> others, double X, double Y)
+        public ILivingGameItem KnightBuilder(List<ILivingGameItem> others, double X, double Y)
         {
-            Knight knight = new Knight(X, Y);
+            ILivingGameItem knight = new Knight(X, Y);
 
             service.OpenKnightCreatorWindoe(knight);
 
@@ -173,8 +178,9 @@ namespace Game.Logic
 
 
         //left clicks..
-        public bool ClickIsRightPosition(double X, double Y) {
-            
+        public bool ClickIsRightPosition(double X, double Y)
+        {
+
             if (MouseClickPositionIsInTheWall(X) || MouseClickPositonIsEnemySpawnArea(X))
             {
                 return false;
@@ -182,7 +188,8 @@ namespace Game.Logic
             return true;
         }
         //first column is for wall, last column is for enemy's spawn area
-        private bool MouseClickPositionIsInTheWall(double X){
+        private bool MouseClickPositionIsInTheWall(double X)
+        {
             if (X >= (0 * Config.Widht / Config.ColumnNumber) && X <= (1 * Config.Widht / Config.ColumnNumber))
             {
                 return true;
@@ -193,7 +200,7 @@ namespace Game.Logic
         //the last column is the enemy's spawn area
         private bool MouseClickPositonIsEnemySpawnArea(double X)
         {
-            if (X >= ( (Config.ColumnNumber-1) * Config.Widht / Config.ColumnNumber) && X <= (Config.ColumnNumber * Config.Widht / Config.ColumnNumber))
+            if (X >= ((Config.ColumnNumber - 1) * Config.Widht / Config.ColumnNumber) && X <= (Config.ColumnNumber * Config.Widht / Config.ColumnNumber))
             {
                 return true;
             }
