@@ -30,6 +30,8 @@ namespace Game
 
         public static double Widht = 700;
         public static double Height = 300;
+        public static double RowNumber = 5;
+        public static double ColumnNumber = 10;
 
         public static int BorderSize = 0;
         public static int NegyzetHeight = 100;

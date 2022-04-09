@@ -168,11 +168,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Szilágyi Péter\\source\\repos\\Peter9923-GUI_20212202_VE2C5T_without_teammates\\Knights_And_Fields\\Menu\\Menu.csproj",
+      "projectUniqueName": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Menu\\Menu.csproj",
       "projectName": "Menu",
-      "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\Peter9923-GUI_20212202_VE2C5T_without_teammates\\Knights_And_Fields\\Menu\\Menu.csproj",
+      "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Menu\\Menu.csproj",
       "packagesPath": "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\Peter9923-GUI_20212202_VE2C5T_without_teammates\\Knights_And_Fields\\Menu\\obj\\",
+      "outputPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Menu\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Szilágyi Péter\\AppData\\Roaming\\NuGet\\NuGet.Config",

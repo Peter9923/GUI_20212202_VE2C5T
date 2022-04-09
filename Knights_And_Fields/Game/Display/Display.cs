@@ -26,9 +26,17 @@ namespace Game.Display
         private void Display_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Point mousePos = e.GetPosition(this);
-            
-            logic.AddKnight(mousePos.X, mousePos.Y);
+
+            if (logic.ClickIsRightPosition(mousePos.X, mousePos.Y) == true){
+                logic.AddKnight(mousePos.X, mousePos.Y);
+            }
+            else{
+                // user click the wall or enemy spawn area..
+            }
             e.Handled = true;
+
+           
+           
         }
 
         protected override void OnRender(DrawingContext drawingContext)

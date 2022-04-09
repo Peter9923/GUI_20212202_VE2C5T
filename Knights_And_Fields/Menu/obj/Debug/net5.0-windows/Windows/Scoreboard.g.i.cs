@@ -53,7 +53,7 @@ namespace Menu.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Menu;component/windows/scoreboard.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Menu;V1.0.0.0;component/windows/scoreboard.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\Scoreboard.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

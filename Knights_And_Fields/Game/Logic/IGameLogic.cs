@@ -12,6 +12,7 @@ namespace Game.Logic
         void AddKnight(double x, double y);
         Enemy EnemyBuilder(List<Enemy> others, double X, double Y);
         Knight KnightBuilder(List<Knight> others, double X, double Y);
+        bool ClickIsRightPosition(double X, double Y);
         void TimeStep();
     }
 }
