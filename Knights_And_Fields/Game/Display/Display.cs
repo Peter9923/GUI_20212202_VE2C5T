@@ -40,8 +40,6 @@ namespace Game.Display
             }
             e.Handled = true;
 
-           
-           
         }
 
         protected override void OnRender(DrawingContext drawingContext)
