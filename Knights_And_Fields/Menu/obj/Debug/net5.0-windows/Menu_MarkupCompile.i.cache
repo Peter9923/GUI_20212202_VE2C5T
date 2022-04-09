@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\2022\Egyetem\prog4\FF\git\GUI_20212202_VE2C5T\Knights_And_Fields\Menu\obj\Debug\net5.0-windows\
+C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\Menu\obj\Debug\net5.0-windows\
 Menu
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-E:\2022\Egyetem\prog4\FF\git\GUI_20212202_VE2C5T\Knights_And_Fields\Menu\App.xaml
-5-844451180
+C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\Menu\App.xaml
+5568212302
 
-1539975591
-196-1104752794
-Windows\DescriptionWindowFolder\Description.xaml;Windows\GameWindowFolder\NewGame.xaml;Windows\LoadWindowFolder\Load.xaml;Windows\MenuWindowFolder\Menu.xaml;Windows\ScoreboardWindowFolder\Scoreboard.xaml;
+211439255841
+196-947727564
+Menu.xaml;Windows\Description.xaml;Windows\Load.xaml;Windows\NewGame.xaml;Windows\Scoreboard.xaml;
 
 False
 
