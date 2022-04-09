@@ -17,6 +17,7 @@ namespace Game.Models
         private int speedY;
         private int level;
 
+        public TypeOfKnights Type { get; set; }
         public double MaxLife { get; set; }
         public double ActualLife { get; set; }
         public int Cost { get { return 100; } }

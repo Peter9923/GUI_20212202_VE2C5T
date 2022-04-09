@@ -10,9 +10,16 @@ namespace Game.Services
 {
     public class CreateNewKnightService : ICreateNewKnightService
     {
-        public void OpenKnightCreatorWindoe(ILivingGameItem knight)
+        public void OpenKnightCreatorWindow(ref ILivingGameItem knight)
         {
-            new KnightCreatorWindow(knight).ShowDialog();
+            if ((bool)new KnightCreatorWindow(knight).ShowDialog()) { 
+                //
+            }
+            else
+            {
+                ;
+                knight = null;
+            }
         }
     }
 }

@@ -29,12 +29,25 @@ namespace Game.Windows
         public KnightCreatorWindow(ILivingGameItem knight) : this()
         {
             Knight = knight;
-            Knight = null;
         }
 
+       
         private void AddKnightClick(object sender, RoutedEventArgs e)
         {
-            Knight = new Knight(0, 0);
+            if (e.OriginalSource is Button b){
+                if (b.Content.ToString() == "Add Knight"){
+                    Knight.Type = TypeOfKnights.Knight;
+                }
+                else if (b.Content.ToString() == "Add Archer"){
+                    Knight.Type = TypeOfKnights.Archer;
+                }
+                else if (b.Content.ToString() == "Add Cannon"){
+                    Knight.Type = TypeOfKnights.Cannon;
+                }
+                else if (b.Content.ToString() == "Add Tower"){
+                    Knight.Type = TypeOfKnights.Tower;
+                }
+            }
             DialogResult = true;
         }
     }

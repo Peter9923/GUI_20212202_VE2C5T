@@ -15,17 +15,17 @@ namespace Game
         public static Brush EnemyBgBrush = Brushes.DarkRed;
         public static Brush EnemyLineBrush = Brushes.Black;
 
-        public static Brush Player_KatonaBgBrush = Brushes.LightBlue;
-        public static Brush Player_KatonaLineBrush = Brushes.Black;
+        public static Brush Knight_KnightBG = Brushes.LightGray;
+        public static Brush Knight_KnightLB = Brushes.Black;
 
-        public static Brush Player_FalBgBrush = Brushes.Black;
-        public static Brush Player_FalLineBrush = Brushes.Black;
+        public static Brush Knight_TowerBG = Brushes.Black;
+        public static Brush Knight_TowertLB = Brushes.YellowGreen;
 
-        public static Brush Player_AgyuBgBrush = Brushes.SaddleBrown;
-        public static Brush Player_AgyuLineBrush = Brushes.Black;
+        public static Brush Knight_ArcherBG = Brushes.LightSeaGreen;
+        public static Brush Knight_ArcherLB = Brushes.Black;
 
-        public static Brush Player_IjaszBgBrush = Brushes.LightYellow;
-        public static Brush Player_IjaszLineBrush = Brushes.Black;
+        public static Brush Knight_CannonBG = Brushes.SaddleBrown;
+        public static Brush Knight_CannontLB = Brushes.Black;
 
 
         public static double Widht = 700;

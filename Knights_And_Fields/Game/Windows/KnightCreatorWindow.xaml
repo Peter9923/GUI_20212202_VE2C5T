@@ -14,7 +14,10 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Content="Add Knight" Margin="15,40" Click="AddKnightClick" />
+        <Button Content="Add Knight" Margin="15,40" Click="AddKnightClick" Grid.Column="0" />
+        <Button Content="Add Archer" Margin="15,40" Click="AddKnightClick"  Grid.Column="1"/>
+        <Button Content="Add Cannon" Margin="15,40" Click="AddKnightClick"  Grid.Column="2"/>
+        <Button Content="Add Tower" Margin="15,40" Click="AddKnightClick"  Grid.Column="3"/>
 
     </Grid>
 </Window>

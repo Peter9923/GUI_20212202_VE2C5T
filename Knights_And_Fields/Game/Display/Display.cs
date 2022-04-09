@@ -62,12 +62,13 @@ namespace Game.Display
 
                 foreach (var item in logic.Knights)
                 {
-                    if (item is Knight)
+                    switch (item.Type)
                     {
-                        drawingContext.DrawGeometry(Config.Player_KatonaBgBrush, new Pen(Config.Player_KatonaLineBrush, 3), item.Area);
+                        case TypeOfKnights.Knight: drawingContext.DrawGeometry(Config.Knight_KnightBG, new Pen(Config.Knight_KnightLB, 1), item.Area); break;
+                        case TypeOfKnights.Archer: drawingContext.DrawGeometry(Config.Knight_ArcherBG, new Pen(Config.Knight_ArcherLB, 1), item.Area); break;
+                        case TypeOfKnights.Cannon: drawingContext.DrawGeometry(Config.Knight_CannonBG, new Pen(Config.Knight_CannontLB, 1), item.Area); break;
+                        case TypeOfKnights.Tower: drawingContext.DrawGeometry(Config.Knight_TowerBG, new Pen(Config.Knight_TowertLB, 1), item.Area); break;
                     }
-                    
-
                 }
 
             }

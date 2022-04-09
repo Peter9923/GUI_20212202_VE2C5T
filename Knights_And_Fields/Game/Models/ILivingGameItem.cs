@@ -9,6 +9,7 @@ namespace Game.Models
 {
     public interface ILivingGameItem : IGameItem
     {
+        public TypeOfKnights Type { get; set; }
         double MaxLife { get; set; }
         double ActualLife { get; set; }
         int Cost { get; }

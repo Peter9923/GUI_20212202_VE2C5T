@@ -131,7 +131,7 @@ namespace Game.Logic
 
 
             ILivingGameItem knight = KnightBuilder(Knights, x, y);
-
+            
             if (knight != null)
             {
                 Knights.Add(knight);
@@ -142,9 +142,9 @@ namespace Game.Logic
         }
         public ILivingGameItem KnightBuilder(List<ILivingGameItem> others, double X, double Y)
         {
-            ILivingGameItem knight = new Knight(X, Y);
+            ILivingGameItem knight = new Knight(0,0);
 
-            service.OpenKnightCreatorWindoe(knight);
+            service.OpenKnightCreatorWindow(ref knight);
 
             if (knight == null) { return null; }
             else
