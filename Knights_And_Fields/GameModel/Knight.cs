@@ -30,6 +30,15 @@ namespace GameModel
             }
         }
 
+        public Knight(int X, int Y){
+            this.MaxLife = 100;
+            this.ActualLife = MaxLife;
+            this.Speed = 2;
+            this.Tick = 0;
+            this.Position = new Point(X, Y);
+            this.Level = 1;
+        }
+
         public void Collision()
         {
             throw new NotImplementedException();
