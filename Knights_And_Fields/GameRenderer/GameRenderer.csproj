@@ -15,4 +15,8 @@
     <EmbeddedResource Include="Images\grass.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GameModel\GameModel.csproj" />
+  </ItemGroup>
+
 </Project>
