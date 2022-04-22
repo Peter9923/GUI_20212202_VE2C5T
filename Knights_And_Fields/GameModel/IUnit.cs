@@ -11,7 +11,7 @@ namespace GameModel
     {
         double MaxLife { get; set; }
         double ActualLife { get; set; }
-        int Damage { get; set; }
+        int Damage { get; }
         int Speed { get; set; }
         int Tick { get; set; }
         Point Position { get; set; }

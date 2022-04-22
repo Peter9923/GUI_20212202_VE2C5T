@@ -10,18 +10,25 @@ namespace GameModel
 {
     class Knight : IAllied
     {
-        public int Cost => throw new NotImplementedException();
+        public int Cost { get { return 250; } }
 
-        public int UpgradeCost => throw new NotImplementedException();
+        public int UpgradeCost { get { return this.Level * this.Cost; } }
 
-        public double MaxLife { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double ActualLife { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Damage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Tick { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Point Position { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double MaxLife { get; set; }
+        public double ActualLife { get; set; }
+        public int Damage { get { return this.Level * 10; } }
+        public int Speed { get; set; }
+        public int Tick { get; set; }
+        public Point Position { get; set; }
+        public int Level { get; set; }
 
-        public Geometry Area => throw new NotImplementedException();
+        public Geometry Area
+        {
+            get
+            {
+                return new RectangleGeometry(new Rect(Position.X, Position.Y, Config.TileSize, Config.TileSize));
+            }
+        }
 
         public void Collision()
         {
