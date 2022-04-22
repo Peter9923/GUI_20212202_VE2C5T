@@ -8,5 +8,7 @@ namespace GameModel
 {
     public interface IAllied
     {
+        public int Cost { get; }
+        public int UpgradeCost { get; }
     }
 }
