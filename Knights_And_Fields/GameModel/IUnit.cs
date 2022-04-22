@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace GameModel
 {
-    public interface IUnit
+    public interface IUnit : IGameItem
     {
         double MaxLife { get; set; }
         double ActualLife { get; set; }
