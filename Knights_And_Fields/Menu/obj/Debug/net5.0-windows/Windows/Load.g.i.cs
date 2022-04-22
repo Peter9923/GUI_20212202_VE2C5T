@@ -53,7 +53,7 @@ namespace Menu.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Menu;V1.0.0.0;component/windows/load.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Menu;component/windows/load.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\Load.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
