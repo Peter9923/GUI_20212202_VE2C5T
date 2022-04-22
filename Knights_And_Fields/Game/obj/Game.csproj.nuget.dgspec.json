@@ -27,7 +27,11 @@
         "frameworks": {
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
+                "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

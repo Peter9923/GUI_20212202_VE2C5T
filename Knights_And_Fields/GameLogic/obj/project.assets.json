@@ -1,11 +1,33 @@
 {
   "version": 3,
   "targets": {
-    "net5.0-windows7.0": {}
+    "net5.0-windows7.0": {
+      "GameModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/GameModel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameModel.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "GameModel/1.0.0": {
+      "type": "project",
+      "path": "../GameModel/GameModel.csproj",
+      "msbuildProject": "../GameModel/GameModel.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0-windows7.0": []
+    "net5.0-windows7.0": [
+      "GameModel >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\": {}
@@ -33,7 +55,11 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

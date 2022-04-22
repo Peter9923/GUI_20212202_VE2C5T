@@ -17,6 +17,9 @@
         }
       },
       "GameLogic/1.0.0": {
+        "dependencies": {
+          "GameModel": "1.0.0"
+        },
         "runtime": {
           "GameLogic.dll": {}
         }
