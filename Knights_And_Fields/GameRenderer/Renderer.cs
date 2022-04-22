@@ -132,7 +132,7 @@ namespace GameRenderer
         private Drawing GetMoveButton()
         {
             Geometry g = new RectangleGeometry(new Rect(
-                    (this.model.Map[0].Length + 1) * Config.TileSize, 5 * Config.TileSize, Config.TileSize, Config.TileSize));
+                    (this.model.Map[0].Length - 1) * Config.TileSize, 5 * Config.TileSize, Config.TileSize, Config.TileSize));
 
             if (this.model.MoveUnit)
             {
@@ -145,7 +145,7 @@ namespace GameRenderer
         private Drawing GetRemoveButton()
         {
             Geometry g = new RectangleGeometry(new Rect(
-                    (this.model.Map[0].Length + 1) * Config.TileSize, 6 * Config.TileSize, Config.TileSize, Config.TileSize));
+                    (this.model.Map[0].Length) * Config.TileSize, 5 * Config.TileSize, Config.TileSize, Config.TileSize));
 
             if (this.model.RemoveUnit)
             {

@@ -38,7 +38,17 @@ namespace Game
             this.renderer = new Renderer(this.model);
             this.win = Window.GetWindow(this);
 
+            if (this.win != null)
+            {
+                this.MouseDown += Display_MouseDown; ;
+            }
+
             this.InvalidateVisual();
+        }
+
+        private void Display_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
