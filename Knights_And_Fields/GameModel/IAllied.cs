@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameModel
 {
-    public interface IAllied : IGameItem
+    public interface IAllied : IUnit
     {
         public int Cost { get; }
         public int UpgradeCost { get; }
