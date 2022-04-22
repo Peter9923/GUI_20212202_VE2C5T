@@ -8,5 +8,7 @@
         IUnit[][] Map { get; set; }
         int Score { get; set; }
         int Wave { get; set; }
+        bool MoveUnit { get; set; }
+        bool RemoveUnit { get; set; }
     }
 }

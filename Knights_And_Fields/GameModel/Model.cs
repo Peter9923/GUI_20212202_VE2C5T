@@ -33,6 +33,8 @@ namespace GameModel
         public int Score { get; set; }
         public IUnit[][] Map { get; set; }
         public bool DeployKnight { get; set; }
+        public bool MoveUnit { get; set; }
+        public bool RemoveUnit { get; set; }
 
     }
 }

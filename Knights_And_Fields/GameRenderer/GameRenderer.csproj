@@ -9,10 +9,22 @@
 
   <ItemGroup>
     <None Remove="Images\grass.png" />
+    <None Remove="Images\Knight.png" />
+    <None Remove="Images\KnightSelected.png" />
+    <None Remove="Images\Move.png" />
+    <None Remove="Images\MoveSelected.png" />
+    <None Remove="Images\Remove.png" />
+    <None Remove="Images\RemoveSelected.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Images\grass.png" />
+    <EmbeddedResource Include="Images\Knight.png" />
+    <EmbeddedResource Include="Images\KnightSelected.png" />
+    <EmbeddedResource Include="Images\Move.png" />
+    <EmbeddedResource Include="Images\MoveSelected.png" />
+    <EmbeddedResource Include="Images\Remove.png" />
+    <EmbeddedResource Include="Images\RemoveSelected.png" />
   </ItemGroup>
 
   <ItemGroup>

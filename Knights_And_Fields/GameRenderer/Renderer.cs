@@ -27,6 +27,41 @@ namespace GameRenderer
             get { return this.GetBrush("GameRenderer.Images.grass.png", true); }
         }
 
+
+        //Button Brushes
+        private Brush DeployKnightBrush
+        {
+            get { return this.GetBrush("GameRenderer.Images.DeployKnight.png", false); }
+        }
+
+        private Brush DeployKnightSelectedBrush
+        {
+            get { return this.GetBrush("GameRenderer.Images.DeployKnightSelected.png", false); }
+        }
+
+
+        private Brush MoveButtonBrush
+        {
+            get { return this.GetBrush("GameRenderer.Images.Move.png", false); }
+        }
+
+        private Brush MoveButtonSelectedBrush
+        {
+            get { return this.GetBrush("GameRenderer.Images.MoveSelected.png", false); }
+        }
+
+        private Brush RemoveButtonBrush
+        {
+            get { return this.GetBrush("GameRenderer.Images.Remove.png", false); }
+        }
+
+        private Brush RemoveButtonSelectedBrush
+        {
+            get { return this.GetBrush("GameRenderer.Images.RemoveSelected.png", false); }
+        }
+
+
+
         //Drawings
         private Drawing Background;
 
@@ -37,6 +72,9 @@ namespace GameRenderer
         {
             DrawingGroup dg = new DrawingGroup();
             dg.Children.Add(this.GetBackground());
+            dg.Children.Add(this.GetKnightButton());
+            dg.Children.Add(this.GetMoveButton());
+            dg.Children.Add(this.GetRemoveButton());
 
             return dg;
         }
@@ -78,6 +116,44 @@ namespace GameRenderer
             return Background;
         }
 
+        private Drawing GetKnightButton()
+        {
+            Geometry g = new RectangleGeometry(new Rect(
+                    (this.model.Map[0].Length + 1) * Config.TileSize, 0 * Config.TileSize, Config.TileSize, Config.TileSize));
+
+            if (this.model.DeployKnight)
+            {
+                return new GeometryDrawing(this.DeployKnightSelectedBrush, null, g);
+            }
+
+            return new GeometryDrawing(this.DeployKnightBrush, null, g);
+        }
+
+        private Drawing GetMoveButton()
+        {
+            Geometry g = new RectangleGeometry(new Rect(
+                    (this.model.Map[0].Length + 1) * Config.TileSize, 5 * Config.TileSize, Config.TileSize, Config.TileSize));
+
+            if (this.model.MoveUnit)
+            {
+                return new GeometryDrawing(this.MoveButtonSelectedBrush, null, g);
+            }
+
+            return new GeometryDrawing(this.MoveButtonBrush, null, g);
+        }
+
+        private Drawing GetRemoveButton()
+        {
+            Geometry g = new RectangleGeometry(new Rect(
+                    (this.model.Map[0].Length + 1) * Config.TileSize, 6 * Config.TileSize, Config.TileSize, Config.TileSize));
+
+            if (this.model.RemoveUnit)
+            {
+                return new GeometryDrawing(this.RemoveButtonSelectedBrush, null, g);
+            }
+
+            return new GeometryDrawing(this.RemoveButtonBrush, null, g);
+        }
 
 
     }
