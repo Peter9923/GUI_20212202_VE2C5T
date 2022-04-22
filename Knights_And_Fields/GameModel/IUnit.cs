@@ -15,6 +15,7 @@ namespace GameModel
         int Speed { get; set; }
         int Tick { get; set; }
         Point Position { get; set; }
+        int Level { get; set; }
         public void Collision();
     }
 }
