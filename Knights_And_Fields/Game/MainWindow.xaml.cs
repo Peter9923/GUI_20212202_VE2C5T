@@ -33,22 +33,24 @@ namespace Game
         {
             Config.Widht = grid.ActualWidth;
             Config.Height = grid.ActualHeight;
-            Config.NegyzetHeight = (int)(grid.ActualHeight) / 5;
-            Config.NegyzetWidth = (int)(grid.ActualWidth) / 10;
+            Config.NegyzetHeight = (int)(grid.ActualHeight) / (int)Config.RowNumber;
+            Config.NegyzetWidth = (int)(grid.ActualWidth) / (int)Config.ColumnNumber;
 
 
             logic = new GameLogic();
 
-            display.SetUpLogic(logic);
+            display_top.SetUpLogic(logic);
             //logic.RefreshScreen += (obj, args) => InvalidateVisual();
-            display.InvalidateVisual();
+            display_top.InvalidateVisual();
+
+           
 
 
             dt = new DispatcherTimer();
             dt.Interval = TimeSpan.FromMilliseconds(40);
             dt.Tick += (sender, eventargs) => {
                 logic.TimeStep();
-                display.InvalidateVisual();
+                display_top.InvalidateVisual();
             };
 
             dt.Start();
@@ -59,11 +61,11 @@ namespace Game
         {
             Config.Widht = grid.ActualWidth;
             Config.Height = grid.ActualHeight;
-            Config.NegyzetHeight = (int)(grid.ActualHeight) / 5;
-            Config.NegyzetWidth = (int)(grid.ActualWidth) / 10;
+            Config.NegyzetHeight = (int)(grid.ActualHeight) / (int)Config.RowNumber;
+            Config.NegyzetWidth = (int)(grid.ActualWidth) / (int)Config.ColumnNumber;
 
-            display.SetUpLogic(logic);
-            display.InvalidateVisual();
+            display_top.SetUpLogic(logic);
+            display_top.InvalidateVisual();
         }
     }
 }

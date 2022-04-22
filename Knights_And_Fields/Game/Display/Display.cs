@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Game.Display
@@ -16,6 +17,7 @@ namespace Game.Display
         private string PlayerName;
         private int PlayerID;
         private int Wave;
+
 
         public void SetUpLogic(IGameLogic logic) {
             this.logic = logic;
@@ -67,6 +69,14 @@ namespace Game.Display
                         case TypeOfKnights.Cannon: drawingContext.DrawGeometry(Config.Knight_CannonBG, new Pen(Config.Knight_CannontLB, 1), item.Area); break;
                         case TypeOfKnights.Tower: drawingContext.DrawGeometry(Config.Knight_TowerBG, new Pen(Config.Knight_TowertLB, 1), item.Area); break;
                     }
+
+                    Geometry rect1 = new RectangleGeometry(new Rect((int)item.Area.Bounds.X, (int)item.Area.Bounds.Y, Config.NegyzetWidth, 30)); // arány szám
+                    drawingContext.DrawGeometry(Brushes.WhiteSmoke, null, rect1);
+                    Geometry rect2 = new RectangleGeometry(new Rect((int)item.Area.Bounds.X, (int)item.Area.Bounds.Y, (Config.NegyzetWidth * (item.ActualLife/item.MaxLife)), 30)); // arány szám max élet és aktuális élet között, aktuális / max * Width
+                    drawingContext.DrawGeometry(Brushes.DarkRed, null, rect2);
+
+                    
+
                 }
 
             }

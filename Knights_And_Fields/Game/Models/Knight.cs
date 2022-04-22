@@ -33,6 +33,8 @@ namespace Game.Models
 
             MaxLife = 10;
             level = 1;
+
+            ActualLife = MaxLife;
         }
 
         public Geometry Area

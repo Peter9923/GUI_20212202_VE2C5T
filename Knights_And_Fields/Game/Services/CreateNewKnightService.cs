@@ -17,7 +17,6 @@ namespace Game.Services
             }
             else
             {
-                ;
                 knight = null;
             }
         }

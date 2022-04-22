@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Game"
         xmlns:DISPLAY="clr-namespace:Game.Display"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="600" Width="800"
         Loaded="Window_Loaded"
         SizeChanged="Window_SizeChanged"
         WindowState="Maximized"
@@ -15,10 +15,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
+          
         </Grid.RowDefinitions>
 
         <Grid x:Name="grid" Grid.Row="0">
-            <DISPLAY:Display x:Name="display"/>
+            <DISPLAY:Display x:Name="display_top"/>
         </Grid>
 
         <Grid Grid.Row="1" Margin="20">
@@ -39,5 +40,7 @@
             <Label Content="Wave: " Grid.Row="2" Grid.Column="0"/>
 
         </Grid>
+
+
     </Grid>
 </Window>
