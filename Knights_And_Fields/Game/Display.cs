@@ -18,6 +18,11 @@ namespace Game
         private Renderer renderer;
         private Window win;
 
+
+        private bool mouseMoved = false;
+        Point MovedMouseTilePos;
+
+
         public Display()
         {
             this.Loaded += this.CastleDefendersControl_Loaded;
@@ -30,6 +35,23 @@ namespace Game
                 if (this.renderer != null)
                 {
                     drawingContext.DrawDrawing(this.renderer.BuildDrawing());
+                }
+
+                if (this.model != null && mouseMoved == true
+                    && (int)MovedMouseTilePos.Y <= this.model.Map.Length - 1
+                    && (int)MovedMouseTilePos.X <= this.model.Map[0].Length - 1)
+                {
+                    if (this.model.Map[(int)MovedMouseTilePos.Y][(int)MovedMouseTilePos.X] == null){
+                        if (this.model.DeployKnight)
+                        {
+                            drawingContext.DrawDrawing(this.renderer.GetKnightIfMouseMove(MovedMouseTilePos.X, MovedMouseTilePos.Y));
+                        }
+                    }
+                    else{ //mouse is an exist object.
+                        //maybe are is another color??
+                    }
+                    
+                    
                 }
             }
         }
@@ -45,9 +67,21 @@ namespace Game
             if (this.win != null)
             {
                 this.MouseDown += Display_MouseDown; ;
+                this.MouseMove += Display_MouseMove;
             }
 
             this.InvalidateVisual();
+        }
+
+        private void Display_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Point mousePos = e.GetPosition(this);
+            MovedMouseTilePos = this.logic.GetTilePos(mousePos);
+            if (MovedMouseTilePos.X != this.model.Map[0].Length)
+            {
+                mouseMoved = true;
+                this.InvalidateVisual();
+            }
         }
 
         private void Display_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -55,6 +89,7 @@ namespace Game
             Point mousePos = e.GetPosition(this);
             Point tilePos = this.logic.GetTilePos(mousePos);
             bool nowCLicked = false;
+            mouseMoved = false;
 
 
             //which button clicked if clicked
