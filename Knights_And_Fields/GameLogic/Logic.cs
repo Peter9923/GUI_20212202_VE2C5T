@@ -53,5 +53,10 @@ namespace GameLogic
                 this.Model.Map[y][x].ActualLife = this.Model.Map[y][x].MaxLife;
             }
         }
+
+        public void MoveKnight(int actualX, int actualY, int prevX, int prevY)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

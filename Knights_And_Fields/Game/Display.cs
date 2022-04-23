@@ -182,7 +182,7 @@ namespace Game
             else if (!nowCLicked && this.model.MoveUnit)
             {
                 if (MovedUnitPrevPos.X != -1){
-                    this.logic.MoveKnight((int)tilePos.X, (int)tilePos.Y);
+                    this.logic.MoveKnight((int)tilePos.X, (int)tilePos.Y, (int)MovedUnitPrevPos.X, (int)MovedUnitPrevPos.Y);
 
                     this.model.MoveUnit = false;
                     MovedUnitPrevPos = new Point(-1, -1);
