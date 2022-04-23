@@ -50,7 +50,7 @@ namespace GameLogic
                 this.Model.Gold -= actual.UpgradeCost;
                 this.Model.Map[y][x].Level++;
                 this.Model.Map[y][x].MaxLife *= 1.5;
-                this.Model.Map[x][x].ActualLife = this.Model.Map[y][x].MaxLife;
+                this.Model.Map[y][x].ActualLife = this.Model.Map[y][x].MaxLife;
             }
         }
     }
