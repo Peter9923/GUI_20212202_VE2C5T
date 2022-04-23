@@ -10,7 +10,7 @@ namespace GameModel
 {
     public class EnemyKnight : IUnit
     {
-        public double MaxLife { get; set; }
+        public double MaxLife { get { return Math.Round((Level * 100) / 1.75,2); } }
         public double ActualLife { get; set; }
 
         public int Damage { get { return Level * 10; } }
@@ -32,14 +32,12 @@ namespace GameModel
 
         public EnemyKnight(double X, double Y){
             this.speedX = -5;
+            this.Level = 1;
 
-            this.MaxLife = 100;
             this.ActualLife = MaxLife;
             this.Speed = 2;
             this.Tick = 0;
             this.Position = new Point(X, Y);
-            this.Level = 1;
-
         }
 
 

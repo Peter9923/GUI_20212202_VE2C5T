@@ -10,9 +10,11 @@ namespace GameLogic
 {
     public class Logic : ILogic
     {
+        private static Random rnd;
         public IModel Model { get; set; }
         public Logic(IModel model)
         {
+            rnd = new Random();
             this.Model = model;
         }
 
@@ -26,7 +28,8 @@ namespace GameLogic
 
         public void DeployKnight(int x, int y)
         {
-            if (this.Model.Map[y][x] == null){
+            if (this.Model.Map[y][x] == null
+                && x < Config.ColumnNumbers-1){
                 if (this.Model.DeployKnight && this.Model.Gold >= Config.KnightCost)
                 {
                     this.Model.Map[y][x] = new Knight(x, y);
@@ -49,7 +52,6 @@ namespace GameLogic
                 && this.Model.Gold >= actual.UpgradeCost ) {
                 this.Model.Gold -= actual.UpgradeCost;
                 this.Model.Map[y][x].Level++;
-                this.Model.Map[y][x].MaxLife *= 1.5;
                 this.Model.Map[y][x].ActualLife = this.Model.Map[y][x].MaxLife;
             }
         }
@@ -67,5 +69,25 @@ namespace GameLogic
 
             }
         }
+
+
+
+
+
+
+
+
+        private void CreateEnemies() {
+            int enemyCount = this.Model.Wave + 2 + rnd.Next(0,this.Model.Wave+10);
+
+            for (int i = 0; i < enemyCount; i++){
+                this.Model.Enemies.Add(new EnemyKnight(9, rnd.Next(0,5)));
+                this.Model.Enemies[i].Level = rnd.Next(1, this.Model.Wave + 1);
+            }
+
+        }
+
+
+
     }
 }

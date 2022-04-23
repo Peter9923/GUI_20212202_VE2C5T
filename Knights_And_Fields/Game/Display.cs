@@ -41,7 +41,7 @@ namespace Game
 
                 if (this.model != null && mouseMoved == true
                     && (int)MovedMouseTilePos.Y <= this.model.Map.Length - 1
-                    && (int)MovedMouseTilePos.X <= this.model.Map[0].Length - 1)
+                    && (int)MovedMouseTilePos.X <= this.model.Map[0].Length - 2)
                 {
                     if (this.model.Map[(int)MovedMouseTilePos.Y][(int)MovedMouseTilePos.X] == null){
                         if (this.model.DeployKnight)
@@ -168,7 +168,7 @@ namespace Game
 
 
             //what will happan if Knight button clicked and clicked another cell.
-            if (!nowCLicked && this.model.DeployKnight)
+            if (!nowCLicked && this.model.DeployKnight && (int)tilePos.X < Config.ColumnNumbers-1)
             {
                 this.logic.DeployKnight((int)tilePos.X, (int)tilePos.Y);
                 this.model.DeployKnight = false;

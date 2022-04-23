@@ -9,7 +9,7 @@ namespace GameModel
 {
     public interface IUnit : IGameItem
     {
-        double MaxLife { get; set; }
+        double MaxLife { get; }
         double ActualLife { get; set; }
         int Damage { get; }
         int Speed { get; set; }

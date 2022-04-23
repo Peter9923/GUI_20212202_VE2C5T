@@ -14,7 +14,7 @@ namespace GameModel
 
         public int UpgradeCost { get { return this.Level * this.Cost; } }
 
-        public double MaxLife { get; set; }
+        public double MaxLife { get { return Math.Round((Level * 100) / 1.5, 2); } }
         public double ActualLife { get; set; }
         public int Damage { get { return this.Level * 10; } }
         public int Speed { get; set; }
@@ -31,12 +31,11 @@ namespace GameModel
         }
 
         public Knight(int X, int Y){
-            this.MaxLife = 100;
+            this.Level = 1;
             this.ActualLife = MaxLife;
             this.Speed = 2;
             this.Tick = 0;
             this.Position = new Point(X, Y);
-            this.Level = 1;
         }
 
         public void Collision()
