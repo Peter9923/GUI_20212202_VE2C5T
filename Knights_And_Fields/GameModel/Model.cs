@@ -26,14 +26,17 @@ namespace GameModel
             this.Score = 0;
             Config.TileSize = 160;
             this.DeployKnight = false;
+
+            Enemies = new List<EnemyKnight>();
         }
+        public IUnit[][] Map { get; set; }
+        public List<EnemyKnight> Enemies {get; set;}
 
         public int Gold { get; set; }
         public int Wave { get; set; }
         public int CastleMaxHP { get; set; }
         public int CastleActualHP { get; set; }
         public int Score { get; set; }
-        public IUnit[][] Map { get; set; }
         public bool DeployKnight { get; set; }
         public bool MoveUnit { get; set; }
         public bool RemoveUnit { get; set; }
