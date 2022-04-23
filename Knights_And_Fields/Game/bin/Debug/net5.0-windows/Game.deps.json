@@ -7,14 +7,55 @@
   "targets": {
     ".NETCoreApp,Version=v5.0": {
       "Game/1.0.0": {
+        "dependencies": {
+          "GameLogic": "1.0.0",
+          "GameModel": "1.0.0",
+          "GameRenderer": "1.0.0"
+        },
         "runtime": {
           "Game.dll": {}
+        }
+      },
+      "GameLogic/1.0.0": {
+        "dependencies": {
+          "GameModel": "1.0.0"
+        },
+        "runtime": {
+          "GameLogic.dll": {}
+        }
+      },
+      "GameModel/1.0.0": {
+        "runtime": {
+          "GameModel.dll": {}
+        }
+      },
+      "GameRenderer/1.0.0": {
+        "dependencies": {
+          "GameModel": "1.0.0"
+        },
+        "runtime": {
+          "GameRenderer.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Game/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameLogic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameModel/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameRenderer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

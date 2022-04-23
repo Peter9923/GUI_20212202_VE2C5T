@@ -1,11 +1,77 @@
 {
   "version": 3,
   "targets": {
-    "net5.0-windows7.0": {}
+    "net5.0-windows7.0": {
+      "GameLogic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GameModel": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GameLogic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameLogic.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "GameModel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/GameModel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameModel.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "GameRenderer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GameModel": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GameRenderer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GameRenderer.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "GameLogic/1.0.0": {
+      "type": "project",
+      "path": "../GameLogic/GameLogic.csproj",
+      "msbuildProject": "../GameLogic/GameLogic.csproj"
+    },
+    "GameModel/1.0.0": {
+      "type": "project",
+      "path": "../GameModel/GameModel.csproj",
+      "msbuildProject": "../GameModel/GameModel.csproj"
+    },
+    "GameRenderer/1.0.0": {
+      "type": "project",
+      "path": "../GameRenderer/GameRenderer.csproj",
+      "msbuildProject": "../GameRenderer/GameRenderer.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0-windows7.0": []
+    "net5.0-windows7.0": [
+      "GameLogic >= 1.0.0",
+      "GameModel >= 1.0.0",
+      "GameRenderer >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\": {}
@@ -33,7 +99,17 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj"
+            },
+            "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
+            },
+            "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameRenderer\\GameRenderer.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameRenderer\\GameRenderer.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

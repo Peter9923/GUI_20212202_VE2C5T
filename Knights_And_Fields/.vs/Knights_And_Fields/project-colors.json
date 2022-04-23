@@ -15,7 +15,27 @@
       "ProjectGuid": "31e9dc15-f71b-4bf6-8057-589b350c7b28",
       "DisplayName": "Game",
       "ColorIndex": 1
+    },
+    "e0f547eb-52b0-412f-ac04-2152580b74ca": {
+      "ProjectGuid": "e0f547eb-52b0-412f-ac04-2152580b74ca",
+      "DisplayName": "Game",
+      "ColorIndex": 2
+    },
+    "a1e9252f-ccbb-4e96-a431-637fd49d5432": {
+      "ProjectGuid": "a1e9252f-ccbb-4e96-a431-637fd49d5432",
+      "DisplayName": "GameLogic",
+      "ColorIndex": 3
+    },
+    "4af39774-af25-4fb6-8c54-30ecde23a8a9": {
+      "ProjectGuid": "4af39774-af25-4fb6-8c54-30ecde23a8a9",
+      "DisplayName": "GameRenderer",
+      "ColorIndex": 4
+    },
+    "c4536843-ecd8-4370-b8da-1e111d863262": {
+      "ProjectGuid": "c4536843-ecd8-4370-b8da-1e111d863262",
+      "DisplayName": "GameModel",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 6
 }
