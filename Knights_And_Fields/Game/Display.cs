@@ -48,6 +48,10 @@ namespace Game
                         {
                             drawingContext.DrawDrawing(this.renderer.GetKnightIfMouseMove(MovedMouseTilePos.X, MovedMouseTilePos.Y));
                         }
+                        else if (this.model.MoveUnit)
+                        {
+                            drawingContext.DrawDrawing(this.renderer.GetBorderIfMouseMove(MovedMouseTilePos.X, MovedMouseTilePos.Y));
+                        }
                     }
                     else{ //mouse is an exist object.
                         //maybe are is another color??

@@ -56,7 +56,16 @@ namespace GameLogic
 
         public void MoveKnight(int actualX, int actualY, int prevX, int prevY)
         {
-            throw new NotImplementedException();
+            if (this.Model.Map[actualY][actualX] == null
+                && this.Model.Map[prevY][prevX] != null && this.Model.Map[prevY][prevX] is IAllied actual
+                && this.Model.Gold >= (actual.UpgradeCost / 2)){
+
+                this.Model.Gold -= actual.UpgradeCost / 2;
+
+                this.Model.Map[actualY][actualX] = this.Model.Map[prevY][prevX];
+                this.Model.Map[prevY][prevX] = null;
+
+            }
         }
     }
 }
