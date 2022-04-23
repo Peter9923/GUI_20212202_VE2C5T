@@ -111,6 +111,8 @@ namespace GameRenderer
             dg.Children.Add(this.GetKnights());
 
             dg.Children.Add(this.GetLevels());
+            dg.Children.Add(this.GetHpsBackground());
+            dg.Children.Add(this.GetHpsForeground());
 
             return dg;
         }
@@ -217,6 +219,44 @@ namespace GameRenderer
             }
 
             return new GeometryDrawing(Brushes.WhiteSmoke, null, g);
+        }
+
+        private Drawing GetHpsBackground()
+        {
+            GeometryGroup g = new GeometryGroup();
+            for (int y = 0; y < this.model.Map.Length; y++)
+            {
+                for (int x = 0; x < this.model.Map[y].Length; x++)
+                {
+                    if (this.model.Map[y][x] is IAllied)
+                    {
+                        Geometry rect1 = new RectangleGeometry(new Rect((x+1) * Config.TileSize + 50, y * Config.TileSize, 80, 15));
+                        g.Children.Add(rect1);
+                    }
+
+                }
+            }
+
+            return new GeometryDrawing(Brushes.WhiteSmoke, null, g);
+        }
+
+        private Drawing GetHpsForeground()
+        {
+            GeometryGroup g = new GeometryGroup();
+            for (int y = 0; y < this.model.Map.Length; y++)
+            {
+                for (int x = 0; x < this.model.Map[y].Length; x++)
+                {
+                    if (this.model.Map[y][x] is IAllied actual)
+                    {
+                        Geometry rect1 = new RectangleGeometry(new Rect((x + 1) * Config.TileSize + 50, y * Config.TileSize, ( (80 * actual.ActualLife) / actual.MaxLife), 15));
+                        g.Children.Add(rect1);
+                    }
+
+                }
+            }
+
+            return new GeometryDrawing(Brushes.DarkRed, null, g);
         }
 
         #endregion
