@@ -28,6 +28,11 @@ namespace GameRenderer
             get { return this.GetBrush("GameRenderer.Images.grass.png", true); }
         }
 
+        private Brush CastleWallBrush
+        {
+            get { return this.GetBrush("GameRenderer.Images.CastleWall.png", true); }
+        }
+
         private Brush KnightBrush
         {
             get { return this.GetBrush("GameRenderer.Images.Knight.png", true); }
@@ -83,6 +88,7 @@ namespace GameRenderer
         private Drawing Background;
         private Drawing CastleHPText;
         private Drawing GoldText;
+        private Drawing CastleWall;
 
 
         //BuildDrawing methods
@@ -108,6 +114,7 @@ namespace GameRenderer
             dg.Children.Add(this.GetUpgradeButton());
 
 
+            dg.Children.Add(this.GetCastleWall());
             dg.Children.Add(this.GetKnights());
 
             dg.Children.Add(this.GetLevels());
@@ -152,6 +159,22 @@ namespace GameRenderer
             }
 
             return Background;
+        }
+
+        private Drawing GetCastleWall()
+        {
+            if (CastleWall == null){
+                GeometryGroup g = new GeometryGroup();
+                for (int y = 0; y < this.model.Map.Length; y++)
+                {
+                    Geometry box = new RectangleGeometry(new Rect(0 * Config.TileSize, y * Config.TileSize, Config.TileSize, Config.TileSize));
+                    g.Children.Add(box);
+                }
+
+                CastleWall = new GeometryDrawing(this.CastleWallBrush, null, g);
+            }
+
+            return CastleWall;
         }
 
 

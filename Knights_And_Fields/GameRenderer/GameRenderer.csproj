@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\CastleWall.png" />
     <None Remove="Images\DeployKnight.png" />
     <None Remove="Images\DeployKnightSelected.png" />
     <None Remove="Images\grass.png" />
@@ -22,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Images\CastleWall.png" />
     <EmbeddedResource Include="Images\DeployKnight.png" />
     <EmbeddedResource Include="Images\DeployKnightSelected.png" />
     <EmbeddedResource Include="Images\grass.png" />
