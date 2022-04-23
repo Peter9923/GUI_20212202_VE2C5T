@@ -416,8 +416,7 @@ namespace GameRenderer
             GeometryGroup g = new GeometryGroup();
 
             foreach (var actual in this.model.SpawnedEnemies){
-                Geometry box = new RectangleGeometry(new Rect((actual.Position.X + 1) * Config.TileSize, actual.Position.Y * Config.TileSize, Config.TileSize, Config.TileSize));
-                g.Children.Add(box);
+                g.Children.Add(actual.Area);
             }
             return new GeometryDrawing(this.EnemyKnightBrush, null, g);
         }

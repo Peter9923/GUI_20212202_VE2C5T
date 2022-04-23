@@ -82,28 +82,29 @@ namespace GameLogic
             int enemyCount = this.Model.Wave + 2 + rnd.Next(0,this.Model.Wave+10);
 
             for (int i = 0; i < enemyCount; i++){
-                this.Model.ShouldSpawnEnemies.Add(new EnemyKnight(9, rnd.Next(0,5)));
+                this.Model.ShouldSpawnEnemies.Add(new EnemyKnight( (10*Config.TileSize), (rnd.Next(0,5))*Config.TileSize));
                 this.Model.ShouldSpawnEnemies[i].Level = rnd.Next(1, this.Model.Wave + 1);
             }
 
         }
 
-        public void EnemySpawnTime() {
-            foreach (var shouldSpawn in this.Model.ShouldSpawnEnemies)
-            {
-                foreach (var spawned in this.Model.SpawnedEnemies)
-                {
-                    if (spawned.IsCollision(shouldSpawn)){
-                        return;
+        public int EnemySpawnTime() {
+            for (int i = 0; i < this.Model.ShouldSpawnEnemies.Count; i++){
+
+                foreach (var spawned in this.Model.SpawnedEnemies){
+                    if (spawned.IsCollision(this.Model.ShouldSpawnEnemies[i]))
+                    {
+                        return -1;
                     }
                 }
-
                 //not collision, so can spawn.
-                var a = shouldSpawn;
-                this.Model.ShouldSpawnEnemies.Remove(shouldSpawn);
+                var a = this.Model.ShouldSpawnEnemies[i];
+                this.Model.ShouldSpawnEnemies.Remove(this.Model.ShouldSpawnEnemies[i]);
                 this.Model.SpawnedEnemies.Add(a);
-                return;
+
+                return this.Model.SpawnedEnemies.Count-1;
             }
+            return -1;
         }
 
     }

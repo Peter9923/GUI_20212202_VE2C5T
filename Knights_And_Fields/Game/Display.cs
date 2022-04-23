@@ -14,12 +14,15 @@ namespace Game
 {
     public class Display : FrameworkElement
     {
+        private static Random rnd = new Random();
+
         private IModel model;
         private ILogic logic;
         private Renderer renderer;
         private Window win;
 
         private DispatcherTimer EnemySpawnTimer;
+        private List<DispatcherTimer> EnemyMoveTimer;
 
 
         private bool mouseMoved = false;
@@ -91,6 +94,8 @@ namespace Game
                 this.EnemySpawnTimer.Interval = TimeSpan.FromMilliseconds(1000);
                 this.EnemySpawnTimer.Tick += EnemySpawnTimer_Tick;
                 this.EnemySpawnTimer.Start();
+
+                this.EnemyMoveTimer = new List<DispatcherTimer>();
             }
 
             this.InvalidateVisual();
@@ -98,7 +103,20 @@ namespace Game
 
         private void EnemySpawnTimer_Tick(object? sender, EventArgs e)
         {
-            this.logic.EnemySpawnTime();
+            int idx = this.logic.EnemySpawnTime();
+            if (idx != -1){
+                DispatcherTimer dt = new DispatcherTimer();
+
+                dt.Interval = TimeSpan.FromMilliseconds(rnd.Next(50,200));
+                dt.Tick += (sender, eventargs) => {
+                    this.model.SpawnedEnemies[idx].Move();
+                    InvalidateVisual();
+                };
+
+                EnemyMoveTimer.Add(dt);
+                EnemyMoveTimer[EnemyMoveTimer.Count - 1].Start();
+            }
+            
             this.InvalidateVisual();
         }
 
