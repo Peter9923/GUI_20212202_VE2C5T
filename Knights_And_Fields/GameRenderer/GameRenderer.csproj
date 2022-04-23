@@ -17,6 +17,8 @@
     <None Remove="Images\MoveSelected.png" />
     <None Remove="Images\Remove.png" />
     <None Remove="Images\RemoveSelected.png" />
+    <None Remove="Images\Upgrade.png" />
+    <None Remove="Images\UpgradeSelected.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +29,8 @@
     <EmbeddedResource Include="Images\MoveSelected.png" />
     <EmbeddedResource Include="Images\Remove.png" />
     <EmbeddedResource Include="Images\RemoveSelected.png" />
+    <EmbeddedResource Include="Images\Upgrade.png" />
+    <EmbeddedResource Include="Images\UpgradeSelected.png" />
   </ItemGroup>
 
   <ItemGroup>

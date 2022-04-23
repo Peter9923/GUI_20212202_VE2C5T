@@ -10,5 +10,6 @@
         int Wave { get; set; }
         bool MoveUnit { get; set; }
         bool RemoveUnit { get; set; }
+        bool UpgradeUnit { get; set; }
     }
 }

@@ -82,6 +82,7 @@ namespace Game
                         this.model.MoveUnit = true;
                         this.model.DeployKnight = false;
                         this.model.RemoveUnit = false;
+                        this.model.UpgradeUnit = false;
                     }
                 }
             }
@@ -98,6 +99,25 @@ namespace Game
                         this.model.RemoveUnit = true;
                         this.model.DeployKnight = false;
                         this.model.MoveUnit = false;
+                        this.model.UpgradeUnit = false;
+
+                    }
+                }
+            }
+            else if (tilePos.X == this.model.Map[0].Length - 3){
+                nowCLicked = true;
+                if (tilePos.Y == 5)
+                {
+                    if (this.model.UpgradeUnit)
+                    {
+                        this.model.UpgradeUnit = false;
+                    }
+                    else
+                    {
+                        this.model.UpgradeUnit = true;
+                        this.model.DeployKnight = false;
+                        this.model.MoveUnit = false;
+                        this.model.RemoveUnit = false;
 
                     }
                 }

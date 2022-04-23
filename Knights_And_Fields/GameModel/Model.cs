@@ -35,6 +35,7 @@ namespace GameModel
         public bool DeployKnight { get; set; }
         public bool MoveUnit { get; set; }
         public bool RemoveUnit { get; set; }
+        public bool UpgradeUnit { get; set; }
 
     }
 }

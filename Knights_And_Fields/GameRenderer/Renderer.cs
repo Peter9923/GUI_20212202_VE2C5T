@@ -60,6 +60,16 @@ namespace GameRenderer
             get { return this.GetBrush("GameRenderer.Images.RemoveSelected.png", false); }
         }
 
+        private Brush UpgradeButtonBrush
+        {
+            get { return this.GetBrush("GameRenderer.Images.Upgrade.png", false); }
+        }
+
+        private Brush UpgradeButtonSelectedBrush
+        {
+            get { return this.GetBrush("GameRenderer.Images.UpgradeSelected.png", false); }
+        }
+
 
 
         //Drawings
@@ -75,6 +85,7 @@ namespace GameRenderer
             dg.Children.Add(this.GetKnightButton());
             dg.Children.Add(this.GetMoveButton());
             dg.Children.Add(this.GetRemoveButton());
+            dg.Children.Add(this.GetUpgradeButton());
 
             return dg;
         }
@@ -153,6 +164,19 @@ namespace GameRenderer
             }
 
             return new GeometryDrawing(this.RemoveButtonBrush, null, g);
+        }
+
+        private Drawing GetUpgradeButton()
+        {
+            Geometry g = new RectangleGeometry(new Rect(
+                    (this.model.Map[0].Length - 2) * Config.TileSize, 5 * Config.TileSize, Config.TileSize, Config.TileSize));
+
+            if (this.model.UpgradeUnit)
+            {
+                return new GeometryDrawing(this.UpgradeButtonSelectedBrush, null, g);
+            }
+
+            return new GeometryDrawing(this.UpgradeButtonBrush, null, g);
         }
 
 
