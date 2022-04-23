@@ -178,7 +178,7 @@ namespace GameRenderer
         }
         #endregion
 
-
+        #region Buttons
         private Drawing GetKnightButton()
         {
             Geometry g = new RectangleGeometry(new Rect(
@@ -230,7 +230,7 @@ namespace GameRenderer
 
             return new GeometryDrawing(this.UpgradeButtonBrush, null, g);
         }
-
+        #endregion
 
     }
 }

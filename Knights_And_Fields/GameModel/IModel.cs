@@ -2,7 +2,8 @@
 {
     public interface IModel
     {
-        int CastleHP { get; set; }
+        public int CastleMaxHP { get; set; }
+        public int CastleActualHP { get; set; }
         bool DeployKnight { get; set; }
         int Gold { get; set; }
         IUnit[][] Map { get; set; }

@@ -21,7 +21,8 @@ namespace GameModel
 
             this.Gold = 1000000;
             this.Wave = 1;
-            this.CastleHP = 500;
+            this.CastleMaxHP = 500;
+            this.CastleActualHP = this.CastleMaxHP;
             this.Score = 0;
             Config.TileSize = 160;
             this.DeployKnight = false;
@@ -29,7 +30,8 @@ namespace GameModel
 
         public int Gold { get; set; }
         public int Wave { get; set; }
-        public int CastleHP { get; set; }
+        public int CastleMaxHP { get; set; }
+        public int CastleActualHP { get; set; }
         public int Score { get; set; }
         public IUnit[][] Map { get; set; }
         public bool DeployKnight { get; set; }
