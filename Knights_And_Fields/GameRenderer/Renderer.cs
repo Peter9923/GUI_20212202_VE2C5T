@@ -41,6 +41,10 @@ namespace GameRenderer
         {
             get { return this.GetBrush("GameRenderer.Images.Knight.png", true); }
         }
+        private Brush EnemyKnightBrush
+        {
+            get { return this.GetBrush("GameRenderer.Images.EnemyKnight.png", true); }
+        }
 
 
 
@@ -122,6 +126,7 @@ namespace GameRenderer
 
             dg.Children.Add(this.GetCastleWall());
             dg.Children.Add(this.GetKnights());
+            dg.Children.Add(this.GetEnemies());
 
             dg.Children.Add(this.GetLevels());
             dg.Children.Add(this.GetHpsBackground());
@@ -404,6 +409,18 @@ namespace GameRenderer
             return gd;
         }
 
+
+
+        //Enemies
+        private Drawing GetEnemies() {
+            GeometryGroup g = new GeometryGroup();
+
+            foreach (var actual in this.model.SpawnedEnemies){
+                Geometry box = new RectangleGeometry(new Rect((actual.Position.X + 1) * Config.TileSize, actual.Position.Y * Config.TileSize, Config.TileSize, Config.TileSize));
+                g.Children.Add(box);
+            }
+            return new GeometryDrawing(this.EnemyKnightBrush, null, g);
+        }
 
     }
 }

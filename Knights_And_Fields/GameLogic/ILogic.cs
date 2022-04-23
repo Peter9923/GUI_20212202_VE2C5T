@@ -13,5 +13,7 @@ namespace GameLogic
         public void RemoveKnight(int x, int y);
         public void UpgradeKnight(int x, int y);
         public void MoveKnight(int actualX, int actualY, int prevX, int prevY);
+
+        void EnemySpawnTime();
     }
 }

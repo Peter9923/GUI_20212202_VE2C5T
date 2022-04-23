@@ -10,7 +10,7 @@ namespace GameModel
 {
     public class EnemyKnight : IUnit
     {
-        public double MaxLife { get { return Math.Round((Level * 100) / 1.75,2); } }
+        public double MaxLife { get { return (Level * 100) / 1.75; } }
         public double ActualLife { get; set; }
 
         public int Damage { get { return Level * 10; } }
@@ -24,7 +24,7 @@ namespace GameModel
         {
             get
             {
-                return new RectangleGeometry(new Rect(Position.X, Position.Y, Config.TileSize, Config.TileSize));
+                return new RectangleGeometry(new Rect( ( Position.X+1) * Config.TileSize, Position.Y * Config.TileSize, Config.TileSize, Config.TileSize));
             }
         }
 
@@ -54,7 +54,8 @@ namespace GameModel
 
         public bool IsCollision(IGameItem other)
         {
-            throw new NotImplementedException();
+            return Geometry.Combine(this.Area, other.Area,
+                GeometryCombineMode.Intersect, null).GetArea() > 0;
         }
     }
 }

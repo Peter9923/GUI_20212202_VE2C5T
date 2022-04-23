@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace Game
 {
@@ -17,6 +18,8 @@ namespace Game
         private ILogic logic;
         private Renderer renderer;
         private Window win;
+
+        private DispatcherTimer EnemySpawnTimer;
 
 
         private bool mouseMoved = false;
@@ -37,28 +40,34 @@ namespace Game
                 if (this.renderer != null)
                 {
                     drawingContext.DrawDrawing(this.renderer.BuildDrawing());
-                }
 
-                if (this.model != null && mouseMoved == true
+                    if (this.model != null && mouseMoved == true
                     && (int)MovedMouseTilePos.Y <= this.model.Map.Length - 1
                     && (int)MovedMouseTilePos.X <= this.model.Map[0].Length - 2)
-                {
-                    if (this.model.Map[(int)MovedMouseTilePos.Y][(int)MovedMouseTilePos.X] == null){
-                        if (this.model.DeployKnight)
+                    {
+                        if (this.model.Map[(int)MovedMouseTilePos.Y][(int)MovedMouseTilePos.X] == null)
                         {
-                            drawingContext.DrawDrawing(this.renderer.GetKnightIfMouseMove(MovedMouseTilePos.X, MovedMouseTilePos.Y));
+                            if (this.model.DeployKnight)
+                            {
+                                drawingContext.DrawDrawing(this.renderer.GetKnightIfMouseMove(MovedMouseTilePos.X, MovedMouseTilePos.Y));
+                            }
+                            else if (this.model.MoveUnit)
+                            {
+                                drawingContext.DrawDrawing(this.renderer.GetBorderIfMouseMove(MovedMouseTilePos.X, MovedMouseTilePos.Y));
+                            }
                         }
-                        else if (this.model.MoveUnit)
-                        {
+                        else
+                        { //mouse is an exist object.
+                          //maybe are is another color??
                             drawingContext.DrawDrawing(this.renderer.GetBorderIfMouseMove(MovedMouseTilePos.X, MovedMouseTilePos.Y));
                         }
+
+
                     }
-                    else{ //mouse is an exist object.
-                        //maybe are is another color??
-                        drawingContext.DrawDrawing(this.renderer.GetBorderIfMouseMove(MovedMouseTilePos.X, MovedMouseTilePos.Y));
-                    }
-                    
-                    
+
+
+                    //..
+                   
                 }
             }
         }
@@ -75,10 +84,21 @@ namespace Game
 
             if (this.win != null)
             {
-                this.MouseDown += Display_MouseDown; ;
+                this.MouseDown += Display_MouseDown;
                 this.MouseMove += Display_MouseMove;
+
+                this.EnemySpawnTimer = new DispatcherTimer();
+                this.EnemySpawnTimer.Interval = TimeSpan.FromMilliseconds(1000);
+                this.EnemySpawnTimer.Tick += EnemySpawnTimer_Tick;
+                this.EnemySpawnTimer.Start();
             }
 
+            this.InvalidateVisual();
+        }
+
+        private void EnemySpawnTimer_Tick(object? sender, EventArgs e)
+        {
+            this.logic.EnemySpawnTime();
             this.InvalidateVisual();
         }
 

@@ -27,10 +27,12 @@ namespace GameModel
             Config.TileSize = 160;
             this.DeployKnight = false;
 
-            Enemies = new List<EnemyKnight>();
+            ShouldSpawnEnemies = new List<EnemyKnight>();
+            SpawnedEnemies = new List<EnemyKnight>();
         }
         public IUnit[][] Map { get; set; }
-        public List<EnemyKnight> Enemies {get; set;}
+        public List<EnemyKnight> ShouldSpawnEnemies {get; set;}
+        public List<EnemyKnight> SpawnedEnemies {get; set;}
 
         public int Gold { get; set; }
         public int Wave { get; set; }

@@ -5,7 +5,8 @@ namespace GameModel
     public interface IModel
     {
         IUnit[][] Map { get; set; }
-        List<EnemyKnight> Enemies { get; set; }
+        List<EnemyKnight> ShouldSpawnEnemies { get; set; }
+        List<EnemyKnight> SpawnedEnemies { get; set; }
         public int CastleMaxHP { get; set; }
         public int CastleActualHP { get; set; }
         bool DeployKnight { get; set; }

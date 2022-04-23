@@ -16,6 +16,7 @@ namespace GameLogic
         {
             rnd = new Random();
             this.Model = model;
+            this.CreateEnemies();
         }
 
         // Pixel position --> Tile position
@@ -81,13 +82,29 @@ namespace GameLogic
             int enemyCount = this.Model.Wave + 2 + rnd.Next(0,this.Model.Wave+10);
 
             for (int i = 0; i < enemyCount; i++){
-                this.Model.Enemies.Add(new EnemyKnight(9, rnd.Next(0,5)));
-                this.Model.Enemies[i].Level = rnd.Next(1, this.Model.Wave + 1);
+                this.Model.ShouldSpawnEnemies.Add(new EnemyKnight(9, rnd.Next(0,5)));
+                this.Model.ShouldSpawnEnemies[i].Level = rnd.Next(1, this.Model.Wave + 1);
             }
 
         }
 
+        public void EnemySpawnTime() {
+            foreach (var shouldSpawn in this.Model.ShouldSpawnEnemies)
+            {
+                foreach (var spawned in this.Model.SpawnedEnemies)
+                {
+                    if (spawned.IsCollision(shouldSpawn)){
+                        return;
+                    }
+                }
 
+                //not collision, so can spawn.
+                var a = shouldSpawn;
+                this.Model.ShouldSpawnEnemies.Remove(shouldSpawn);
+                this.Model.SpawnedEnemies.Add(a);
+                return;
+            }
+        }
 
     }
 }
