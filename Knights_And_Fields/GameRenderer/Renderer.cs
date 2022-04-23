@@ -1,6 +1,7 @@
 ﻿using GameModel;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -82,6 +83,7 @@ namespace GameRenderer
         {
             DrawingGroup dg = new DrawingGroup();
             dg.Children.Add(this.GetBackground());
+            dg.Children.Add(this.GetCastleHp());
             dg.Children.Add(this.GetKnightButton());
             dg.Children.Add(this.GetMoveButton());
             dg.Children.Add(this.GetRemoveButton());
@@ -126,6 +128,13 @@ namespace GameRenderer
 
             return Background;
         }
+
+        private Drawing GetCastleHp()
+        {
+            FormattedText text = new FormattedText("Castle HP: " + this.model.CastleHP.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
+            return new GeometryDrawing(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(20, 825)));
+        }
+
 
         private Drawing GetKnightButton()
         {
