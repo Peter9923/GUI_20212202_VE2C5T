@@ -38,7 +38,7 @@ namespace GameLogic
         public void RemoveKnight(int x, int y)
         {
             if (this.Model.Map[y][x] is Knight k){
-                this.Model.Gold += (k.Level * k.Cost) / 2;
+                this.Model.Gold += (int)((k.Level * k.Cost) / 1.25);
                 this.Model.Map[y][x] = null;
             }
         }
@@ -49,6 +49,8 @@ namespace GameLogic
                 && this.Model.Gold >= actual.UpgradeCost ) {
                 this.Model.Gold -= actual.UpgradeCost;
                 this.Model.Map[y][x].Level++;
+                this.Model.Map[y][x].MaxLife *= 1.5;
+                this.Model.Map[x][x].ActualLife = this.Model.Map[y][x].MaxLife;
             }
         }
     }
