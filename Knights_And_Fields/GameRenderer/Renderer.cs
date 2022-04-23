@@ -110,6 +110,8 @@ namespace GameRenderer
 
             dg.Children.Add(this.GetKnights());
 
+            dg.Children.Add(this.GetLevels());
+
             return dg;
         }
 
@@ -151,7 +153,7 @@ namespace GameRenderer
         }
 
 
-        #region FormattedTexts
+        #region FormattedTexts - and Box backgrounds and foregrounds
         private Drawing GetCastleHpText()
         {
             if (CastleHPText == null){
@@ -196,6 +198,27 @@ namespace GameRenderer
             FormattedText text = new FormattedText("Score: " + this.model.Score.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
             return new GeometryDrawing(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(500, 900)));
         }
+
+        private Drawing GetLevels()
+        {
+            GeometryGroup g = new GeometryGroup();
+            FormattedText text;
+            for (int y = 0; y < this.model.Map.Length; y++)
+            {
+                for (int x = 0; x < this.model.Map[y].Length; x++)
+                {
+                    if (this.model.Map[y][x] is IAllied)
+                    {
+                        text = new FormattedText(this.model.Map[y][x].Level.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 45, Brushes.Black, 1);
+                        g.Children.Add(text.BuildGeometry(new Point((x + 1) * Config.TileSize, y * Config.TileSize)));
+                    }
+                    
+                }
+            }
+
+            return new GeometryDrawing(Brushes.WhiteSmoke, null, g);
+        }
+
         #endregion
 
         #region Buttons
