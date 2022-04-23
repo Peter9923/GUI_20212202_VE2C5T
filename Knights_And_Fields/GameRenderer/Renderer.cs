@@ -277,6 +277,11 @@ namespace GameRenderer
             GeometryDrawing gd = new GeometryDrawing(this.KnightBrush, new Pen(Brushes.Black, 3), box);
             return gd;
         }
+        public Drawing GetBorderIfMouseMove(double x, double y) {
+            Geometry box = new RectangleGeometry(new Rect((x + 1) * Config.TileSize, y * Config.TileSize, Config.TileSize, Config.TileSize));
+            GeometryDrawing gd = new GeometryDrawing(null, new Pen(Brushes.Yellow, 6), box);
+            return gd;
+        }
 
 
     }

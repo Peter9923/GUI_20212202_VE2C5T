@@ -49,6 +49,7 @@ namespace Game
                     }
                     else{ //mouse is an exist object.
                         //maybe are is another color??
+                        drawingContext.DrawDrawing(this.renderer.GetBorderIfMouseMove(MovedMouseTilePos.X, MovedMouseTilePos.Y));
                     }
                     
                     
