@@ -43,7 +43,7 @@ namespace GameModel
 
         public void Move() {
             double newX = Position.X + speedX; 
-            double newY = Position.Y; 
+            double newY = Position.Y;
             Position = new Point(newX, newY);
         }
 

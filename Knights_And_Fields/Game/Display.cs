@@ -107,7 +107,7 @@ namespace Game
             if (idx != -1){
                 DispatcherTimer dt = new DispatcherTimer();
 
-                dt.Interval = TimeSpan.FromMilliseconds(rnd.Next(50,200));
+                dt.Interval = TimeSpan.FromMilliseconds(10);
                 dt.Tick += (sender, eventargs) => {
                     this.model.SpawnedEnemies[idx].Move();
                     InvalidateVisual();
