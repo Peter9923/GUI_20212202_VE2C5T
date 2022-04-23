@@ -6,5 +6,8 @@
         xmlns:local="clr-namespace:Game"
         mc:Ignorable="d"
         Title="MainWindow" Height="1000" Width="1920">
-    <local:Display />
+    <Grid Background="#FF3D615B">
+        <local:Display />
+    </Grid>
+   
 </Window>
