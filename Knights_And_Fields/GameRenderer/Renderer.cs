@@ -90,6 +90,8 @@ namespace GameRenderer
             dg.Children.Add(this.GetCurrentCastleHp());
             dg.Children.Add(this.GetGoldText());
             dg.Children.Add(this.GetCurrentGold());
+            dg.Children.Add(this.GetWave());
+            dg.Children.Add(this.GetScore());
 
 
             dg.Children.Add(this.GetKnightButton());
@@ -137,6 +139,8 @@ namespace GameRenderer
             return Background;
         }
 
+
+        #region FormattedTexts
         private Drawing GetCastleHpText()
         {
             if (CastleHPText == null){
@@ -161,6 +165,19 @@ namespace GameRenderer
             FormattedText text1 = new FormattedText(this.model.Gold.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Yellow, 2);
             return new GeometryDrawing(null, new Pen(Brushes.Yellow, 2), text1.BuildGeometry(new Point(400, 825)));
         }
+        private Drawing GetWave()
+        {
+            FormattedText text = new FormattedText("Wave: " + this.model.Wave.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
+            return new GeometryDrawing(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(20, 900)));
+        }
+
+        private Drawing GetScore()
+        {
+            FormattedText text = new FormattedText("Score: " + this.model.Score.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
+            return new GeometryDrawing(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(320, 900)));
+        }
+        #endregion
+
 
         private Drawing GetKnightButton()
         {
