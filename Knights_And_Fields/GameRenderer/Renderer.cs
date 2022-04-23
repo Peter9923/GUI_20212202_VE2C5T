@@ -342,7 +342,21 @@ namespace GameRenderer
         }
         public Drawing GetBorderIfMouseMove(double x, double y) {
             Geometry box = new RectangleGeometry(new Rect((x + 1) * Config.TileSize, y * Config.TileSize, Config.TileSize, Config.TileSize));
-            GeometryDrawing gd = new GeometryDrawing(null, new Pen(Brushes.Yellow, 6), box);
+            GeometryDrawing gd = null;
+            if (this.model.RemoveUnit){
+                gd = new GeometryDrawing(null, new Pen(Brushes.Red, 6), box);
+            }
+            else if (this.model.MoveUnit){
+                gd = new GeometryDrawing(null, new Pen(Brushes.Aqua, 6), box);
+            }
+            else if (this.model.UpgradeUnit){
+                gd = new GeometryDrawing(null, new Pen(Brushes.Purple, 6), box);
+            }
+            else{
+                gd = new GeometryDrawing(null, new Pen(Brushes.Yellow, 6), box);
+            }
+
+           
             return gd;
         }
 
