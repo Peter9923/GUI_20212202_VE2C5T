@@ -43,5 +43,13 @@ namespace GameLogic
             }
         }
 
+        public void UpgradeKnight(int x, int y)
+        {
+            if (this.Model.Map[y][x] != null && this.Model.Map[y][x] is IAllied actual
+                && this.Model.Gold >= actual.UpgradeCost ) {
+                this.Model.Gold -= actual.UpgradeCost;
+                this.Model.Map[y][x].Level++;
+            }
+        }
     }
 }

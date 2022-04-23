@@ -11,5 +11,6 @@ namespace GameLogic
 
         public void DeployKnight(int x, int y);
         public void RemoveKnight(int x, int y);
+        public void UpgradeKnight(int x, int y);
     }
 }

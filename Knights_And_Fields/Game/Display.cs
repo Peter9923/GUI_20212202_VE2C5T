@@ -171,6 +171,11 @@ namespace Game
                 this.logic.RemoveKnight((int)tilePos.X, (int)tilePos.Y);
                 this.model.RemoveUnit = false;
             }
+            else if (!nowCLicked && this.model.UpgradeUnit)
+            {
+                this.logic.UpgradeKnight((int)tilePos.X, (int)tilePos.Y);
+                this.model.UpgradeUnit = false;
+            }
 
 
             this.InvalidateVisual();
