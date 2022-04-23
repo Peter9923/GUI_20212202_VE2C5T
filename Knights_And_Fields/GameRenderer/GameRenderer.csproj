@@ -11,6 +11,7 @@
     <None Remove="Images\CastleWall.png" />
     <None Remove="Images\DeployKnight.png" />
     <None Remove="Images\DeployKnightSelected.png" />
+    <None Remove="Images\EnemyGrass.png" />
     <None Remove="Images\grass.png" />
     <None Remove="Images\Knight.png" />
     <None Remove="Images\KnightSelected.png" />
@@ -26,6 +27,7 @@
     <EmbeddedResource Include="Images\CastleWall.png" />
     <EmbeddedResource Include="Images\DeployKnight.png" />
     <EmbeddedResource Include="Images\DeployKnightSelected.png" />
+    <EmbeddedResource Include="Images\EnemyGrass.png" />
     <EmbeddedResource Include="Images\grass.png" />
     <EmbeddedResource Include="Images\Knight.png" />
     <EmbeddedResource Include="Images\Move.png" />
