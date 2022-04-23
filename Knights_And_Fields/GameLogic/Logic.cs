@@ -24,5 +24,20 @@ namespace GameLogic
                 (int)(mousePos.Y / Config.TileSize));
         }
 
+        public void DeployKnight(int x, int y)
+        {
+            if (this.Model.DeployKnight && this.Model.Gold >= Config.KnightCost){
+                this.Model.Map[y][x] = new Knight(x, y);
+                this.Model.Gold -= (this.Model.Map[y][x] as Knight).Cost;
+            }
+        }
+        public void RemoveKnight(int x, int y)
+        {
+            if (this.Model.Map[y][x] is Knight k){
+                this.Model.Gold += (k.Level * k.Cost) / 2;
+                this.Model.Map[y][x] = null;
+            }
+        }
+
     }
 }

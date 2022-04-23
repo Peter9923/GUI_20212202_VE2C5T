@@ -8,9 +8,9 @@ using System.Windows.Media;
 
 namespace GameModel
 {
-    class Knight : IAllied
+    public class Knight : IAllied
     {
-        public int Cost { get { return 250; } }
+        public int Cost { get { return Config.KnightCost; } }
 
         public int UpgradeCost { get { return this.Level * this.Cost; } }
 

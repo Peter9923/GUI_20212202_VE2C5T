@@ -28,6 +28,12 @@ namespace GameRenderer
             get { return this.GetBrush("GameRenderer.Images.grass.png", true); }
         }
 
+        private Brush KnightBrush
+        {
+            get { return this.GetBrush("GameRenderer.Images.Knight.png", true); }
+        }
+
+
 
         //Button Brushes
         private Brush DeployKnightBrush
@@ -100,6 +106,9 @@ namespace GameRenderer
             dg.Children.Add(this.GetMoveButton());
             dg.Children.Add(this.GetRemoveButton());
             dg.Children.Add(this.GetUpgradeButton());
+
+
+            dg.Children.Add(this.GetKnights());
 
             return dg;
         }
@@ -242,6 +251,27 @@ namespace GameRenderer
             return new GeometryDrawing(this.UpgradeButtonBrush, null, g);
         }
         #endregion
+
+
+        //Allieds
+        private Drawing GetKnights()
+        {
+            GeometryGroup g = new GeometryGroup();
+            for (int y = 0; y < this.model.Map.Length; y++)
+            {
+                for (int x = 0; x < this.model.Map[y].Length; x++)
+                {
+                    if (this.model.Map[y][x] is Knight)
+                    {
+                        Geometry box = new RectangleGeometry(new Rect((x + 1) * Config.TileSize, y * Config.TileSize, Config.TileSize, Config.TileSize));
+                        g.Children.Add(box);
+                    }
+                }
+            }
+
+            return new GeometryDrawing(this.KnightBrush, null, g);
+        }
+
 
     }
 }

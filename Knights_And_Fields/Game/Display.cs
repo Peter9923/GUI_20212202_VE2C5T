@@ -23,9 +23,12 @@ namespace Game
             this.Loaded += this.CastleDefendersControl_Loaded;
         }
 
-        protected override void OnRender(DrawingContext drawingContext){
-            if (drawingContext is not null){
-                if (this.renderer != null){
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            if (drawingContext is not null)
+            {
+                if (this.renderer != null)
+                {
                     drawingContext.DrawDrawing(this.renderer.BuildDrawing());
                 }
             }
@@ -47,11 +50,14 @@ namespace Game
             this.InvalidateVisual();
         }
 
-        private void Display_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e){
+        private void Display_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
             Point mousePos = e.GetPosition(this);
             Point tilePos = this.logic.GetTilePos(mousePos);
             bool nowCLicked = false;
 
+
+            //which button clicked if clicked
             if (tilePos.X == this.model.Map[0].Length)
             {
                 nowCLicked = true;
@@ -69,58 +75,65 @@ namespace Game
                     }
                 }
             }
-            else if (tilePos.X == this.model.Map[0].Length -2){
+            else if (tilePos.X == this.model.Map[0].Length - 2 && tilePos.Y == 5)
+            {
                 nowCLicked = true;
-                if (tilePos.Y == 5)
+                if (this.model.MoveUnit)
                 {
-                    if (this.model.MoveUnit)
-                    {
-                        this.model.MoveUnit = false;
-                    }
-                    else
-                    {
-                        this.model.MoveUnit = true;
-                        this.model.DeployKnight = false;
-                        this.model.RemoveUnit = false;
-                        this.model.UpgradeUnit = false;
-                    }
+                    this.model.MoveUnit = false;
+                }
+                else
+                {
+                    this.model.MoveUnit = true;
+                    this.model.DeployKnight = false;
+                    this.model.RemoveUnit = false;
+                    this.model.UpgradeUnit = false;
                 }
             }
-            else if (tilePos.X == this.model.Map[0].Length - 1){
+            else if (tilePos.X == this.model.Map[0].Length - 1 && tilePos.Y == 5)
+            {
                 nowCLicked = true;
-                if (tilePos.Y == 5)
+                if (this.model.RemoveUnit)
                 {
-                    if (this.model.RemoveUnit)
-                    {
-                        this.model.RemoveUnit = false;
-                    }
-                    else
-                    {
-                        this.model.RemoveUnit = true;
-                        this.model.DeployKnight = false;
-                        this.model.MoveUnit = false;
-                        this.model.UpgradeUnit = false;
+                    this.model.RemoveUnit = false;
+                }
+                else
+                {
+                    this.model.RemoveUnit = true;
+                    this.model.DeployKnight = false;
+                    this.model.MoveUnit = false;
+                    this.model.UpgradeUnit = false;
 
-                    }
                 }
             }
-            else if (tilePos.X == this.model.Map[0].Length - 3){
+            else if (tilePos.X == this.model.Map[0].Length - 3 && tilePos.Y == 5)
+            {
                 nowCLicked = true;
-                if (tilePos.Y == 5)
+                if (this.model.UpgradeUnit)
                 {
-                    if (this.model.UpgradeUnit)
-                    {
-                        this.model.UpgradeUnit = false;
-                    }
-                    else
-                    {
-                        this.model.UpgradeUnit = true;
-                        this.model.DeployKnight = false;
-                        this.model.MoveUnit = false;
-                        this.model.RemoveUnit = false;
-
-                    }
+                    this.model.UpgradeUnit = false;
                 }
+                else
+                {
+                    this.model.UpgradeUnit = true;
+                    this.model.DeployKnight = false;
+                    this.model.MoveUnit = false;
+                    this.model.RemoveUnit = false;
+
+                }
+            }
+
+
+            //what will happan if Knight button clicked and clicked another cell.
+            if (!nowCLicked && this.model.DeployKnight)
+            {
+                this.logic.DeployKnight((int)tilePos.X, (int)tilePos.Y);
+                this.model.DeployKnight = false;
+            }
+            else if (!nowCLicked && this.model.RemoveUnit)
+            {
+                this.logic.RemoveKnight((int)tilePos.X, (int)tilePos.Y);
+                this.model.RemoveUnit = false;
             }
 
 
