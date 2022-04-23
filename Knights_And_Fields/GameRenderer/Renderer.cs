@@ -86,6 +86,8 @@ namespace GameRenderer
             DrawingGroup dg = new DrawingGroup();
             dg.Children.Add(this.GetBackground());
 
+            dg.Children.Add(this.GetCastleHpBoxBackground());
+            dg.Children.Add(this.GetCastleHpBoxForeground());
             dg.Children.Add(this.GetCastleHpText());
             dg.Children.Add(this.GetCurrentCastleHp());
             dg.Children.Add(this.GetGoldText());
@@ -149,21 +151,30 @@ namespace GameRenderer
             }
             return CastleHPText;
         }
+        private Drawing GetCastleHpBoxBackground() {
+            Geometry rect1 = new RectangleGeometry(new Rect(180, 825, 300, 30));
+            return new GeometryDrawing(Brushes.WhiteSmoke, null, rect1);            
+        }
+        private Drawing GetCastleHpBoxForeground()
+        {
+            Geometry rect2 = new RectangleGeometry(new Rect(180, 825, ( (300 * this.model.CastleActualHP) / this.model.CastleMaxHP), 30));
+            return new GeometryDrawing(Brushes.DarkRed, null, rect2);
+        }
         private Drawing GetCurrentCastleHp()
         {
-            FormattedText text = new FormattedText(this.model.CastleHP.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
-            return new GeometryDrawing(null, new Pen((this.model.CastleHP >= 250 ? Brushes.DarkGreen : Brushes.DarkRed), 2), text.BuildGeometry(new Point(180, 825)));
+            FormattedText text = new FormattedText(this.model.CastleActualHP.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
+            return new GeometryDrawing(null, new Pen((this.model.CastleActualHP >= 150 ? Brushes.DarkGreen : Brushes.DarkRed), 2), text.BuildGeometry(new Point(310, 825)));
         }
         private Drawing GetGoldText(){
             if (GoldText == null){
                 FormattedText text1 = new FormattedText("Gold: ", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 2);
-                GoldText = new GeometryDrawing(null, new Pen(Brushes.Black, 2), text1.BuildGeometry(new Point(320, 825)));
+                GoldText = new GeometryDrawing(null, new Pen(Brushes.Black, 2), text1.BuildGeometry(new Point(500, 825)));
             }
             return GoldText;
         }
         private Drawing GetCurrentGold(){
             FormattedText text1 = new FormattedText(this.model.Gold.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Yellow, 2);
-            return new GeometryDrawing(null, new Pen(Brushes.Yellow, 2), text1.BuildGeometry(new Point(400, 825)));
+            return new GeometryDrawing(null, new Pen(Brushes.Yellow, 2), text1.BuildGeometry(new Point(580, 825)));
         }
         private Drawing GetWave()
         {
@@ -174,7 +185,7 @@ namespace GameRenderer
         private Drawing GetScore()
         {
             FormattedText text = new FormattedText("Score: " + this.model.Score.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
-            return new GeometryDrawing(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(320, 900)));
+            return new GeometryDrawing(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(500, 900)));
         }
         #endregion
 
