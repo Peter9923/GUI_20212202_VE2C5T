@@ -22,6 +22,8 @@ namespace Game
         private bool mouseMoved = false;
         Point MovedMouseTilePos;
 
+        Point MovedUnitPrevPos;
+
 
         public Display()
         {
@@ -65,6 +67,8 @@ namespace Game
             this.renderer = new Renderer(this.model);
             this.win = Window.GetWindow(this);
 
+            MovedUnitPrevPos = new Point(-1, -1);
+
             if (this.win != null)
             {
                 this.MouseDown += Display_MouseDown; ;
@@ -91,7 +95,6 @@ namespace Game
             Point tilePos = this.logic.GetTilePos(mousePos);
             bool nowCLicked = false;
             mouseMoved = false;
-
 
             //which button clicked if clicked
             if (tilePos.X == this.model.Map[0].Length)
@@ -175,6 +178,18 @@ namespace Game
             {
                 this.logic.UpgradeKnight((int)tilePos.X, (int)tilePos.Y);
                 this.model.UpgradeUnit = false;
+            }
+            else if (!nowCLicked && this.model.MoveUnit)
+            {
+                if (MovedUnitPrevPos.X != -1){
+                    this.logic.MoveKnight((int)tilePos.X, (int)tilePos.Y);
+
+                    this.model.MoveUnit = false;
+                    MovedUnitPrevPos = new Point(-1, -1);
+                }
+                else{ // == -1
+                    MovedUnitPrevPos = this.logic.GetTilePos(mousePos);
+                }
             }
 
 
