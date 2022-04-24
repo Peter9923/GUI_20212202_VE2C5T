@@ -22,13 +22,15 @@ namespace GameModel
         public Point Position { get; set; }
         public int Level { get; set; }
 
-        public Geometry Area
+        public Geometry RealArea
         {
             get
             {
-                return new RectangleGeometry(new Rect(( Position.X+1) *Config.TileSize, Position.Y*Config.TileSize, Config.TileSize-15, Config.TileSize));
+                return new RectangleGeometry(new Rect(( Position.X+1) *Config.TileSize, Position.Y*Config.TileSize, Config.TileSize, Config.TileSize));
             }
         }
+
+        public Geometry CollisionArea => throw new NotImplementedException();
 
         public Knight(int X, int Y){
             this.Level = 1;
@@ -40,7 +42,8 @@ namespace GameModel
 
         public bool IsCollision(IGameItem other)
         {
-            throw new NotImplementedException();
+            return Geometry.Combine(this.CollisionArea, other.CollisionArea,
+                GeometryCombineMode.Intersect, null).GetArea() > 0;
         }
     }
 }

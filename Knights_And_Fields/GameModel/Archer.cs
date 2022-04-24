@@ -24,13 +24,15 @@ namespace GameModel
 
         public int AnimationIndex { get; set; }
 
-        public Geometry Area
+        public Geometry RealArea
         {
             get
             {
-                return new RectangleGeometry(new Rect((Position.X + 1) * Config.TileSize, Position.Y * Config.TileSize, Config.TileSize - 15, Config.TileSize));
+                return new RectangleGeometry(new Rect((Position.X + 1) * Config.TileSize, Position.Y * Config.TileSize, Config.TileSize, Config.TileSize));
             }
         }
+
+        public Geometry CollisionArea => throw new NotImplementedException();
 
         public Archer(int X, int Y)
         {
@@ -44,7 +46,8 @@ namespace GameModel
 
         public bool IsCollision(IGameItem other)
         {
-            throw new NotImplementedException();
+            return Geometry.Combine(this.CollisionArea, other.CollisionArea,
+                GeometryCombineMode.Intersect, null).GetArea() > 0;
         }
     }
 }

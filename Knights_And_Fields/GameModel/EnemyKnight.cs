@@ -22,13 +22,15 @@ namespace GameModel
         public Point Position { get; set; } //in here not TILE position, pixel position!
         public int Level { get; set; }
 
-        public Geometry Area
+        public Geometry RealArea
         {
             get
             {
                 return new RectangleGeometry(new Rect( Position.X, Position.Y, Config.TileSize, Config.TileSize));
             }
         }
+
+        public Geometry CollisionArea => throw new NotImplementedException();
 
         private int speedX;
 
@@ -56,7 +58,7 @@ namespace GameModel
 
         public bool IsCollision(IGameItem other)
         {
-            return Geometry.Combine(this.Area, other.Area,
+            return Geometry.Combine(this.CollisionArea, other.CollisionArea,
                 GeometryCombineMode.Intersect, null).GetArea() > 0;
         }
     }

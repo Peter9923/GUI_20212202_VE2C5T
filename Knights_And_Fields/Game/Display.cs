@@ -368,20 +368,20 @@ namespace Game
                 {
                     if (this.model.Map[y][x] is Knight knight)
                     {
-                        drawingContext.DrawGeometry(this.KnightBrush, null, knight.Area);
+                        drawingContext.DrawGeometry(this.KnightBrush, null, knight.RealArea);
                     }
                     else if (this.model.Map[y][x] is Archer archer)
                     {
-                        drawingContext.DrawGeometry(this.ArcherBrushes[archer.AnimationIndex], null, archer.Area);
+                        drawingContext.DrawGeometry(this.ArcherBrushes[archer.AnimationIndex], null, archer.RealArea);
                     }
                 }
             }
         }
         private void DrawEnemies(DrawingContext drawingContext)
         {
-            foreach (var item in this.model.SpawnedEnemies)
+            foreach (var enemy in this.model.SpawnedEnemies)
             {
-                drawingContext.DrawGeometry(this.EnemyKnightBrush, null, item.Area);
+                drawingContext.DrawGeometry(this.EnemyKnightBrush, null, enemy.RealArea);
             }
         }
 

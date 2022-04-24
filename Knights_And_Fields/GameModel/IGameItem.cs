@@ -9,7 +9,8 @@ namespace GameModel
 {
     public interface IGameItem
     {
-        Geometry Area { get; }
+        Geometry RealArea { get; }
+        Geometry CollisionArea { get; }
         bool IsCollision(IGameItem other);
     }
 }
