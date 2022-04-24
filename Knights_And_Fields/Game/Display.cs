@@ -257,8 +257,6 @@ namespace Game
             DrawCurrentGold(drawingContext);
             DrawWave(drawingContext);
             DrawScore(drawingContext);
-            DrawAlliedHpsBackground(drawingContext);
-
             DrawAliedLevelsAndHps(drawingContext);
 
             DrawEnemyHpsAndLevels(drawingContext);
@@ -298,7 +296,7 @@ namespace Game
             {
                 for (int x = 0; x < this.model.Map[y].Length; x++)
                 {
-                    if (this.model.Map[y][x] is IAllied)
+                    if (this.model.Map[y][x] is IAllied actual)
                     {
                         Geometry rect1 = new RectangleGeometry(new Rect((x + 1) * Config.TileSize + 50, y * Config.TileSize, 80, 15));
                         drawingContext.DrawGeometry(Brushes.WhiteSmoke, null, rect1);
