@@ -39,10 +39,11 @@ namespace GameModel
             }
         }
 
-        private int speedX;
+        private double speedX;
 
         public EnemyKnight(double X, double Y){
-            this.speedX = rnd.Next(-5,0);
+            double randomBumber = rnd.Next(2, 1501);
+            this.speedX = (randomBumber / 1000)*-1;
             this.Level = 1;
 
             this.ActualLife = MaxLife;

@@ -57,10 +57,8 @@ namespace Game
         private DispatcherTimer ArcherAnimationTimer;
         private DispatcherTimer ArcherArrowMoveTimer;
 
-        private DispatcherTimer MouseMovingTimer;
 
         Point MovedMouseTilePos;
-        Point PrevMovedMouseTilePos;
 
 
         Point MovedUnitPrevPos;
@@ -136,16 +134,12 @@ namespace Game
             this.EnemySpawnTimer.Tick += EnemySpawnTimer_Tick;
 
             this.EnemyMoveTimer = new DispatcherTimer();
-            this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(75);
+            this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(1);
             this.EnemyMoveTimer.Tick += EnemyMoveTimer_Tick;
 
             this.ArcherAnimationTimer = new DispatcherTimer();
             this.ArcherAnimationTimer.Interval = TimeSpan.FromMilliseconds(250);
             this.ArcherAnimationTimer.Tick += ArcherAnimationTimer_Tick;
-
-            this.MouseMovingTimer = new DispatcherTimer();
-            this.MouseMovingTimer.Interval = TimeSpan.FromMilliseconds(0.25);
-            this.MouseMovingTimer.Tick += MouseMovingTimer_Tick;
 
 
             this.AttackTimer = new DispatcherTimer();
@@ -158,7 +152,7 @@ namespace Game
 
             
 
-            this.MouseMovingTimer.Start();
+            //this.MouseMovingTimer.Start();
             this.EnemySpawnTimer.Start();
             this.EnemyMoveTimer.Start();
             this.ArcherAnimationTimer.Start();
@@ -218,15 +212,6 @@ namespace Game
             InvalidateVisual();
         }
 
-        private void MouseMovingTimer_Tick(object? sender, EventArgs e)
-        {
-            PrevMovedMouseTilePos = MovedMouseTilePos;
-            MovedMouseTilePos = this.logic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
-            if (PrevMovedMouseTilePos != MovedMouseTilePos){
-                this.InvalidateVisual();
-            }
-        }
-
         private void ArcherAnimationTimer_Tick(object? sender, EventArgs e)
         {
             for (int y = 0; y < this.model.Map.Length; y++)
@@ -255,6 +240,8 @@ namespace Game
 
         private void EnemyMoveTimer_Tick(object? sender, EventArgs e)
         {
+            MovedMouseTilePos = this.logic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
+
             List<EnemyKnight> shouldDelete = new List<EnemyKnight>();
             foreach (var enemy in this.model.SpawnedEnemies)
             {
