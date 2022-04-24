@@ -15,7 +15,7 @@ namespace GameModel
         public double MaxLife { get { return (Level * 100) / 1.75; } }
         public double ActualLife { get; set; }
 
-        public int Damage { get { return Level * 300; } }
+        public int Damage { get { return Level * 10; } }
 
         public int Speed { get; set; }
         public int Tick { get; set; }

@@ -88,13 +88,13 @@ namespace GameLogic
 
 
 
-        public void EnemyAndAlliedUnitMetEachOther(EnemyKnight enemy, IAllied allied) {
+        public bool EnemyAndAlliedUnitMetEachOther(EnemyKnight enemy, IAllied allied) {
             //Knight
             if (allied is Knight){
                 enemy.ActualLife -= allied.Damage;
                 if (enemy.ActualLife <= 0)
                 {
-                    enemy.ShouldDie = true;
+                    return true;
                 }
                 else
                 {
@@ -113,6 +113,7 @@ namespace GameLogic
                     this.Model.Map[(int)allied.Position.Y][(int)allied.Position.X] = null;
                 }
             }
+            return false;
         }
         public void EnemyIsInTheCastle(EnemyKnight enemy) {
             this.Model.CastleActualHP -= 25;

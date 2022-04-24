@@ -16,7 +16,7 @@ namespace GameLogic
 
         void GenerateArrow(int x, int y);
 
-        void EnemyAndAlliedUnitMetEachOther(EnemyKnight enemy, IAllied allied);
+        bool EnemyAndAlliedUnitMetEachOther(EnemyKnight enemy, IAllied allied);
         void EnemyIsInTheCastle(EnemyKnight enemy);
         int EnemySpawnTime();
     }

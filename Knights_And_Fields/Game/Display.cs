@@ -179,7 +179,6 @@ namespace Game
 
         private void AttackTimer_Tick(object? sender, EventArgs e)
         {
-            List<EnemyKnight> shouldDelete = new List<EnemyKnight>();
             foreach (var enemy in this.model.SpawnedEnemies)
             {
                 for (int y = 0; y < this.model.Map.Length; y++)
@@ -189,13 +188,10 @@ namespace Game
                         if (this.model.Map[y][x] is IAllied allied)
                         {
 
-                            if (enemy.IsCollision(allied))
+                            if (enemy.IsCollision(allied) 
+                                && this.logic.EnemyAndAlliedUnitMetEachOther(enemy, allied))
                             {
-                                this.logic.EnemyAndAlliedUnitMetEachOther(enemy, allied);
-                                if (enemy.ShouldDie)
-                                {
-                                    shouldDelete.Add(enemy);
-                                }
+                                enemy.ShouldDie = true;
                             }
 
                         }
@@ -203,11 +199,7 @@ namespace Game
                 }
             }
 
-            foreach (var diedEnemy in shouldDelete)
-            {
-                this.model.SpawnedEnemies.Remove(diedEnemy);
-            }
-            shouldDelete.Clear();
+            this.model.SpawnedEnemies = this.model.SpawnedEnemies.Where(x => x.ShouldDie == false).ToList();
 
             InvalidateVisual();
         }
@@ -242,7 +234,6 @@ namespace Game
         {
             MovedMouseTilePos = this.logic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
 
-            List<EnemyKnight> shouldDelete = new List<EnemyKnight>();
             foreach (var enemy in this.model.SpawnedEnemies)
             {
                 bool wasCollision = false;
@@ -266,18 +257,13 @@ namespace Game
 
                     if (enemy.Position.X <= Config.TileSize/2){
                         this.logic.EnemyIsInTheCastle(enemy);
-                        if (enemy.ShouldDie){
-                            shouldDelete.Add(enemy);
-                        }
+                        enemy.ShouldDie = true;
                     }
                 }
             }
 
-            foreach (var diedEnemy in shouldDelete)
-            {
-                this.model.SpawnedEnemies.Remove(diedEnemy);
-            }
-            shouldDelete.Clear();
+            this.model.SpawnedEnemies = this.model.SpawnedEnemies.Where(x => x.ShouldDie == false).ToList();
+
 
             InvalidateVisual();
         }
@@ -285,7 +271,7 @@ namespace Game
         private void EnemySpawnTimer_Tick(object? sender, EventArgs e)
         {
             this.logic.EnemySpawnTime();
-            this.InvalidateVisual();
+            //this.InvalidateVisual();
         }
 
 
@@ -751,12 +737,20 @@ namespace Game
                     if (this.model.Map[y][x] is Archer archer){
 
                         for (int i = 0; i < archer.Arrows.Count; i++) {
-                            drawingContext.DrawGeometry(this.ArrowBrush, null, archer.Arrows[i].RealArea);
+                            if (archer.Arrows[i].Position.X >= (Config.TileSize * Config.ColumnNumbers)){
+                                archer.Arrows[i] = null;
+                            }
+                            else
+                            {
+                                drawingContext.DrawGeometry(this.ArrowBrush, null, archer.Arrows[i].RealArea);
+                            }
                         }
 
+                        archer.Arrows = archer.Arrows.Where(x => x != null).ToList();
                     }
                 }
             }
+
         }
 
     }
