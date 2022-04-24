@@ -323,7 +323,7 @@ namespace Game
                 drawingContext.DrawGeometry(Brushes.DarkRed, null, rect1);
 
                 text = new FormattedText(enemy.Level.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 45, Brushes.WhiteSmoke, 3);
-                drawingContext.DrawGeometry(Brushes.Black, new Pen(Brushes.WhiteSmoke, 1), text.BuildGeometry(new Point(enemy.Position.X, enemy.Position.Y)));
+                drawingContext.DrawGeometry(Brushes.Black, new Pen(Brushes.WhiteSmoke, 1), text.BuildGeometry(new Point(enemy.Position.X+20, enemy.Position.Y)));
             }
         }
         #endregion
