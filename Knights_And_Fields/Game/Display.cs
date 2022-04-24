@@ -45,6 +45,7 @@ namespace Game
         private Window win;
 
         private DispatcherTimer EnemySpawnTimer;
+        private DispatcherTimer EnemyMoveTimer;
 
         Point MovedMouseTilePos;
         Point PrevMovedMouseTilePos;
@@ -256,9 +257,11 @@ namespace Game
             DrawCurrentGold(drawingContext);
             DrawWave(drawingContext);
             DrawScore(drawingContext);
-            DrawHpsBackground(drawingContext);
-            DrawHpsForeground(drawingContext);
-            DrawLevels(drawingContext);
+            DrawAlliedHpsBackground(drawingContext);
+
+            DrawAliedLevelsAndHps(drawingContext);
+
+            DrawEnemyHpsAndLevels(drawingContext);
         }
         private void DrawCastleHpBoxForeground(DrawingContext drawingContext)
         {
@@ -288,7 +291,7 @@ namespace Game
             drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(500, 900)));
         }
 
-        private void DrawLevels(DrawingContext drawingContext)
+        private void DrawAliedLevelsAndHps(DrawingContext drawingContext)
         {
             FormattedText text;
             for (int y = 0; y < this.model.Map.Length; y++)
@@ -297,6 +300,12 @@ namespace Game
                 {
                     if (this.model.Map[y][x] is IAllied)
                     {
+                        Geometry rect1 = new RectangleGeometry(new Rect((x + 1) * Config.TileSize + 50, y * Config.TileSize, 80, 15));
+                        drawingContext.DrawGeometry(Brushes.WhiteSmoke, null, rect1);
+
+                        Geometry rect2 = new RectangleGeometry(new Rect((x + 1) * Config.TileSize + 50, y * Config.TileSize, ((80 * actual.ActualLife) / actual.MaxLife), 15));
+                        drawingContext.DrawGeometry(Brushes.DarkRed, null, rect2);
+
                         text = new FormattedText(this.model.Map[y][x].Level.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 45, Brushes.Black, 1);
                         drawingContext.DrawGeometry(Brushes.Black, new Pen(Brushes.WhiteSmoke, 1), text.BuildGeometry(new Point((x + 1) * Config.TileSize, y * Config.TileSize)));
                     }
@@ -304,36 +313,21 @@ namespace Game
             }
         }
 
-        private void DrawHpsBackground(DrawingContext drawingContext)
+        private void DrawEnemyHpsAndLevels(DrawingContext drawingContext)
         {
-            for (int y = 0; y < this.model.Map.Length; y++)
+            FormattedText text;
+            foreach (var enemy in this.model.SpawnedEnemies)
             {
-                for (int x = 0; x < this.model.Map[y].Length; x++)
-                {
-                    if (this.model.Map[y][x] is IAllied)
-                    {
-                        Geometry rect1 = new RectangleGeometry(new Rect((x + 1) * Config.TileSize + 50, y * Config.TileSize, 80, 15));
-                        drawingContext.DrawGeometry(Brushes.WhiteSmoke, null, rect1);
-                    }
-                }
+                Geometry rect1 = new RectangleGeometry(new Rect(enemy.Position.X + Config.TileSize/2, enemy.Position.Y, 80, 15));
+                drawingContext.DrawGeometry(Brushes.WhiteSmoke, null, rect1);
+
+                Geometry rect2 = new RectangleGeometry(new Rect(enemy.Position.X + Config.TileSize / 2, enemy.Position.Y, ((80 * enemy.ActualLife) / enemy.MaxLife ), 15));
+                drawingContext.DrawGeometry(Brushes.DarkRed, null, rect1);
+
+                text = new FormattedText(enemy.Level.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 45, Brushes.WhiteSmoke, 3);
+                drawingContext.DrawGeometry(Brushes.Black, new Pen(Brushes.WhiteSmoke, 1), text.BuildGeometry(new Point(enemy.Position.X, enemy.Position.Y)));
             }
         }
-
-        private void DrawHpsForeground(DrawingContext drawingContext)
-        {
-            for (int y = 0; y < this.model.Map.Length; y++)
-            {
-                for (int x = 0; x < this.model.Map[y].Length; x++)
-                {
-                    if (this.model.Map[y][x] is IAllied actual)
-                    {
-                        Geometry rect1 = new RectangleGeometry(new Rect((x + 1) * Config.TileSize + 50, y * Config.TileSize, ((80 * actual.ActualLife) / actual.MaxLife), 15));
-                        drawingContext.DrawGeometry(Brushes.DarkRed, null, rect1);
-                    }
-                }
-            }
-        }
-
         #endregion
 
         private void DrawKnights(DrawingContext drawingContext) {
@@ -424,20 +418,21 @@ namespace Game
             this.EnemySpawnTimer.Interval = TimeSpan.FromMilliseconds(4000);
             this.EnemySpawnTimer.Tick += EnemySpawnTimer_Tick;
 
-            DispatcherTimer dt = new DispatcherTimer();
-
-            dt.Interval = TimeSpan.FromMilliseconds(30);
-            dt.Tick += (sender, eventargs) => {
-                foreach (var item in this.model.SpawnedEnemies)
-                {
-                    item.Move();
-                }
-                InvalidateVisual();
-            };
+            this.EnemyMoveTimer = new DispatcherTimer();
+            this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(50);
+            this.EnemyMoveTimer.Tick += EnemyMoveTimer_Tick;
 
             this.EnemySpawnTimer.Start();
-            dt.Start();
+            this.EnemyMoveTimer.Start();
+        }
 
+        private void EnemyMoveTimer_Tick(object? sender, EventArgs e)
+        {
+            foreach (var item in this.model.SpawnedEnemies)
+            {
+                item.Move();
+            }
+            InvalidateVisual();
         }
 
         private void EnemySpawnTimer_Tick(object? sender, EventArgs e)
