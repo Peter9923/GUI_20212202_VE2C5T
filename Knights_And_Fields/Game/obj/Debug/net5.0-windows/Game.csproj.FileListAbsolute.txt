@@ -1,7 +1,6 @@
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\Game\obj\Debug\net5.0-windows\Game.csproj.AssemblyReference.cache
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\Game\obj\Debug\net5.0-windows\MainWindow.g.cs
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\Game\obj\Debug\net5.0-windows\App.g.cs
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\Game\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\Game\obj\Debug\net5.0-windows\Game_MarkupCompile.cache
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\Game\obj\Debug\net5.0-windows\Game_MarkupCompile.lref
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\Game\bin\Debug\net5.0-windows\GameLogic.deps.json

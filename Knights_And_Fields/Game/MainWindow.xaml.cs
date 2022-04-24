@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameLogic;
+using GameModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +20,26 @@ namespace Game
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
+        
+
         public MainWindow()
         {
             InitializeComponent();
+
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            IModel model = new Model(myGrid.ActualHeight, myGrid.ActualWidth);
+            ILogic logic = new Logic(model);
+
+            Display display = new Display(model, logic);
+            myGrid.Children.Add(display);
         }
     }
 }

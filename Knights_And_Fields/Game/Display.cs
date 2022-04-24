@@ -62,8 +62,11 @@ namespace Game
        
 
 
-        public Display()
+        public Display(IModel model, ILogic logic)
         {
+            this.model = model;
+            this.logic = logic;
+
             KnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Knight.png", UriKind.RelativeOrAbsolute)));
             EnemyKnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\EnemyKnight.png", UriKind.RelativeOrAbsolute)));
             ArcherBrushes = new List<Brush>();
@@ -92,6 +95,256 @@ namespace Game
 
             this.Loaded += this.CastleDefendersControl_Loaded;
         }
+
+
+
+
+
+        private void CastleDefendersControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.win = Window.GetWindow(this);
+            this.model = new Model(this.ActualHeight, this.ActualWidth);
+            this.logic = new Logic(this.model);
+            this.win = Window.GetWindow(this);
+
+            MovedUnitPrevPos = new Point(-1, -1);
+
+            if (this.win != null)
+            {
+                this.MouseDown += Display_MouseDown;
+                this.MouseMove += Display_MouseMove;
+
+                this.SetTimers();
+            }
+
+            this.InvalidateVisual();
+        }
+
+        private void Display_MouseMove(object sender, MouseEventArgs e)
+        {
+            PrevMovedMouseTilePos = MovedMouseTilePos;
+            MovedMouseTilePos = this.logic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
+            if (PrevMovedMouseTilePos != MovedMouseTilePos)
+            {
+                this.InvalidateVisual();
+            }
+        }
+
+        private void SetTimers()
+        {
+            this.EnemySpawnTimer = new DispatcherTimer();
+            this.EnemySpawnTimer.Interval = TimeSpan.FromMilliseconds(4000);
+            this.EnemySpawnTimer.Tick += EnemySpawnTimer_Tick;
+
+            this.EnemyMoveTimer = new DispatcherTimer();
+            this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(50);
+            this.EnemyMoveTimer.Tick += EnemyMoveTimer_Tick;
+
+            this.ArcherAnimationTimer = new DispatcherTimer();
+            this.ArcherAnimationTimer.Interval = TimeSpan.FromMilliseconds(150);
+            this.ArcherAnimationTimer.Tick += ArcherAnimationTimer_Tick;
+
+            this.EnemySpawnTimer.Start();
+            this.EnemyMoveTimer.Start();
+            this.ArcherAnimationTimer.Start();
+        }
+
+        private void ArcherAnimationTimer_Tick(object? sender, EventArgs e)
+        {
+            for (int y = 0; y < this.model.Map.Length; y++)
+            {
+                for (int x = 0; x < this.model.Map[y].Length; x++)
+                {
+                    if (this.model.Map[y][x] is Knight knight)
+                    {
+                        //To do
+                    }
+                    else if (this.model.Map[y][x] is Archer archer)
+                    {
+                        if (archer.AnimationIndex == this.ArcherBrushes.Count - 1)
+                        {
+                            archer.AnimationIndex = 0;
+                        }
+                        else
+                        {
+                            archer.AnimationIndex++;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void EnemyMoveTimer_Tick(object? sender, EventArgs e)
+        {
+            foreach (var enemy in this.model.SpawnedEnemies)
+            {
+                bool wasCollision = false;
+                for (int y = 0; y < this.model.Map.Length; y++)
+                {
+                    for (int x = 0; x < this.model.Map[y].Length; x++)
+                    {
+                        if (this.model.Map[y][x] is IAllied allied)
+                        {
+
+                            if (enemy.IsCollision(allied))
+                            {
+                                wasCollision = true;
+                            }
+
+                        }
+                    }
+                }
+                if (wasCollision == false)
+                {
+                    enemy.Move();
+                }
+            }
+            InvalidateVisual();
+        }
+
+        private void EnemySpawnTimer_Tick(object? sender, EventArgs e)
+        {
+            this.logic.EnemySpawnTime();
+            this.InvalidateVisual();
+        }
+
+
+        private void Display_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Point mousePos = e.GetPosition(this);
+            Point tilePos = this.logic.GetTilePos(mousePos);
+            bool nowCLicked = false;
+            //mouseMoved = false;
+
+            //which button clicked if clicked
+            if (tilePos.X == this.model.Map[0].Length)
+            {
+                nowCLicked = true;
+                if (tilePos.Y == 0)
+                {
+                    if (this.model.DeployKnight)
+                    {
+                        this.model.DeployKnight = false;
+                    }
+                    else
+                    {
+                        this.model.DeployKnight = true;
+                        this.model.RemoveUnit = false;
+                        this.model.MoveUnit = false;
+                        this.model.UpgradeUnit = false;
+                        this.model.DeployArcher = false;
+                    }
+                }
+                if (tilePos.Y == 1)
+                {
+                    if (this.model.DeployArcher)
+                    {
+                        this.model.DeployArcher = false;
+                    }
+                    else
+                    {
+                        this.model.DeployArcher = true;
+                        this.model.RemoveUnit = false;
+                        this.model.MoveUnit = false;
+                        this.model.UpgradeUnit = false;
+                        this.model.DeployKnight = false;
+                    }
+                }
+            }
+            else if (tilePos.X == this.model.Map[0].Length - 2 && tilePos.Y == 5)
+            {
+                nowCLicked = true;
+                if (this.model.MoveUnit)
+                {
+                    this.model.MoveUnit = false;
+                }
+                else
+                {
+                    this.model.MoveUnit = true;
+                    this.model.DeployKnight = false;
+                    this.model.RemoveUnit = false;
+                    this.model.UpgradeUnit = false;
+                    this.model.DeployArcher = false;
+                }
+            }
+            else if (tilePos.X == this.model.Map[0].Length - 1 && tilePos.Y == 5)
+            {
+                nowCLicked = true;
+                if (this.model.RemoveUnit)
+                {
+                    this.model.RemoveUnit = false;
+                }
+                else
+                {
+                    this.model.RemoveUnit = true;
+                    this.model.DeployKnight = false;
+                    this.model.MoveUnit = false;
+                    this.model.UpgradeUnit = false;
+                    this.model.DeployArcher = false;
+
+                }
+            }
+            else if (tilePos.X == this.model.Map[0].Length - 3 && tilePos.Y == 5)
+            {
+                nowCLicked = true;
+                if (this.model.UpgradeUnit)
+                {
+                    this.model.UpgradeUnit = false;
+                }
+                else
+                {
+                    this.model.UpgradeUnit = true;
+                    this.model.DeployKnight = false;
+                    this.model.MoveUnit = false;
+                    this.model.RemoveUnit = false;
+                    this.model.DeployArcher = false;
+
+                }
+            }
+
+
+            //what will happan if Knight button clicked and clicked another cell.
+            if (!nowCLicked && this.model.DeployKnight)
+            {
+                this.logic.DeployKnight((int)tilePos.X, (int)tilePos.Y);
+                this.model.DeployKnight = false;
+            }
+            else if (!nowCLicked && this.model.DeployArcher)
+            {
+                this.logic.DeployKnight((int)tilePos.X, (int)tilePos.Y);
+                this.model.DeployArcher = false;
+            }
+            else if (!nowCLicked && this.model.RemoveUnit)
+            {
+                this.logic.RemoveKnight((int)tilePos.X, (int)tilePos.Y);
+                this.model.RemoveUnit = false;
+            }
+            else if (!nowCLicked && this.model.UpgradeUnit)
+            {
+                this.logic.UpgradeKnight((int)tilePos.X, (int)tilePos.Y);
+                this.model.UpgradeUnit = false;
+            }
+            else if (!nowCLicked && this.model.MoveUnit)
+            {
+                if (MovedUnitPrevPos.X != -1)
+                {
+                    this.logic.MoveKnight((int)tilePos.X, (int)tilePos.Y, (int)MovedUnitPrevPos.X, (int)MovedUnitPrevPos.Y);
+
+                    this.model.MoveUnit = false;
+                    MovedUnitPrevPos = new Point(-1, -1);
+                }
+                else
+                { // == -1
+                    MovedUnitPrevPos = this.logic.GetTilePos(mousePos);
+                }
+            }
+
+
+            this.InvalidateVisual();
+        }
+
+
+
 
         protected override void OnRender(DrawingContext drawingContext)
         {
@@ -417,245 +670,5 @@ namespace Game
             drawingContext.DrawGeometry(null, actual, new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
         }
         
-
-
-
-
-
-
-
-        private void CastleDefendersControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.win = Window.GetWindow(this);
-            this.model = new Model(this.ActualHeight, this.ActualWidth);
-            this.logic = new Logic(this.model);
-            this.win = Window.GetWindow(this);
-
-            MovedUnitPrevPos = new Point(-1, -1);
-
-            if (this.win != null)
-            {
-                this.MouseDown += Display_MouseDown;
-                this.MouseMove += Display_MouseMove;
-
-                this.SetTimers();
-            }
-
-            this.InvalidateVisual();
-        }
-
-        private void Display_MouseMove(object sender, MouseEventArgs e)
-        {
-            PrevMovedMouseTilePos = MovedMouseTilePos;
-            MovedMouseTilePos = this.logic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
-            if (PrevMovedMouseTilePos != MovedMouseTilePos)
-            {
-                this.InvalidateVisual();
-            }
-        }
-
-        private void SetTimers() {
-            this.EnemySpawnTimer = new DispatcherTimer();
-            this.EnemySpawnTimer.Interval = TimeSpan.FromMilliseconds(4000);
-            this.EnemySpawnTimer.Tick += EnemySpawnTimer_Tick;
-
-            this.EnemyMoveTimer = new DispatcherTimer();
-            this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(50);
-            this.EnemyMoveTimer.Tick += EnemyMoveTimer_Tick;
-
-            this.ArcherAnimationTimer = new DispatcherTimer();
-            this.ArcherAnimationTimer.Interval = TimeSpan.FromMilliseconds(150);
-            this.ArcherAnimationTimer.Tick += ArcherAnimationTimer_Tick;
-
-            this.EnemySpawnTimer.Start();
-            this.EnemyMoveTimer.Start();
-            this.ArcherAnimationTimer.Start();
-        }
-
-        private void ArcherAnimationTimer_Tick(object? sender, EventArgs e)
-        {
-            for (int y = 0; y < this.model.Map.Length; y++)
-            {
-                for (int x = 0; x < this.model.Map[y].Length; x++)
-                {
-                    if (this.model.Map[y][x] is Knight knight)
-                    {
-                        //To do
-                    }
-                    else if (this.model.Map[y][x] is Archer archer)
-                    {
-                        if (archer.AnimationIndex == this.ArcherBrushes.Count-1){
-                            archer.AnimationIndex = 0;
-                        }else{
-                            archer.AnimationIndex++;
-                        }
-                    }
-                }
-            }
-        }
-
-        private void EnemyMoveTimer_Tick(object? sender, EventArgs e)
-        {
-            foreach (var enemy in this.model.SpawnedEnemies)
-            {
-                bool wasCollision = false;
-                for (int y = 0; y < this.model.Map.Length; y++)
-                {
-                    for (int x = 0; x < this.model.Map[y].Length; x++)
-                    {
-                        if (this.model.Map[y][x] is IAllied allied){
-
-                            if (enemy.IsCollision(allied)){
-                                wasCollision = true;
-                            }
-
-                        }
-                    }
-                }
-                if (wasCollision == false){
-                    enemy.Move();
-                }
-            }
-            InvalidateVisual();
-        }
-
-        private void EnemySpawnTimer_Tick(object? sender, EventArgs e)
-        {
-            this.logic.EnemySpawnTime();
-            this.InvalidateVisual();
-        }
-
-
-        private void Display_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Point mousePos = e.GetPosition(this);
-            Point tilePos = this.logic.GetTilePos(mousePos);
-            bool nowCLicked = false;
-            //mouseMoved = false;
-
-            //which button clicked if clicked
-            if (tilePos.X == this.model.Map[0].Length)
-            {
-                nowCLicked = true;
-                if (tilePos.Y == 0)
-                {
-                    if (this.model.DeployKnight)
-                    {
-                        this.model.DeployKnight = false;
-                    }
-                    else
-                    {
-                        this.model.DeployKnight = true;
-                        this.model.RemoveUnit = false;
-                        this.model.MoveUnit = false;
-                        this.model.UpgradeUnit = false;
-                        this.model.DeployArcher = false;
-                    }
-                }
-                if (tilePos.Y == 1)
-                {
-                    if (this.model.DeployArcher)
-                    {
-                        this.model.DeployArcher = false;
-                    }
-                    else
-                    {
-                        this.model.DeployArcher = true;
-                        this.model.RemoveUnit = false;
-                        this.model.MoveUnit = false;
-                        this.model.UpgradeUnit = false;
-                        this.model.DeployKnight = false;
-                    }
-                }
-            }
-            else if (tilePos.X == this.model.Map[0].Length - 2 && tilePos.Y == 5)
-            {
-                nowCLicked = true;
-                if (this.model.MoveUnit)
-                {
-                    this.model.MoveUnit = false;
-                }
-                else
-                {
-                    this.model.MoveUnit = true;
-                    this.model.DeployKnight = false;
-                    this.model.RemoveUnit = false;
-                    this.model.UpgradeUnit = false;
-                    this.model.DeployArcher = false;
-                }
-            }
-            else if (tilePos.X == this.model.Map[0].Length - 1 && tilePos.Y == 5)
-            {
-                nowCLicked = true;
-                if (this.model.RemoveUnit)
-                {
-                    this.model.RemoveUnit = false;
-                }
-                else
-                {
-                    this.model.RemoveUnit = true;
-                    this.model.DeployKnight = false;
-                    this.model.MoveUnit = false;
-                    this.model.UpgradeUnit = false;
-                    this.model.DeployArcher = false;
-
-                }
-            }
-            else if (tilePos.X == this.model.Map[0].Length - 3 && tilePos.Y == 5)
-            {
-                nowCLicked = true;
-                if (this.model.UpgradeUnit)
-                {
-                    this.model.UpgradeUnit = false;
-                }
-                else
-                {
-                    this.model.UpgradeUnit = true;
-                    this.model.DeployKnight = false;
-                    this.model.MoveUnit = false;
-                    this.model.RemoveUnit = false;
-                    this.model.DeployArcher = false;
-
-                }
-            }
-
-
-            //what will happan if Knight button clicked and clicked another cell.
-            if (!nowCLicked && this.model.DeployKnight)
-            {
-                this.logic.DeployKnight((int)tilePos.X, (int)tilePos.Y);
-                this.model.DeployKnight = false;
-            }
-            else if (!nowCLicked && this.model.DeployArcher)
-            {
-                this.logic.DeployKnight((int)tilePos.X, (int)tilePos.Y);
-                this.model.DeployArcher = false;
-            }
-            else if (!nowCLicked && this.model.RemoveUnit)
-            {
-                this.logic.RemoveKnight((int)tilePos.X, (int)tilePos.Y);
-                this.model.RemoveUnit = false;
-            }
-            else if (!nowCLicked && this.model.UpgradeUnit)
-            {
-                this.logic.UpgradeKnight((int)tilePos.X, (int)tilePos.Y);
-                this.model.UpgradeUnit = false;
-            }
-            else if (!nowCLicked && this.model.MoveUnit)
-            {
-                if (MovedUnitPrevPos.X != -1){
-                    this.logic.MoveKnight((int)tilePos.X, (int)tilePos.Y, (int)MovedUnitPrevPos.X, (int)MovedUnitPrevPos.Y);
-
-                    this.model.MoveUnit = false;
-                    MovedUnitPrevPos = new Point(-1, -1);
-                }
-                else{ // == -1
-                    MovedUnitPrevPos = this.logic.GetTilePos(mousePos);
-                }
-            }
-
-
-            this.InvalidateVisual();
-        }
     }
 }
