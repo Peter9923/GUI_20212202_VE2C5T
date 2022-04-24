@@ -30,7 +30,13 @@ namespace GameModel
             }
         }
 
-        public Geometry CollisionArea => throw new NotImplementedException();
+        public Geometry CollisionArea
+        {
+            get
+            {
+                return new RectangleGeometry(new Rect((Position.X + 1) * Config.TileSize, Position.Y * Config.TileSize, Config.TileSize-70, Config.TileSize));
+            }
+        }
 
         public Knight(int X, int Y){
             this.Level = 1;

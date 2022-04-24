@@ -490,9 +490,25 @@ namespace Game
 
         private void EnemyMoveTimer_Tick(object? sender, EventArgs e)
         {
-            foreach (var item in this.model.SpawnedEnemies)
+            foreach (var enemy in this.model.SpawnedEnemies)
             {
-                item.Move();
+                bool wasCollision = false;
+                for (int y = 0; y < this.model.Map.Length; y++)
+                {
+                    for (int x = 0; x < this.model.Map[y].Length; x++)
+                    {
+                        if (this.model.Map[y][x] is IAllied allied){
+
+                            if (enemy.IsCollision(allied)){
+                                wasCollision = true;
+                            }
+
+                        }
+                    }
+                }
+                if (wasCollision == false){
+                    enemy.Move();
+                }
             }
             InvalidateVisual();
         }

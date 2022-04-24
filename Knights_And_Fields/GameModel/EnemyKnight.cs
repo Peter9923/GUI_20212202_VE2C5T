@@ -30,7 +30,13 @@ namespace GameModel
             }
         }
 
-        public Geometry CollisionArea => throw new NotImplementedException();
+        public Geometry CollisionArea
+        {
+            get
+            {
+                return new RectangleGeometry(new Rect(Position.X, Position.Y, Config.TileSize, Config.TileSize));
+            }
+        }
 
         private int speedX;
 
@@ -49,11 +55,6 @@ namespace GameModel
             double newX = Position.X + speedX; 
             double newY = Position.Y;
             Position = new Point(newX, newY);
-        }
-
-        public void Collision()
-        {
-            throw new NotImplementedException();
         }
 
         public bool IsCollision(IGameItem other)
