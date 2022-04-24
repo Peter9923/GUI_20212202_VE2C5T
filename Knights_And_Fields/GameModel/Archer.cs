@@ -10,13 +10,57 @@ namespace GameModel
 {
     public class Archer : IAllied
     {
+        public class Arrow : IGameItem
+        {
+            public Point Position { get; set; }
+
+            private int speedX;
+
+
+            public Arrow(double X, double Y){
+                this.speedX = 15;
+                
+                this.Position = new Point(X, Y);
+            }
+
+            public Geometry RealArea
+            {
+                get 
+                {
+                    return new RectangleGeometry(new Rect(Position.X, Position.Y, Config.TileSize, Config.TileSize));
+                }
+            }
+
+            public Geometry CollisionArea
+            {
+                get
+                {
+                    return new RectangleGeometry(new Rect(Position.X, Position.Y, Config.TileSize, Config.TileSize));
+                }
+            }
+
+            public void Move()
+            {
+                double newX = Position.X + speedX;
+                double newY = Position.Y;
+                Position = new Point(newX, newY);
+            }
+
+            public bool IsCollision(IGameItem other){
+                return Geometry.Combine(this.CollisionArea, other.CollisionArea,
+                GeometryCombineMode.Intersect, null).GetArea() > 0;
+            }
+        }
+
+
+        public List<Arrow> Arrows { get; set; }
         public int Cost { get { return Config.ArcherCost; } }
 
         public int UpgradeCost { get { return this.Level * this.Cost; } }
 
         public double MaxLife { get { return (Level * 100) / 1.1; } }
         public double ActualLife { get; set; }
-        public int Damage { get { return this.Level * 8; } }
+        public int Damage { get { return Level * 6; } }
         public int Speed { get; set; }
         public int Tick { get; set; }
         public Point Position { get; set; }
@@ -42,12 +86,17 @@ namespace GameModel
 
         public Archer(int X, int Y)
         {
+            Arrows = new List<Arrow>();
             AnimationIndex = 0;
             this.Level = 1;
             this.ActualLife = MaxLife;
             this.Speed = 2;
             this.Tick = 0;
             this.Position = new Point(X, Y);
+        }
+
+        public void AddArrow(Arrow arrow) {
+            Arrows.Add(arrow);
         }
 
         public bool IsCollision(IGameItem other)

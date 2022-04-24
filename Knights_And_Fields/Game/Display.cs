@@ -21,6 +21,8 @@ namespace Game
         private Brush KnightBrush;
         private Brush EnemyKnightBrush;
         private List<Brush> ArcherBrushes;
+        private Brush ArrowBrush;
+
         //Button Brushes
         private Brush DeployKnightBrush;
         private Brush DeployKnightSelectedBrush;
@@ -53,6 +55,7 @@ namespace Game
         private DispatcherTimer AttackTimer;
 
         private DispatcherTimer ArcherAnimationTimer;
+        private DispatcherTimer ArcherArrowMoveTimer;
 
         private DispatcherTimer MouseMovingTimer;
 
@@ -76,6 +79,8 @@ namespace Game
             for (int i = 0; i < 8; i++){
                 ArcherBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\archer{i}.png", UriKind.RelativeOrAbsolute))));
             }
+            ArrowBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Arrow.png", UriKind.RelativeOrAbsolute)));
+
 
             DeployKnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnight.png", UriKind.RelativeOrAbsolute)));
             DeployKnightSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnightSelected.png", UriKind.RelativeOrAbsolute)));
@@ -135,7 +140,7 @@ namespace Game
             this.EnemyMoveTimer.Tick += EnemyMoveTimer_Tick;
 
             this.ArcherAnimationTimer = new DispatcherTimer();
-            this.ArcherAnimationTimer.Interval = TimeSpan.FromMilliseconds(150);
+            this.ArcherAnimationTimer.Interval = TimeSpan.FromMilliseconds(250);
             this.ArcherAnimationTimer.Tick += ArcherAnimationTimer_Tick;
 
             this.MouseMovingTimer = new DispatcherTimer();
@@ -146,14 +151,36 @@ namespace Game
             this.AttackTimer = new DispatcherTimer();
             this.AttackTimer.Interval = TimeSpan.FromMilliseconds(250);
             this.AttackTimer.Tick += AttackTimer_Tick;
-            
 
+            this.ArcherArrowMoveTimer = new DispatcherTimer();
+            this.ArcherArrowMoveTimer.Interval = TimeSpan.FromMilliseconds(25);
+            this.ArcherArrowMoveTimer.Tick += ArcherArrowMoveTimer_Tick;
+
+            
 
             this.MouseMovingTimer.Start();
             this.EnemySpawnTimer.Start();
             this.EnemyMoveTimer.Start();
             this.ArcherAnimationTimer.Start();
             this.AttackTimer.Start();
+            this.ArcherArrowMoveTimer.Start();
+        }
+
+        private void ArcherArrowMoveTimer_Tick(object? sender, EventArgs e){
+            for (int y = 0; y < this.model.Map.Length; y++)
+            {
+                for (int x = 0; x < this.model.Map[y].Length; x++)
+                {
+                    if (this.model.Map[y][x] is Archer archer)
+                    {
+                        for (int i = 0; i < archer.Arrows.Count; i++)
+                        {
+                            archer.Arrows[i].Move();
+                        }
+
+                    }
+                }
+            }
         }
 
         private void AttackTimer_Tick(object? sender, EventArgs e)
@@ -215,6 +242,7 @@ namespace Game
                         if (archer.AnimationIndex == this.ArcherBrushes.Count - 1)
                         {
                             archer.AnimationIndex = 0;
+                            this.logic.GenerateArrow(x,y);
                         }
                         else
                         {
@@ -451,6 +479,8 @@ namespace Game
                     DrawKnights(drawingContext);
                     DrawEnemies(drawingContext);
                     DrawForegroundElements(drawingContext);
+
+                    DrawArrows(drawingContext);
                 }
             }
         }
@@ -701,7 +731,6 @@ namespace Game
             }
         }
 
-
         private void DrawBorder(DrawingContext drawingContext)
         {
             Pen actual = new Pen();
@@ -726,6 +755,22 @@ namespace Game
             }
             drawingContext.DrawGeometry(null, actual, new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
         }
-        
+
+        private void DrawArrows(DrawingContext drawingContext) {
+            for (int y = 0; y < this.model.Map.Length; y++)
+            {
+                for (int x = 0; x < this.model.Map[y].Length; x++)
+                {
+                    if (this.model.Map[y][x] is Archer archer){
+
+                        for (int i = 0; i < archer.Arrows.Count; i++) {
+                            drawingContext.DrawGeometry(this.ArrowBrush, null, archer.Arrows[i].RealArea);
+                        }
+
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -77,6 +77,15 @@ namespace GameLogic
         }
 
 
+        public void GenerateArrow(int x, int y) {
+            if (this.Model.Map[y][x] != null &&
+                this.Model.Map[y][x] is Archer archer)
+            {
+                Archer.Arrow arrow = new Archer.Arrow(((x + 1) * Config.TileSize), (y * Config.TileSize));
+                archer.AddArrow(arrow);
+            }
+        }
+
 
 
         public void EnemyAndAlliedUnitMetEachOther(EnemyKnight enemy, IAllied allied) {
