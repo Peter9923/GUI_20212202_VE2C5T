@@ -79,8 +79,41 @@ namespace GameLogic
 
 
 
+        public void EnemyAndAlliedUnitMetEachOther(EnemyKnight enemy, IAllied allied) {
+            //Knight
+            if (allied is Knight){
+                enemy.ActualLife -= allied.Damage;
+                if (enemy.ActualLife <= 0)
+                {
+                    enemy.ShouldDie = true;
+                }
+                else
+                {
+                    allied.ActualLife -= enemy.Damage;
+                    if (allied.ActualLife <= 0)
+                    {
+                        this.Model.Map[(int)allied.Position.Y][(int)allied.Position.X] = null;
+                    }
+                }
+            }
+            else //Wall, Archer, Cannon, they generate another item what can make damage...
+            {
+                allied.ActualLife -= enemy.Damage;
+                if (allied.ActualLife <= 0)
+                {
+                    this.Model.Map[(int)allied.Position.Y][(int)allied.Position.X] = null;
+                }
+            }
+        }
+        public void EnemyIsInTheCastle(EnemyKnight enemy) {
+            this.Model.CastleActualHP -= 25;
 
+            enemy.ShouldDie = true;
 
+            if (Model.CastleActualHP <= 0){
+                //GAME OVER
+            }
+        }
 
 
         private void CreateEnemies() {

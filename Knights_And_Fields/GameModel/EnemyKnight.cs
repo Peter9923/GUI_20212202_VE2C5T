@@ -21,6 +21,7 @@ namespace GameModel
         public int Tick { get; set; }
         public Point Position { get; set; } //in here not TILE position, pixel position!
         public int Level { get; set; }
+        public bool ShouldDie { get; set; }
 
         public Geometry RealArea
         {

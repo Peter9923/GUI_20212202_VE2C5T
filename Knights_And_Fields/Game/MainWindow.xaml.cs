@@ -35,11 +35,18 @@ namespace Game
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            this.Left = 0;
+            this.Top = 0;
             IModel model = new Model(myGrid.ActualHeight, myGrid.ActualWidth);
             ILogic logic = new Logic(model);
 
             Display display = new Display(model, logic);
             myGrid.Children.Add(display);
+        }
+
+        private void Window_LocationChanged(object sender, EventArgs e){
+            this.Left = 0;
+            this.Top = 0;
         }
     }
 }

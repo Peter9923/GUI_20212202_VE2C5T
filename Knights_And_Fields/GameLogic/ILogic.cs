@@ -14,6 +14,8 @@ namespace GameLogic
         public void UpgradeKnight(int x, int y);
         public void MoveKnight(int actualX, int actualY, int prevX, int prevY);
 
+        void EnemyAndAlliedUnitMetEachOther(EnemyKnight enemy, IAllied allied);
+        void EnemyIsInTheCastle(EnemyKnight enemy);
         int EnemySpawnTime();
     }
 }

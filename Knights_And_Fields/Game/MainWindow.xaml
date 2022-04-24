@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1000" Width="1920">
+        Title="MainWindow" Height="1000" Width="1920"
+        ResizeMode="NoResize"
+        LocationChanged="Window_LocationChanged">
     <Grid x:Name="myGrid" Background="#FF3D615B">
         
     </Grid>

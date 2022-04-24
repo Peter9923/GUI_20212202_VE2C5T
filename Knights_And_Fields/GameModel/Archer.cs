@@ -14,9 +14,9 @@ namespace GameModel
 
         public int UpgradeCost { get { return this.Level * this.Cost; } }
 
-        public double MaxLife { get { return (Level * 100) / 1.5; } }
+        public double MaxLife { get { return (Level * 100) / 1.1; } }
         public double ActualLife { get; set; }
-        public int Damage { get { return this.Level * 10; } }
+        public int Damage { get { return this.Level * 8; } }
         public int Speed { get; set; }
         public int Tick { get; set; }
         public Point Position { get; set; }

@@ -50,8 +50,11 @@ namespace Game
 
         private DispatcherTimer EnemySpawnTimer;
         private DispatcherTimer EnemyMoveTimer;
+        private DispatcherTimer AttackTimer;
 
         private DispatcherTimer ArcherAnimationTimer;
+
+        private DispatcherTimer MouseMovingTimer;
 
         Point MovedMouseTilePos;
         Point PrevMovedMouseTilePos;
@@ -112,7 +115,6 @@ namespace Game
             if (this.win != null)
             {
                 this.MouseDown += Display_MouseDown;
-                this.MouseMove += Display_MouseMove;
 
                 this.SetTimers();
             }
@@ -120,15 +122,7 @@ namespace Game
             this.InvalidateVisual();
         }
 
-        private void Display_MouseMove(object sender, MouseEventArgs e)
-        {
-            PrevMovedMouseTilePos = MovedMouseTilePos;
-            MovedMouseTilePos = this.logic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
-            if (PrevMovedMouseTilePos != MovedMouseTilePos)
-            {
-                this.InvalidateVisual();
-            }
-        }
+       
 
         private void SetTimers()
         {
@@ -137,16 +131,73 @@ namespace Game
             this.EnemySpawnTimer.Tick += EnemySpawnTimer_Tick;
 
             this.EnemyMoveTimer = new DispatcherTimer();
-            this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(50);
+            this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(75);
             this.EnemyMoveTimer.Tick += EnemyMoveTimer_Tick;
 
             this.ArcherAnimationTimer = new DispatcherTimer();
             this.ArcherAnimationTimer.Interval = TimeSpan.FromMilliseconds(150);
             this.ArcherAnimationTimer.Tick += ArcherAnimationTimer_Tick;
 
+            this.MouseMovingTimer = new DispatcherTimer();
+            this.MouseMovingTimer.Interval = TimeSpan.FromMilliseconds(0.25);
+            this.MouseMovingTimer.Tick += MouseMovingTimer_Tick;
+
+
+            this.AttackTimer = new DispatcherTimer();
+            this.AttackTimer.Interval = TimeSpan.FromMilliseconds(250);
+            this.AttackTimer.Tick += AttackTimer_Tick;
+            
+
+
+            this.MouseMovingTimer.Start();
             this.EnemySpawnTimer.Start();
             this.EnemyMoveTimer.Start();
             this.ArcherAnimationTimer.Start();
+            this.AttackTimer.Start();
+        }
+
+        private void AttackTimer_Tick(object? sender, EventArgs e)
+        {
+            List<EnemyKnight> shouldDelete = new List<EnemyKnight>();
+            foreach (var enemy in this.model.SpawnedEnemies)
+            {
+                for (int y = 0; y < this.model.Map.Length; y++)
+                {
+                    for (int x = 0; x < this.model.Map[y].Length; x++)
+                    {
+                        if (this.model.Map[y][x] is IAllied allied)
+                        {
+
+                            if (enemy.IsCollision(allied))
+                            {
+                                this.logic.EnemyAndAlliedUnitMetEachOther(enemy, allied);
+                                if (enemy.ShouldDie)
+                                {
+                                    shouldDelete.Add(enemy);
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            foreach (var diedEnemy in shouldDelete)
+            {
+                this.model.SpawnedEnemies.Remove(diedEnemy);
+            }
+            shouldDelete.Clear();
+
+            InvalidateVisual();
+        }
+
+        private void MouseMovingTimer_Tick(object? sender, EventArgs e)
+        {
+            PrevMovedMouseTilePos = MovedMouseTilePos;
+            MovedMouseTilePos = this.logic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
+            if (PrevMovedMouseTilePos != MovedMouseTilePos){
+                this.InvalidateVisual();
+            }
         }
 
         private void ArcherAnimationTimer_Tick(object? sender, EventArgs e)
@@ -176,6 +227,7 @@ namespace Game
 
         private void EnemyMoveTimer_Tick(object? sender, EventArgs e)
         {
+            List<EnemyKnight> shouldDelete = new List<EnemyKnight>();
             foreach (var enemy in this.model.SpawnedEnemies)
             {
                 bool wasCollision = false;
@@ -185,7 +237,6 @@ namespace Game
                     {
                         if (this.model.Map[y][x] is IAllied allied)
                         {
-
                             if (enemy.IsCollision(allied))
                             {
                                 wasCollision = true;
@@ -197,8 +248,22 @@ namespace Game
                 if (wasCollision == false)
                 {
                     enemy.Move();
+
+                    if (enemy.Position.X <= Config.TileSize/2){
+                        this.logic.EnemyIsInTheCastle(enemy);
+                        if (enemy.ShouldDie){
+                            shouldDelete.Add(enemy);
+                        }
+                    }
                 }
             }
+
+            foreach (var diedEnemy in shouldDelete)
+            {
+                this.model.SpawnedEnemies.Remove(diedEnemy);
+            }
+            shouldDelete.Clear();
+
             InvalidateVisual();
         }
 
@@ -355,12 +420,6 @@ namespace Game
                         DrawBackgroundElements(drawingContext);
                     }
 
-                    DrawButtons(drawingContext);
-                    DrawKnights(drawingContext);
-                    DrawEnemies(drawingContext);
-                    DrawForegroundElements(drawingContext);
-
-
                     //borders
                     //..
                     if ((int)MovedMouseTilePos.Y <= this.model.Map.Length - 1
@@ -384,16 +443,14 @@ namespace Game
                                 DrawBorder(drawingContext);
                             }
                         }
-                        else
-                        { //mouse is an exist object.
-                            DrawBorder(drawingContext);
-                        }
                         DrawBorder(drawingContext);
-
                     }
-                    //..
 
 
+                    DrawButtons(drawingContext);
+                    DrawKnights(drawingContext);
+                    DrawEnemies(drawingContext);
+                    DrawForegroundElements(drawingContext);
                 }
             }
         }
@@ -609,8 +666,8 @@ namespace Game
                 Geometry rect1 = new RectangleGeometry(new Rect(enemy.Position.X + Config.TileSize/2, enemy.Position.Y, 80, 15));
                 drawingContext.DrawGeometry(Brushes.WhiteSmoke, null, rect1);
 
-                Geometry rect2 = new RectangleGeometry(new Rect(enemy.Position.X + Config.TileSize / 2, enemy.Position.Y, ((80 * enemy.ActualLife) / enemy.MaxLife ), 15));
-                drawingContext.DrawGeometry(Brushes.DarkRed, null, rect1);
+                Geometry rect2 = new RectangleGeometry(new Rect( (enemy.Position.X + Config.TileSize / 2) + 80 - (((80 * enemy.ActualLife) / enemy.MaxLife)), enemy.Position.Y, ((80 * enemy.ActualLife) / enemy.MaxLife ), 15));
+                drawingContext.DrawGeometry(Brushes.DarkRed, null, rect2);
 
                 text = new FormattedText(enemy.Level.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 45, Brushes.WhiteSmoke, 3);
                 drawingContext.DrawGeometry(Brushes.Black, new Pen(Brushes.WhiteSmoke, 1), text.BuildGeometry(new Point(enemy.Position.X+20, enemy.Position.Y)));
