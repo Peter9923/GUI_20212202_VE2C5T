@@ -42,11 +42,6 @@ namespace GameModel
             this.Position = new Point(X, Y);
         }
 
-        public void Collision()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool IsCollision(IGameItem other)
         {
             throw new NotImplementedException();
