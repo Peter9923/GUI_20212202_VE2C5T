@@ -44,7 +44,6 @@ namespace Game
 
         private Window win;
 
-        private DispatcherTimer MouseMovingTimer;
         private DispatcherTimer EnemySpawnTimer;
 
         Point MovedMouseTilePos;
@@ -402,18 +401,25 @@ namespace Game
             if (this.win != null)
             {
                 this.MouseDown += Display_MouseDown;
+                this.MouseMove += Display_MouseMove;
+
                 this.SetTimers();
             }
 
             this.InvalidateVisual();
         }
 
+        private void Display_MouseMove(object sender, MouseEventArgs e)
+        {
+            PrevMovedMouseTilePos = MovedMouseTilePos;
+            MovedMouseTilePos = this.logic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
+            if (PrevMovedMouseTilePos != MovedMouseTilePos)
+            {
+                this.InvalidateVisual();
+            }
+        }
+
         private void SetTimers() {
-            this.MouseMovingTimer = new DispatcherTimer();
-            this.MouseMovingTimer.Interval = TimeSpan.FromMilliseconds(20);
-            this.MouseMovingTimer.Tick += MouseMovingTimer_Tick;
-
-
             this.EnemySpawnTimer = new DispatcherTimer();
             this.EnemySpawnTimer.Interval = TimeSpan.FromMilliseconds(4000);
             this.EnemySpawnTimer.Tick += EnemySpawnTimer_Tick;
@@ -429,21 +435,9 @@ namespace Game
                 InvalidateVisual();
             };
 
-
-            this.MouseMovingTimer.Start();
             this.EnemySpawnTimer.Start();
             dt.Start();
 
-        }
-
-        private void MouseMovingTimer_Tick(object? sender, EventArgs e)
-        {
-            PrevMovedMouseTilePos = MovedMouseTilePos;
-            MovedMouseTilePos = this.logic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
-            if (PrevMovedMouseTilePos != MovedMouseTilePos){
-                this.InvalidateVisual();
-            }
-            
         }
 
         private void EnemySpawnTimer_Tick(object? sender, EventArgs e)
