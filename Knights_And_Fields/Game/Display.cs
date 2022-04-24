@@ -122,6 +122,10 @@ namespace Game
                                 drawingContext.DrawGeometry(this.KnightBrush, new Pen(Brushes.Black, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
 
                             }
+                            else if (this.model.DeployArcher)
+                            {
+                                drawingContext.DrawGeometry(this.ArcherBrushes[0], new Pen(Brushes.Black, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
+                            }
                             else if (this.model.MoveUnit)
                             {
                                 DrawBorder(drawingContext);
@@ -360,6 +364,8 @@ namespace Game
             }
         }
         #endregion
+
+
 
         private void DrawKnights(DrawingContext drawingContext) {
             for (int y = 0; y < this.model.Map.Length; y++)
