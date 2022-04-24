@@ -16,5 +16,6 @@ namespace GameModel
         public static int ColumnNumbers = 10;
 
         public static int KnightCost = 250;
+        public static int ArcherCost = 350;
     }
 }

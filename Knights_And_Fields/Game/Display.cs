@@ -20,9 +20,13 @@ namespace Game
         //Brushes
         private Brush KnightBrush;
         private Brush EnemyKnightBrush;
+        private List<Brush> ArcherBrushes;
         //Button Brushes
         private Brush DeployKnightBrush;
         private Brush DeployKnightSelectedBrush;
+        private Brush DeployArcherBrush;
+        private Brush DeployArcherSelectedBrush;
+
         private Brush MoveButtonBrush;
         private Brush MoveButtonSelectedBrush;
         private Brush RemoveButtonBrush;
@@ -60,9 +64,18 @@ namespace Game
         {
             KnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Knight.png", UriKind.RelativeOrAbsolute)));
             EnemyKnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\EnemyKnight.png", UriKind.RelativeOrAbsolute)));
+            ArcherBrushes = new List<Brush>();
+            for (int i = 0; i < 8; i++){
+                ArcherBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\archer{i}.png", UriKind.RelativeOrAbsolute))));
+            }
 
             DeployKnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnight.png", UriKind.RelativeOrAbsolute)));
             DeployKnightSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnightSelected.png", UriKind.RelativeOrAbsolute)));
+
+            DeployArcherBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployArcher.png", UriKind.RelativeOrAbsolute)));
+            DeployArcherSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployArcherSelected.png", UriKind.RelativeOrAbsolute)));
+
+
             MoveButtonBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Move.png", UriKind.RelativeOrAbsolute)));
             MoveButtonSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\MoveSelected.png", UriKind.RelativeOrAbsolute)));
             RemoveButtonBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Remove.png", UriKind.RelativeOrAbsolute)));
@@ -187,6 +200,9 @@ namespace Game
         #region DrawButtons
         private void DrawButtons(DrawingContext drawingContext) {
             DeployKnightButton(drawingContext);
+            DeployArcherButton(drawingContext);
+
+
             MoveButton(drawingContext);
             RemoveButton(drawingContext);
             UpgradeButton(drawingContext);
@@ -204,6 +220,21 @@ namespace Game
                 drawingContext.DrawGeometry(this.DeployKnightBrush, null, g);
             }
         }
+        private void DeployArcherButton(DrawingContext drawingContext)
+        {
+            Geometry g = new RectangleGeometry(new Rect(
+                   (this.model.Map[0].Length + 1) * Config.TileSize, 1 * Config.TileSize, Config.TileSize, Config.TileSize));
+
+            if (this.model.DeployArcher)
+            {
+                drawingContext.DrawGeometry(this.DeployArcherSelectedBrush, null, g);
+            }
+            else
+            {
+                drawingContext.DrawGeometry(this.DeployArcherBrush, null, g);
+            }
+        }
+
         private void MoveButton(DrawingContext drawingContext)
         {
             Geometry g = new RectangleGeometry(new Rect(
@@ -333,9 +364,13 @@ namespace Game
             {
                 for (int x = 0; x < this.model.Map[y].Length; x++)
                 {
-                    if (this.model.Map[y][x] is Knight)
+                    if (this.model.Map[y][x] is Knight knight)
                     {
-                        drawingContext.DrawGeometry(this.KnightBrush, null, this.model.Map[y][x].Area);
+                        drawingContext.DrawGeometry(this.KnightBrush, null, knight.Area);
+                    }
+                    else if (this.model.Map[y][x] is Archer archer)
+                    {
+                        drawingContext.DrawGeometry(this.ArcherBrushes[archer.AnimationIndex], null, archer.Area);
                     }
                 }
             }
@@ -462,6 +497,23 @@ namespace Game
                         this.model.DeployKnight = true;
                         this.model.RemoveUnit = false;
                         this.model.MoveUnit = false;
+                        this.model.UpgradeUnit = false;
+                        this.model.DeployArcher = false;
+                    }
+                }
+                if (tilePos.Y == 1)
+                {
+                    if (this.model.DeployArcher)
+                    {
+                        this.model.DeployArcher = false;
+                    }
+                    else
+                    {
+                        this.model.DeployArcher = true;
+                        this.model.RemoveUnit = false;
+                        this.model.MoveUnit = false;
+                        this.model.UpgradeUnit = false;
+                        this.model.DeployKnight = false;
                     }
                 }
             }
@@ -478,6 +530,7 @@ namespace Game
                     this.model.DeployKnight = false;
                     this.model.RemoveUnit = false;
                     this.model.UpgradeUnit = false;
+                    this.model.DeployArcher = false;
                 }
             }
             else if (tilePos.X == this.model.Map[0].Length - 1 && tilePos.Y == 5)
@@ -493,6 +546,7 @@ namespace Game
                     this.model.DeployKnight = false;
                     this.model.MoveUnit = false;
                     this.model.UpgradeUnit = false;
+                    this.model.DeployArcher = false;
 
                 }
             }
@@ -509,16 +563,22 @@ namespace Game
                     this.model.DeployKnight = false;
                     this.model.MoveUnit = false;
                     this.model.RemoveUnit = false;
+                    this.model.DeployArcher = false;
 
                 }
             }
 
 
             //what will happan if Knight button clicked and clicked another cell.
-            if (!nowCLicked && this.model.DeployKnight && (int)tilePos.X < Config.ColumnNumbers-1)
+            if (!nowCLicked && this.model.DeployKnight)
             {
                 this.logic.DeployKnight((int)tilePos.X, (int)tilePos.Y);
                 this.model.DeployKnight = false;
+            }
+            else if (!nowCLicked && this.model.DeployArcher)
+            {
+                this.logic.DeployKnight((int)tilePos.X, (int)tilePos.Y);
+                this.model.DeployArcher = false;
             }
             else if (!nowCLicked && this.model.RemoveUnit)
             {

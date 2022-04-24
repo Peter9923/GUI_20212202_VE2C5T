@@ -10,6 +10,7 @@ namespace GameModel
         public int CastleMaxHP { get; set; }
         public int CastleActualHP { get; set; }
         bool DeployKnight { get; set; }
+        bool DeployArcher { get; set; }
         int Gold { get; set; }
         int Score { get; set; }
         int Wave { get; set; }

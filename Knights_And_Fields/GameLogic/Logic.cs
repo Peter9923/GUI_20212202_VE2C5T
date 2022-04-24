@@ -31,10 +31,13 @@ namespace GameLogic
         {
             if (this.Model.Map[y][x] == null
                 && x < Config.ColumnNumbers-1){
-                if (this.Model.DeployKnight && this.Model.Gold >= Config.KnightCost)
-                {
+                if (this.Model.DeployKnight && this.Model.Gold >= Config.KnightCost){
                     this.Model.Map[y][x] = new Knight(x, y);
                     this.Model.Gold -= (this.Model.Map[y][x] as Knight).Cost;
+                }
+                else if (this.Model.DeployArcher && this.Model.Gold >= Config.ArcherCost){
+                    this.Model.Map[y][x] = new Archer(x, y);
+                    this.Model.Gold -= (this.Model.Map[y][x] as Archer).Cost;
                 }
             }
             

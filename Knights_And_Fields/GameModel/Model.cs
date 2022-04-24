@@ -40,6 +40,7 @@ namespace GameModel
         public int CastleActualHP { get; set; }
         public int Score { get; set; }
         public bool DeployKnight { get; set; }
+        public bool DeployArcher { get; set; }
         public bool MoveUnit { get; set; }
         public bool RemoveUnit { get; set; }
         public bool UpgradeUnit { get; set; }
