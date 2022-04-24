@@ -29,6 +29,8 @@ namespace Game
         private Brush RemoveButtonSelectedBrush;
         private Brush UpgradeButtonBrush;
         private Brush UpgradeButtonSelectedBrush;
+
+        //Backround Brushes
         private Brush GrassBrush;
         private Brush EnemyGrassBrush;
         private Brush CastleWallBrush;
@@ -46,6 +48,8 @@ namespace Game
         private DispatcherTimer EnemySpawnTimer;
 
         Point MovedMouseTilePos;
+        Point PrevMovedMouseTilePos;
+
 
         Point MovedUnitPrevPos;
 
@@ -83,11 +87,12 @@ namespace Game
                         DrawBackgroundElements(drawingContext);
                     }
 
-                    DrawForegroundElements(drawingContext);
                     DrawButtons(drawingContext);
                     DrawKnights(drawingContext);
                     DrawEnemies(drawingContext);
-                    
+                    DrawForegroundElements(drawingContext);
+
+
                     //borders
                     //..
                     if ((int)MovedMouseTilePos.Y <= this.model.Map.Length - 1
@@ -249,13 +254,12 @@ namespace Game
         {
             DrawCastleHpBoxForeground(drawingContext);
             DrawCurrentCastleHp(drawingContext);
-            GetCurrentGold(drawingContext);
-            GetWave(drawingContext);
-            GetScore(drawingContext);
-            GetLevels(drawingContext);
-            GetHpsBackground(drawingContext);
-            GetHpsForeground(drawingContext);
-
+            DrawCurrentGold(drawingContext);
+            DrawWave(drawingContext);
+            DrawScore(drawingContext);
+            DrawHpsBackground(drawingContext);
+            DrawHpsForeground(drawingContext);
+            DrawLevels(drawingContext);
         }
         private void DrawCastleHpBoxForeground(DrawingContext drawingContext)
         {
@@ -268,24 +272,24 @@ namespace Game
             drawingContext.DrawGeometry(null, new Pen((this.model.CastleActualHP >= 150 ? Brushes.DarkGreen : Brushes.DarkRed), 2), text.BuildGeometry(new Point(310, 825)));
         }
 
-        private void GetCurrentGold(DrawingContext drawingContext)
+        private void DrawCurrentGold(DrawingContext drawingContext)
         {
             FormattedText text1 = new FormattedText(this.model.Gold.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Yellow, 2);
             drawingContext.DrawGeometry(null, new Pen(Brushes.Yellow, 2), text1.BuildGeometry(new Point(580, 825)));
         }
-        private void GetWave(DrawingContext drawingContext)
+        private void DrawWave(DrawingContext drawingContext)
         {
             FormattedText text = new FormattedText("Wave: " + this.model.Wave.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
             drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(20, 900)));
         }
 
-        private void GetScore(DrawingContext drawingContext)
+        private void DrawScore(DrawingContext drawingContext)
         {
             FormattedText text = new FormattedText("Score: " + this.model.Score.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
             drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(500, 900)));
         }
 
-        private void GetLevels(DrawingContext drawingContext)
+        private void DrawLevels(DrawingContext drawingContext)
         {
             FormattedText text;
             for (int y = 0; y < this.model.Map.Length; y++)
@@ -295,13 +299,13 @@ namespace Game
                     if (this.model.Map[y][x] is IAllied)
                     {
                         text = new FormattedText(this.model.Map[y][x].Level.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 45, Brushes.Black, 1);
-                        drawingContext.DrawGeometry(null, null, text.BuildGeometry(new Point((x + 1) * Config.TileSize, y * Config.TileSize)));
+                        drawingContext.DrawGeometry(Brushes.Black, new Pen(Brushes.WhiteSmoke, 1), text.BuildGeometry(new Point((x + 1) * Config.TileSize, y * Config.TileSize)));
                     }
                 }
             }
         }
 
-        private void GetHpsBackground(DrawingContext drawingContext)
+        private void DrawHpsBackground(DrawingContext drawingContext)
         {
             for (int y = 0; y < this.model.Map.Length; y++)
             {
@@ -316,7 +320,7 @@ namespace Game
             }
         }
 
-        private void GetHpsForeground(DrawingContext drawingContext)
+        private void DrawHpsForeground(DrawingContext drawingContext)
         {
             for (int y = 0; y < this.model.Map.Length; y++)
             {
@@ -386,22 +390,6 @@ namespace Game
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void CastleDefendersControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.win = Window.GetWindow(this);
@@ -422,7 +410,7 @@ namespace Game
 
         private void SetTimers() {
             this.MouseMovingTimer = new DispatcherTimer();
-            this.MouseMovingTimer.Interval = TimeSpan.FromMilliseconds(30);
+            this.MouseMovingTimer.Interval = TimeSpan.FromMilliseconds(20);
             this.MouseMovingTimer.Tick += MouseMovingTimer_Tick;
 
 
@@ -450,8 +438,12 @@ namespace Game
 
         private void MouseMovingTimer_Tick(object? sender, EventArgs e)
         {
+            PrevMovedMouseTilePos = MovedMouseTilePos;
             MovedMouseTilePos = this.logic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
-            this.InvalidateVisual();
+            if (PrevMovedMouseTilePos != MovedMouseTilePos){
+                this.InvalidateVisual();
+            }
+            
         }
 
         private void EnemySpawnTimer_Tick(object? sender, EventArgs e)
