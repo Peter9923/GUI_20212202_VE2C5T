@@ -44,8 +44,9 @@ namespace GameLogic
         }
         public void RemoveKnight(int x, int y)
         {
-            if (this.Model.Map[y][x] is Knight k){
-                this.Model.Gold += (int)((k.Level * k.Cost) / 1.25);
+            if (this.Model.Map[y][x] != null && this.Model.Map[y][x] is IAllied actual)
+            {
+                this.Model.Gold += (int)((actual.Level * actual.Cost) / 1.25);
                 this.Model.Map[y][x] = null;
             }
         }

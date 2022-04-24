@@ -51,6 +51,8 @@ namespace Game
         private DispatcherTimer EnemySpawnTimer;
         private DispatcherTimer EnemyMoveTimer;
 
+        private DispatcherTimer ArcherAnimationTimer;
+
         Point MovedMouseTilePos;
         Point PrevMovedMouseTilePos;
 
@@ -455,8 +457,35 @@ namespace Game
             this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(50);
             this.EnemyMoveTimer.Tick += EnemyMoveTimer_Tick;
 
+            this.ArcherAnimationTimer = new DispatcherTimer();
+            this.ArcherAnimationTimer.Interval = TimeSpan.FromMilliseconds(150);
+            this.ArcherAnimationTimer.Tick += ArcherAnimationTimer_Tick;
+
             this.EnemySpawnTimer.Start();
             this.EnemyMoveTimer.Start();
+            this.ArcherAnimationTimer.Start();
+        }
+
+        private void ArcherAnimationTimer_Tick(object? sender, EventArgs e)
+        {
+            for (int y = 0; y < this.model.Map.Length; y++)
+            {
+                for (int x = 0; x < this.model.Map[y].Length; x++)
+                {
+                    if (this.model.Map[y][x] is Knight knight)
+                    {
+                        //To do
+                    }
+                    else if (this.model.Map[y][x] is Archer archer)
+                    {
+                        if (archer.AnimationIndex == this.ArcherBrushes.Count-1){
+                            archer.AnimationIndex = 0;
+                        }else{
+                            archer.AnimationIndex++;
+                        }
+                    }
+                }
+            }
         }
 
         private void EnemyMoveTimer_Tick(object? sender, EventArgs e)
