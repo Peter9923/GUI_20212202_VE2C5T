@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace GameModel
 {
     public class EnemyKnight : IUnit
     {
+        private static Random rnd = new Random();
         public double MaxLife { get { return (Level * 100) / 1.75; } }
         public double ActualLife { get; set; }
 
@@ -31,7 +33,7 @@ namespace GameModel
         private int speedX;
 
         public EnemyKnight(double X, double Y){
-            this.speedX = -5;
+            this.speedX = rnd.Next(-5,0);
             this.Level = 1;
 
             this.ActualLife = MaxLife;

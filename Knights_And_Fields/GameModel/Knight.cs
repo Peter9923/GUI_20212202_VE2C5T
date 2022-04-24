@@ -26,7 +26,7 @@ namespace GameModel
         {
             get
             {
-                return new RectangleGeometry(new Rect(Position.X, Position.Y, Config.TileSize-15, Config.TileSize));
+                return new RectangleGeometry(new Rect(( Position.X+1) *Config.TileSize, Position.Y*Config.TileSize, Config.TileSize-15, Config.TileSize));
             }
         }
 

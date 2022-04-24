@@ -9,8 +9,7 @@
       "Game/1.0.0": {
         "dependencies": {
           "GameLogic": "1.0.0",
-          "GameModel": "1.0.0",
-          "GameRenderer": "1.0.0"
+          "GameModel": "1.0.0"
         },
         "runtime": {
           "Game.dll": {}
@@ -28,14 +27,6 @@
         "runtime": {
           "GameModel.dll": {}
         }
-      },
-      "GameRenderer/1.0.0": {
-        "dependencies": {
-          "GameModel": "1.0.0"
-        },
-        "runtime": {
-          "GameRenderer.dll": {}
-        }
       }
     }
   },
@@ -51,11 +42,6 @@
       "sha512": ""
     },
     "GameModel/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "GameRenderer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

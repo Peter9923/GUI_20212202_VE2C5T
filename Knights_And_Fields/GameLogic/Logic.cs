@@ -66,6 +66,7 @@ namespace GameLogic
                 this.Model.Gold -= actual.UpgradeCost / 2;
 
                 this.Model.Map[actualY][actualX] = this.Model.Map[prevY][prevX];
+                this.Model.Map[actualY][actualX].Position = new Point(actualX, actualY);
                 this.Model.Map[prevY][prevX] = null;
 
             }

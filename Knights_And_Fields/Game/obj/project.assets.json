@@ -30,22 +30,6 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
         ]
-      },
-      "GameRenderer/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "GameModel": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/GameRenderer.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/GameRenderer.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WPF"
-        ]
       }
     }
   },
@@ -59,18 +43,12 @@
       "type": "project",
       "path": "../GameModel/GameModel.csproj",
       "msbuildProject": "../GameModel/GameModel.csproj"
-    },
-    "GameRenderer/1.0.0": {
-      "type": "project",
-      "path": "../GameRenderer/GameRenderer.csproj",
-      "msbuildProject": "../GameRenderer/GameRenderer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
       "GameLogic >= 1.0.0",
-      "GameModel >= 1.0.0",
-      "GameRenderer >= 1.0.0"
+      "GameModel >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -79,11 +57,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Game\\Game.csproj",
+      "projectUniqueName": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Game\\Game.csproj",
       "projectName": "Game",
-      "projectPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Game\\Game.csproj",
+      "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Game\\Game.csproj",
       "packagesPath": "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Game\\obj\\",
+      "outputPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\Game\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Szilágyi Péter\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -100,14 +78,11 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj": {
-              "projectPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj"
+            "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj"
             },
-            "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
-              "projectPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
-            },
-            "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameRenderer\\GameRenderer.csproj": {
-              "projectPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameRenderer\\GameRenderer.csproj"
+            "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
             }
           }
         }
