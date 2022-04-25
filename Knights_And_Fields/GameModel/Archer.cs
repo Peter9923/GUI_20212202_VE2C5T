@@ -62,8 +62,6 @@ namespace GameModel
         public double MaxLife { get { return (Level * 100) / 1.1; } }
         public double ActualLife { get; set; }
         public int Damage { get { return Level * 6; } }
-        public int Speed { get; set; }
-        public int Tick { get; set; }
         public Point Position { get; set; }
         public int Level { get; set; }
 
@@ -91,8 +89,6 @@ namespace GameModel
             AnimationIndex = 0;
             this.Level = 1;
             this.ActualLife = MaxLife;
-            this.Speed = 2;
-            this.Tick = 0;
             this.Position = new Point(X, Y);
         }
 

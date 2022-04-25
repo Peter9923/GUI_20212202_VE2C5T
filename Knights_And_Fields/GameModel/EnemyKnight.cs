@@ -17,8 +17,6 @@ namespace GameModel
 
         public int Damage { get { return Level * 10; } }
 
-        public int Speed { get; set; }
-        public int Tick { get; set; }
         public Point Position { get; set; } //in here not TILE position, pixel position!
         public int Level { get; set; }
         public bool ShouldDie { get; set; }
@@ -42,14 +40,11 @@ namespace GameModel
         private double speedX;
 
         public EnemyKnight(double X, double Y){
+            this.Level = 1;
             double randomBumber = rnd.Next(2, 1501);
             this.speedX = (randomBumber / 1000)*-1;
-            this.Level = 1;
-
-            this.ActualLife = MaxLife;
-            this.Speed = 2;
-            this.Tick = 0;
             this.Position = new Point(X, Y);
+            this.ActualLife = MaxLife;
         }
 
 

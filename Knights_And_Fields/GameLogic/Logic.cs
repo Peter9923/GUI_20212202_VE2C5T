@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,6 +11,9 @@ namespace GameLogic
 {
     public class Logic : ILogic
     {
+        SoundPlayer selectedClick;
+        SoundPlayer anotherClick;
+
         private static Random rnd;
         public IModel Model { get; set; }
         public Logic(IModel model)
@@ -17,6 +21,12 @@ namespace GameLogic
             rnd = new Random();
             this.Model = model;
             this.CreateEnemies();
+
+
+            selectedClick = new SoundPlayer();
+            anotherClick = new SoundPlayer();
+            selectedClick.SoundLocation = "Sounds\\SelectClick.wav";
+            anotherClick.SoundLocation = "Sounds\\AnotherClick.wav";
         }
 
         // Pixel position --> Tile position
@@ -116,7 +126,7 @@ namespace GameLogic
             return false;
         }
         public void EnemyIsInTheCastle(EnemyKnight enemy) {
-            this.Model.CastleActualHP -= 25;
+            this.Model.CastleActualHP -= (int)( (enemy.ActualLife/enemy.MaxLife) * 25);
 
             enemy.ShouldDie = true;
 
@@ -240,5 +250,22 @@ namespace GameLogic
         public void CheckEnemyIsDied() {
             this.Model.SpawnedEnemies = this.Model.SpawnedEnemies.Where(x => x.ShouldDie == false).ToList();
         }
+
+
+
+
+
+        public void ClickSound(bool selection) {
+            if (selection){
+                selectedClick.Play();
+            }
+            else
+            {
+                anotherClick.Play();
+            }
+        
+        }
+
+
     }
 }

@@ -17,8 +17,6 @@ namespace GameModel
         public double MaxLife { get { return (Level * 100) / 1.5; } }
         public double ActualLife { get; set; }
         public int Damage { get { return this.Level * 10; } }
-        public int Speed { get; set; }
-        public int Tick { get; set; }
         public Point Position { get; set; }
         public int Level { get; set; }
 
@@ -41,8 +39,6 @@ namespace GameModel
         public Knight(int X, int Y){
             this.Level = 1;
             this.ActualLife = MaxLife;
-            this.Speed = 2;
-            this.Tick = 0;
             this.Position = new Point(X, Y);
         }
 

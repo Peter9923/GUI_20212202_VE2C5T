@@ -131,9 +131,6 @@ namespace Game
 
             this.InvalidateVisual();
         }
-
-       
-
         private void SetTimers()
         {
             this.EnemySpawnTimer = new DispatcherTimer();
@@ -141,7 +138,7 @@ namespace Game
             this.EnemySpawnTimer.Tick += EnemySpawnTimer_Tick;
 
             this.EnemyMoveTimer = new DispatcherTimer();
-            this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(5);
+            this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(3);
             this.EnemyMoveTimer.Tick += EnemyMoveTimer_Tick;
 
             this.ArcherAnimationTimer = new DispatcherTimer();
@@ -331,6 +328,11 @@ namespace Game
 
                 }
             }
+
+
+            //click sound
+
+            this.logic.ClickSound(nowCLicked);
 
 
             //what will happan if Knight button clicked and clicked another cell.
@@ -572,8 +574,6 @@ namespace Game
             DrawWave(drawingContext);
             DrawScore(drawingContext);
             DrawAliedLevelsAndHps(drawingContext);
-
-            DrawEnemyHpsAndLevels(drawingContext);
         }
         private void DrawCastleHpBoxForeground(DrawingContext drawingContext)
         {
@@ -624,22 +624,6 @@ namespace Game
                 }
             }
         }
-
-        private void DrawEnemyHpsAndLevels(DrawingContext drawingContext)
-        {
-            FormattedText text;
-            foreach (var enemy in this.model.SpawnedEnemies)
-            {
-                Geometry rect1 = new RectangleGeometry(new Rect(enemy.Position.X + Config.TileSize/2, enemy.Position.Y, 80, 15));
-                drawingContext.DrawGeometry(Brushes.WhiteSmoke, null, rect1);
-
-                Geometry rect2 = new RectangleGeometry(new Rect( (enemy.Position.X + Config.TileSize / 2) + 80 - (((80 * enemy.ActualLife) / enemy.MaxLife)), enemy.Position.Y, ((80 * enemy.ActualLife) / enemy.MaxLife ), 15));
-                drawingContext.DrawGeometry(Brushes.DarkRed, null, rect2);
-
-                text = new FormattedText(enemy.Level.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 45, Brushes.WhiteSmoke, 3);
-                drawingContext.DrawGeometry(Brushes.Black, new Pen(Brushes.WhiteSmoke, 1), text.BuildGeometry(new Point(enemy.Position.X+20, enemy.Position.Y)));
-            }
-        }
         #endregion
 
 
@@ -662,9 +646,19 @@ namespace Game
         }
         private void DrawEnemies(DrawingContext drawingContext)
         {
+            FormattedText text;
             foreach (var enemy in this.model.SpawnedEnemies)
             {
                 drawingContext.DrawGeometry(this.EnemyKnightBrush, null, enemy.RealArea);
+
+                Geometry rect1 = new RectangleGeometry(new Rect(enemy.Position.X + Config.TileSize / 2, enemy.Position.Y, 80, 15));
+                drawingContext.DrawGeometry(Brushes.WhiteSmoke, null, rect1);
+
+                Geometry rect2 = new RectangleGeometry(new Rect( enemy.Position.X + Config.TileSize / 2, enemy.Position.Y, ((80 * enemy.ActualLife) / enemy.MaxLife), 15));
+                drawingContext.DrawGeometry(Brushes.DarkRed, null, rect2);
+
+                text = new FormattedText(enemy.Level.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 45, Brushes.WhiteSmoke, 3);
+                drawingContext.DrawGeometry(Brushes.Black, new Pen(Brushes.WhiteSmoke, 1), text.BuildGeometry(new Point(enemy.Position.X + 20, enemy.Position.Y)));
             }
         }
 
