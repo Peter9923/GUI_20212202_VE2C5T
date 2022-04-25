@@ -2,6 +2,7 @@
 using GameModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -17,6 +18,9 @@ namespace Game
 {
     public class Display : FrameworkElement
     {
+        //Stopwatcher
+        Stopwatch attackStopWatch;
+
         //Brushes
         private Brush KnightBrush;
         private Brush EnemyKnightBrush;
@@ -118,8 +122,11 @@ namespace Game
             if (this.win != null)
             {
                 this.MouseDown += Display_MouseDown;
-
                 this.SetTimers();
+
+                attackStopWatch = new Stopwatch();
+                attackStopWatch.Start();
+
             }
 
             this.InvalidateVisual();
@@ -134,7 +141,7 @@ namespace Game
             this.EnemySpawnTimer.Tick += EnemySpawnTimer_Tick;
 
             this.EnemyMoveTimer = new DispatcherTimer();
-            this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(1);
+            this.EnemyMoveTimer.Interval = TimeSpan.FromMilliseconds(5);
             this.EnemyMoveTimer.Tick += EnemyMoveTimer_Tick;
 
             this.ArcherAnimationTimer = new DispatcherTimer();
@@ -147,7 +154,7 @@ namespace Game
             this.AttackTimer.Tick += AttackTimer_Tick;
 
             this.ArcherArrowMoveTimer = new DispatcherTimer();
-            this.ArcherArrowMoveTimer.Interval = TimeSpan.FromMilliseconds(25);
+            this.ArcherArrowMoveTimer.Interval = TimeSpan.FromMilliseconds(35);
             this.ArcherArrowMoveTimer.Tick += ArcherArrowMoveTimer_Tick;
 
             
@@ -179,28 +186,12 @@ namespace Game
 
         private void AttackTimer_Tick(object? sender, EventArgs e)
         {
-            foreach (var enemy in this.model.SpawnedEnemies)
-            {
-                for (int y = 0; y < this.model.Map.Length; y++)
-                {
-                    for (int x = 0; x < this.model.Map[y].Length; x++)
-                    {
-                        if (this.model.Map[y][x] is IAllied allied)
-                        {
-
-                            if (enemy.IsCollision(allied) 
-                                && this.logic.EnemyAndAlliedUnitMetEachOther(enemy, allied))
-                            {
-                                enemy.ShouldDie = true;
-                            }
-
-                        }
-                    }
-                }
+            if (attackStopWatch.ElapsedMilliseconds >= 250){
+                this.logic.CheckCollision(true);
+                attackStopWatch.Stop();
+                attackStopWatch.Reset();
+                attackStopWatch.Start();
             }
-
-            this.model.SpawnedEnemies = this.model.SpawnedEnemies.Where(x => x.ShouldDie == false).ToList();
-
             InvalidateVisual();
         }
 
@@ -234,36 +225,9 @@ namespace Game
         {
             MovedMouseTilePos = this.logic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
 
-            foreach (var enemy in this.model.SpawnedEnemies)
-            {
-                bool wasCollision = false;
-                for (int y = 0; y < this.model.Map.Length; y++)
-                {
-                    for (int x = 0; x < this.model.Map[y].Length; x++)
-                    {
-                        if (this.model.Map[y][x] is IAllied allied)
-                        {
-                            if (enemy.IsCollision(allied))
-                            {
-                                wasCollision = true;
-                            }
-
-                        }
-                    }
-                }
-                if (wasCollision == false)
-                {
-                    enemy.Move();
-
-                    if (enemy.Position.X <= Config.TileSize/2){
-                        this.logic.EnemyIsInTheCastle(enemy);
-                        enemy.ShouldDie = true;
-                    }
-                }
-            }
-
-            this.model.SpawnedEnemies = this.model.SpawnedEnemies.Where(x => x.ShouldDie == false).ToList();
-
+            //logic, checkCollision
+            this.logic.CheckCollision(false);
+            
 
             InvalidateVisual();
         }
@@ -730,23 +694,18 @@ namespace Game
         }
 
         private void DrawArrows(DrawingContext drawingContext) {
+
+            //checl witch arrow should draw
             for (int y = 0; y < this.model.Map.Length; y++)
             {
                 for (int x = 0; x < this.model.Map[y].Length; x++)
                 {
+                    this.logic.CheckWhichArrowShouldDraw(this.model.Map[y][x]);
+
                     if (this.model.Map[y][x] is Archer archer){
-
-                        for (int i = 0; i < archer.Arrows.Count; i++) {
-                            if (archer.Arrows[i].Position.X >= (Config.TileSize * Config.ColumnNumbers)){
-                                archer.Arrows[i] = null;
-                            }
-                            else
-                            {
-                                drawingContext.DrawGeometry(this.ArrowBrush, null, archer.Arrows[i].RealArea);
-                            }
+                        foreach (var arrow in archer.Arrows){
+                            drawingContext.DrawGeometry(this.ArrowBrush, null, arrow.RealArea);
                         }
-
-                        archer.Arrows = archer.Arrows.Where(x => x != null).ToList();
                     }
                 }
             }

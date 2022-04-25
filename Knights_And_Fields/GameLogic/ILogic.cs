@@ -19,5 +19,10 @@ namespace GameLogic
         bool EnemyAndAlliedUnitMetEachOther(EnemyKnight enemy, IAllied allied);
         void EnemyIsInTheCastle(EnemyKnight enemy);
         int EnemySpawnTime();
+
+        void CheckCollision(bool shouldAttack);
+        void CheckEnemyIsDied();
+
+        void CheckWhichArrowShouldDraw(IUnit allied);
     }
 }

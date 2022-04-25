@@ -13,14 +13,15 @@ namespace GameModel
         public class Arrow : IGameItem
         {
             public Point Position { get; set; }
+            public bool ShouldDraw { get; set; }
 
             private int speedX;
 
 
-            public Arrow(double X, double Y){
-                this.speedX = 15;
-                
+            public Arrow(double X, double Y, int SpeedX){
+                this.speedX = SpeedX;
                 this.Position = new Point(X, Y);
+                ShouldDraw = true;
             }
 
             public Geometry RealArea
