@@ -81,7 +81,7 @@ namespace GameLogic
             if (this.Model.Map[y][x] != null &&
                 this.Model.Map[y][x] is Archer archer)
             {
-                Archer.Arrow arrow = new Archer.Arrow(((x + 1) * Config.TileSize), (y * Config.TileSize), rnd.Next(5, 25));
+                Archer.Arrow arrow = new Archer.Arrow(((x + 1) * Config.TileSize), (y * Config.TileSize), rnd.Next(15, 25));
                 archer.AddArrow(arrow);
             }
         }
@@ -128,12 +128,13 @@ namespace GameLogic
 
         private void CreateEnemies() {
             int enemyCount = this.Model.Wave + 2 + rnd.Next(0, this.Model.Wave + 10);
+            this.Model.Wave++;
 
-            for (int i = 0; i < enemyCount; i++) {
+            for (int i = 0; i < enemyCount; i++)
+            {
                 this.Model.ShouldSpawnEnemies.Add(new EnemyKnight((10 * Config.TileSize), (rnd.Next(0, 5)) * Config.TileSize));
                 this.Model.ShouldSpawnEnemies[i].Level = rnd.Next(1, this.Model.Wave + 1);
             }
-
         }
 
         public int EnemySpawnTime() {
@@ -152,6 +153,11 @@ namespace GameLogic
 
                 return this.Model.SpawnedEnemies.Count - 1;
             }
+
+            if (this.Model.ShouldSpawnEnemies.Count == 0){
+                CreateEnemies();
+            }
+
             return -1;
         }
 

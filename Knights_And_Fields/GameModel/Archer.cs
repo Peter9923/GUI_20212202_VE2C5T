@@ -97,7 +97,10 @@ namespace GameModel
         }
 
         public void AddArrow(Arrow arrow) {
-            Arrows.Add(arrow);
+            if (this.Arrows.Count < 2)
+            {
+                Arrows.Add(arrow);
+            }
         }
 
         public bool IsCollision(IGameItem other)

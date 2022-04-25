@@ -20,7 +20,7 @@ namespace GameModel
             }
 
             this.Gold = 1000000;
-            this.Wave = 1;
+            this.Wave = 0;
             this.CastleMaxHP = 500;
             this.CastleActualHP = this.CastleMaxHP;
             this.Score = 0;
