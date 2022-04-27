@@ -148,6 +148,18 @@ namespace GameLogic.Classes
 
                         if (this.model.Map[i][j].ActualLife <= 0)
                         {
+                            if (enemy is EnemyGhost || enemy is EnemyGhost2)
+                            {
+                                this.model.SOUNDS.GhostKilledAlliedUnit.Open(new Uri("Sounds\\ghostKilledAlliedUnit.mp3", UriKind.RelativeOrAbsolute));
+                                this.model.SOUNDS.GhostKilledAlliedUnit.Play();
+                            }
+
+                            if (this.model.Map[i][j] is Archer){
+
+                                this.model.DiedItems.Add( new DyingItems( (this.model.Map[i][j].Position.X+1) * Config.TileSize, this.model.Map[i][j].Position.Y * Config.TileSize, UnitsWhatCanDie.Archer));
+                                
+
+                            }
 
                             this.model.Map[i][j] = null;
 

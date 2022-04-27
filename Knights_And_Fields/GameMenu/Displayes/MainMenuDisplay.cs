@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +13,9 @@ using System.Windows.Media.Imaging;
 namespace GameMenu.Displayes
 {
     internal class MainMenuDisplay : FrameworkElement{
+        SoundPlayer anotherClick;
+        SoundPlayer selectedClick;
+
         Window win;
         Point MousePos;
 
@@ -38,6 +42,13 @@ namespace GameMenu.Displayes
 
         public MainMenuDisplay()
         {
+            anotherClick = new SoundPlayer();
+            anotherClick.SoundLocation = "Sounds\\AnotherClick.wav";
+
+            selectedClick = new SoundPlayer();
+            selectedClick.SoundLocation = "Sounds\\SelectClick.wav";
+
+
 
             this.SetBrushes();
             this.Loaded += MainMenuDisplay_Loaded;
@@ -72,6 +83,9 @@ namespace GameMenu.Displayes
                     //1.
                     if (MousePos.Y >= ((win.ActualHeight / 10) * 1) && MousePos.Y <= (((win.ActualHeight / 10) * 1) + 50))
                     {
+                        if (selectedStart == false){
+                            selectedClick.Play();
+                        }
                         selectedStart = true;
                         selectedExit = false;
                         selectedHelp = false;
@@ -87,6 +101,10 @@ namespace GameMenu.Displayes
                     //2.
                     if (MousePos.Y >= ((win.ActualHeight / 10) * 2) && MousePos.Y <= (((win.ActualHeight / 10) * 2) + 50))
                     {
+                        if (selectedLoad == false)
+                        {
+                            selectedClick.Play();
+                        }
                         selectedLoad = true;
                         selectedStart = false;
                         selectedExit = false;
@@ -102,6 +120,10 @@ namespace GameMenu.Displayes
                     //4.
                     if (MousePos.Y >= ((win.ActualHeight / 10) * 4) && MousePos.Y <= (((win.ActualHeight / 10) * 4) + 50))
                     {
+                        if (selectedHelp == false)
+                        {
+                            selectedClick.Play();
+                        }
                         selectedHelp = true;
                         selectedLoad = false;
                         selectedStart = false;
@@ -117,6 +139,10 @@ namespace GameMenu.Displayes
                     //5.
                     if (MousePos.Y >= ((win.ActualHeight / 10) * 5) && MousePos.Y <= (((win.ActualHeight / 10) * 5) + 50))
                     {
+                        if (selectedExit == false)
+                        {
+                            selectedClick.Play();
+                        }
                         selectedExit = true;
                         selectedLoad = false;
                         selectedStart = false;
@@ -128,7 +154,15 @@ namespace GameMenu.Displayes
                     {
                         selectedExit = false;
                     }
-
+                }
+                else
+                {
+                    selectedExit = false;
+                    selectedLoad = false;
+                    selectedStart = false;
+                    selectedHelp = false;
+                    selectedScorteBoard = false;
+                    selectedAbout = false;
                 }
 
                 this.InvalidateVisual();
@@ -137,12 +171,14 @@ namespace GameMenu.Displayes
             }
         }
 
+
         private void MainMenuDisplay_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            anotherClick.Play();
             if (selectedStart)
             {
                 CreateNewGameWindow newGameWindow = new CreateNewGameWindow();
-                newGameWindow.Show();
+                newGameWindow.ShowDialog();
             }
             else if (selectedExit)
             {

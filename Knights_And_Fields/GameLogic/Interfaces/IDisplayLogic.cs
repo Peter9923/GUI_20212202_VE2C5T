@@ -10,8 +10,5 @@ namespace GameLogic.Interfaces
     public interface IDisplayLogic
     {
         public Point GetTilePos(Point mousePos);
-
-        public void ClickSound(bool selection);
-
     }
 }

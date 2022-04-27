@@ -6,6 +6,7 @@ namespace GameModel
 {
     public interface IModel
     {
+        public MySounds SOUNDS { get; set; }
         int CastleActualHP { get; set; }
         int CastleMaxHP { get; set; }
         bool DeployArcher { get; set; }

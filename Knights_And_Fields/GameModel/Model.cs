@@ -36,6 +36,7 @@ namespace GameModel
             ShouldSpawnEnemies = new List<IEnemy>();
             SpawnedEnemies = new List<IEnemy>();
             DiedItems = new List<IDyingItems>();
+            SOUNDS = new MySounds();
         }
 
         public IUnit[][] Map { get; set; }
@@ -44,6 +45,7 @@ namespace GameModel
 
         public List<IDyingItems> DiedItems { get; set; }
 
+        public MySounds SOUNDS { get; set; }
         public string PlayerName { get; set; }
         public int Gold { get; set; }
         public int Wave { get; set; }

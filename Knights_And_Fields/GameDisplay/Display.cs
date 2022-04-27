@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -37,6 +38,9 @@ namespace GameDisplay
 
         Stopwatch _dyingStopwatch;
         Stopwatch _giveGoldStopwatch;
+
+
+        Stopwatch _backGroundMusicStopwatch;
 
         List<Geometry> ButtonsGeometry;
 
@@ -74,11 +78,17 @@ namespace GameDisplay
                 CompositionTarget.Rendering += CompositionTarget_Rendering;
             }
 
+            this.model.SOUNDS.BackgroundMusics[0].Open(new Uri("Sounds\\backgroundMusic.mp3", UriKind.RelativeOrAbsolute));
+            this.model.SOUNDS.BackgroundMusics[0].Play();
             this.InvalidateVisual();
         }
 
         private void Win_Closed(object? sender, EventArgs e)
         {
+            foreach (var item in this.model.SOUNDS.BackgroundMusics)
+            {
+                item.Stop();
+            }
             EXIT = true;
         }
 
@@ -97,6 +107,15 @@ namespace GameDisplay
             this.DyingItemsAnimation();
             this.GetGold();
 
+            if (_backGroundMusicStopwatch.ElapsedMilliseconds >= 114000){
+                this.model.SOUNDS.BackgroundMusics[0].Open(new Uri("Sounds\\backgroundMusic.mp3", UriKind.RelativeOrAbsolute));
+                this.model.SOUNDS.BackgroundMusics[0].Play();
+
+                _backGroundMusicStopwatch.Stop();
+                _backGroundMusicStopwatch.Reset();
+                _backGroundMusicStopwatch.Start();
+            }
+
             this.InvalidateVisual();
         }
 
@@ -109,6 +128,7 @@ namespace GameDisplay
             _enemyAnimationStopWatch = new Stopwatch();
             _dyingStopwatch = new Stopwatch();
             _giveGoldStopwatch = new Stopwatch();
+            _backGroundMusicStopwatch = new Stopwatch();
 
             _attackStopwatch.Start();
             _alliedAnimationStopWatch.Start();
@@ -118,7 +138,9 @@ namespace GameDisplay
             _enemyAnimationStopWatch.Start();
             _dyingStopwatch.Start();
             _giveGoldStopwatch.Start();
+            _backGroundMusicStopwatch.Start();
         }
+
 
         private void Display_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e){
 
@@ -218,7 +240,13 @@ namespace GameDisplay
 
             //click sound
 
-            this.displayLogic.ClickSound(nowCLicked);
+            if (nowCLicked){
+                this.model.SOUNDS.selectedClick.Play();
+            }
+            else
+            {
+                this.model.SOUNDS.anotherClick.Play();
+            }
 
 
            
@@ -282,8 +310,14 @@ namespace GameDisplay
                         {
                             if (archer.AttackAnimationIndex == this.BRUSHES.ArcherBrushes.Count - 1)
                             {
+                                int arrowCount = archer.Arrows.Count;
                                 archer.AttackAnimationIndex = 0;
                                 this.alliedLogic.GenerateArrow(x, y);
+                                if (arrowCount < 2)
+                                {
+                                    this.model.SOUNDS.ArrowSound.Open(new Uri("Sounds\\arrowSound.wav", UriKind.RelativeOrAbsolute));
+                                    this.model.SOUNDS.ArrowSound.Play();
+                                }
                             }
                             else
                             {
@@ -394,6 +428,8 @@ namespace GameDisplay
 
         private void DyingItemsAnimation() {
 
+
+            this.model.DiedItems = this.model.DiedItems.Where(x => x != null).ToList();
             //_dyingStopwatch
             if (_dyingStopwatch.ElapsedMilliseconds >= 60)
             {
@@ -401,13 +437,20 @@ namespace GameDisplay
 
                     this.model.DiedItems[i].DieIndex++;
 
-                    if (this.model.DiedItems[i] is EnemyGhost){
+                    if (this.model.DiedItems[i].WhoDied == UnitsWhatCanDie.Ghost){
                         if (this.model.DiedItems[i].DieIndex == BRUSHES.GhostDyingBrushes.Count){
                             this.model.DiedItems[i] = null;
                         }
                     }
-                    else if (this.model.DiedItems[i] is EnemyGhost2){
+                    else if (this.model.DiedItems[i].WhoDied == UnitsWhatCanDie.Ghost2){
                         if (this.model.DiedItems[i].DieIndex == BRUSHES.Ghost2DyingBrushes.Count)
+                        {
+                            this.model.DiedItems[i] = null;
+                        }
+                    }
+                    else if (this.model.DiedItems[i].WhoDied == UnitsWhatCanDie.Archer)
+                    {
+                        if (this.model.DiedItems[i].DieIndex == BRUSHES.ArcherDieBrushes.Count)
                         {
                             this.model.DiedItems[i] = null;
                         }
@@ -519,6 +562,9 @@ namespace GameDisplay
         private void DrawButtonsBackground(DrawingContext drawingContext) {
             Geometry rect1 = new RectangleGeometry(new Rect(0, Config.TileSize * (Config.RowNumbers), Config.TileSize*13, Config.TileSize * 2));
             drawingContext.DrawGeometry(this.BRUSHES.ButtonBackgroundBrush, null, rect1);
+
+            Geometry rect2 = new RectangleGeometry(new Rect(Config.TileSize * (Config.ColumnNumbers+1), 0, Config.TileSize*2, Config.TileSize*Config.RowNumbers));
+            drawingContext.DrawGeometry(this.BRUSHES.ButtonBackgroundTopBrush, null, rect2);
         }
 
         #endregion
@@ -741,7 +787,7 @@ namespace GameDisplay
 
 
                 Geometry rect1 = new RectangleGeometry(new Rect(enemy.Position.X + Config.TileSize / 2, enemy.Position.Y, Config.TileSize/2, 15));
-                drawingContext.DrawGeometry(Brushes.WhiteSmoke, null, rect1);
+                drawingContext.DrawGeometry(Brushes.LightGray, null, rect1);
 
                 Geometry rect2 = new RectangleGeometry(new Rect(enemy.Position.X + Config.TileSize / 2, enemy.Position.Y, (((Config.TileSize / 2) * enemy.ActualLife) / enemy.MaxLife), 15));
                 drawingContext.DrawGeometry(Brushes.DarkRed, null, rect2);
@@ -764,7 +810,7 @@ namespace GameDisplay
                     else if (this.model.DeployArcher){
                         drawingContext.DrawGeometry(this.BRUSHES.TemporaryArcherBrush, new Pen(Brushes.Gray, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
                     }
-                    else if (this.model.MoveUnit && MovedUnitPrevPos.X != -1){
+                    else if (this.model.MoveUnit && MovedUnitPrevPos.X != -1 && MovedUnitPrevPos.X < Config.ColumnNumbers && MovedUnitPrevPos.Y < Config.RowNumbers){
 
                         if (this.model.Map[(int)MovedUnitPrevPos.Y][(int)MovedUnitPrevPos.X] is Knight){
                             drawingContext.DrawGeometry(this.BRUSHES.TemporaryKnightBruesh, new Pen(Brushes.Aqua, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
@@ -827,13 +873,17 @@ namespace GameDisplay
             foreach (var diedItem in this.model.DiedItems){
 
                 if (diedItem != null){
-                    if (diedItem.WhoDied == UnitsWhatCanDie.Ghost && diedItem.DieIndex < 15)
+                    if (diedItem.WhoDied == UnitsWhatCanDie.Ghost)
                     {
                         drawingContext.DrawGeometry(this.BRUSHES.GhostDyingBrushes[diedItem.DieIndex], null, diedItem.RealArea);
                     }
-                    else if (diedItem.WhoDied == UnitsWhatCanDie.Ghost2 && diedItem.DieIndex < 15)
+                    else if (diedItem.WhoDied == UnitsWhatCanDie.Ghost2)
                     {
                         drawingContext.DrawGeometry(this.BRUSHES.Ghost2DyingBrushes[diedItem.DieIndex], null, diedItem.RealArea);
+                    }
+                    else if (diedItem.WhoDied == UnitsWhatCanDie.Archer)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.ArcherDieBrushes[diedItem.DieIndex], null, diedItem.RealArea);
                     }
                 }
                 

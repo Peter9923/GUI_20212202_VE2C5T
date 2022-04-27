@@ -60,6 +60,13 @@ namespace GameLogic.Classes
                                 }
 
                                 this.model.Score += this.model.SpawnedEnemies[k].Level * 5;
+
+                                if (this.model.SpawnedEnemies[k] is EnemyGhost || this.model.SpawnedEnemies[k] is EnemyGhost2)
+                                {
+                                    this.model.SOUNDS.GhostDied.Open(new Uri("Sounds\\ghostDied.mp3", UriKind.RelativeOrAbsolute));
+                                    this.model.SOUNDS.GhostDied.Play();
+                                }
+
                                 this.model.SpawnedEnemies[k] = null;
                             }
 
