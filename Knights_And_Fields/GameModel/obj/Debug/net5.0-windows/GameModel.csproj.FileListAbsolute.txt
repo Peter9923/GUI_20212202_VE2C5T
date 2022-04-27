@@ -5,7 +5,6 @@ C:\Users\Szilágyi Péter\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\Ga
 C:\Users\Szilágyi Péter\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\bin\Debug\net5.0-windows\GameModel.dll
 C:\Users\Szilágyi Péter\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\bin\Debug\net5.0-windows\ref\GameModel.dll
 C:\Users\Szilágyi Péter\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\bin\Debug\net5.0-windows\GameModel.pdb
-C:\Users\Szilágyi Péter\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\obj\Debug\net5.0-windows\GameModel.csproj.AssemblyReference.cache
 C:\Users\Szilágyi Péter\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\obj\Debug\net5.0-windows\App.g.cs
 C:\Users\Szilágyi Péter\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\obj\Debug\net5.0-windows\GameModel_MarkupCompile.cache
 C:\Users\Szilágyi Péter\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\obj\Debug\net5.0-windows\GameModel.GeneratedMSBuildEditorConfig.editorconfig

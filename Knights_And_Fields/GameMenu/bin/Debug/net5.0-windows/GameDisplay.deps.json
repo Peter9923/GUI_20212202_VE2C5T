@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "GameDisplay/1.0.0": {
+        "dependencies": {
+          "GameLogic": "1.0.0",
+          "GameModel": "1.0.0"
+        },
+        "runtime": {
+          "GameDisplay.dll": {}
+        }
+      },
+      "GameLogic/1.0.0": {
+        "dependencies": {
+          "GameModel": "1.0.0"
+        },
+        "runtime": {
+          "GameLogic.dll": {}
+        }
+      },
+      "GameModel/1.0.0": {
+        "runtime": {
+          "GameModel.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GameDisplay/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameLogic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameModel/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

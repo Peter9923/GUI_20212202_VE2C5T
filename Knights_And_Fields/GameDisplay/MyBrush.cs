@@ -46,6 +46,7 @@ namespace GameDisplay
         public Brush GrassBrush;
         public Brush EnemyGrassBrush;
         public Brush CastleWallBrush;
+        public Brush ButtonBackgroundBrush;
 
         public MyBrush(){
             SetBrushes();
@@ -118,6 +119,7 @@ namespace GameDisplay
             GrassBrush = new ImageBrush(new BitmapImage(new Uri("Images\\grass.png", UriKind.RelativeOrAbsolute)));
             EnemyGrassBrush = new ImageBrush(new BitmapImage(new Uri("Images\\EnemyGrass.png", UriKind.RelativeOrAbsolute)));
             CastleWallBrush = new ImageBrush(new BitmapImage(new Uri("Images\\CastleWall.png", UriKind.RelativeOrAbsolute)));
+            ButtonBackgroundBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Menu\\gallery.png", UriKind.RelativeOrAbsolute)));
         }
     }
 }

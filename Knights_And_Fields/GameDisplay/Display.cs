@@ -37,10 +37,10 @@ namespace GameDisplay
 
         Stopwatch _dyingStopwatch;
         Stopwatch _giveGoldStopwatch;
-        
-        
 
         List<Geometry> ButtonsGeometry;
+
+        bool EXIT = false;
 
         Point MovedMouseTilePos;
         Point MovedUnitPrevPos;
@@ -70,14 +70,23 @@ namespace GameDisplay
             if (this.win != null)
             {
                 this.MouseDown += Display_MouseDown;
+                win.Closed += Win_Closed;
                 CompositionTarget.Rendering += CompositionTarget_Rendering;
             }
 
             this.InvalidateVisual();
         }
 
+        private void Win_Closed(object? sender, EventArgs e)
+        {
+            EXIT = true;
+        }
+
         private void CompositionTarget_Rendering(object? sender, EventArgs e){
-            MovedMouseTilePos = this.displayLogic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
+            if (EXIT == false){
+                MovedMouseTilePos = this.displayLogic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
+            }
+            
 
 
             this.AlliedAnimation();
@@ -456,6 +465,7 @@ namespace GameDisplay
 
         #region Not changing elements
         private void DrawBackgroundElements(DrawingContext drawingContext){
+            DrawButtonsBackground(drawingContext);
             DrawCellBackground(drawingContext);
             DrawEnemyCellBackground(drawingContext);
             DrawCastleWall(drawingContext);
@@ -466,16 +476,16 @@ namespace GameDisplay
         
         private void DrawGoldText(DrawingContext drawingContext){
             FormattedText text1 = new FormattedText("Gold: ", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 2);
-            drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), text1.BuildGeometry(new Point(520, Config.TileSize * (Config.RowNumbers))));
+            drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), text1.BuildGeometry(new Point(Config.TileSize/2 + 465, (Config.TileSize * Config.RowNumbers) + 60))); //520
         }
 
         private void DrawCastleHpText(DrawingContext drawingContext){
             FormattedText text = new FormattedText("Castle HP: ", CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
-            drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(0, Config.TileSize * (Config.RowNumbers))));
+            drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(Config.TileSize/2, (Config.TileSize * Config.RowNumbers) + 60)));
         }
 
         private void DrawCastleHpBoxBackground(DrawingContext drawingContext){
-            Geometry rect1 = new RectangleGeometry(new Rect(180, Config.TileSize * (Config.RowNumbers), 300, 30));
+            Geometry rect1 = new RectangleGeometry(new Rect(Config.TileSize/2 + 145, (Config.TileSize * Config.RowNumbers) + 60, 300, 30));
             drawingContext.DrawGeometry(Brushes.WhiteSmoke, null, rect1);
         }
 
@@ -505,6 +515,12 @@ namespace GameDisplay
                 }
             }
         }
+
+        private void DrawButtonsBackground(DrawingContext drawingContext) {
+            Geometry rect1 = new RectangleGeometry(new Rect(0, Config.TileSize * (Config.RowNumbers), Config.TileSize*13, Config.TileSize * 2));
+            drawingContext.DrawGeometry(this.BRUSHES.ButtonBackgroundBrush, null, rect1);
+        }
+
         #endregion
 
         #region DrawButtons
@@ -607,30 +623,30 @@ namespace GameDisplay
         }
         private void DrawCastleHpBoxForeground(DrawingContext drawingContext)
         {
-            Geometry rect2 = new RectangleGeometry(new Rect(180, Config.TileSize * (Config.RowNumbers), ((300 * this.model.CastleActualHP) / this.model.CastleMaxHP), 30));
+            Geometry rect2 = new RectangleGeometry(new Rect(Config.TileSize / 2 + 145, (Config.TileSize * Config.RowNumbers) + 60, ((300 * this.model.CastleActualHP) / this.model.CastleMaxHP), 30));
             drawingContext.DrawGeometry(Brushes.DarkRed, null, rect2);
         }
         private void DrawCurrentCastleHp(DrawingContext drawingContext)
         {
             FormattedText text = new FormattedText(this.model.CastleActualHP.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
-            drawingContext.DrawGeometry(null, new Pen((this.model.CastleActualHP >= 150 ? Brushes.DarkGreen : Brushes.DarkRed), 2), text.BuildGeometry(new Point(310, Config.TileSize * (Config.RowNumbers))));
+            drawingContext.DrawGeometry(null, new Pen((this.model.CastleActualHP >= 150 ? Brushes.DarkGreen : Brushes.DarkRed), 2), text.BuildGeometry(new Point(Config.TileSize / 2 + 285, (Config.TileSize * Config.RowNumbers) + 60)));
         }
 
         private void DrawCurrentGold(DrawingContext drawingContext)
         {
             FormattedText text1 = new FormattedText(this.model.Gold.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Yellow, 2);
-            drawingContext.DrawGeometry(null, new Pen(Brushes.Yellow, 2), text1.BuildGeometry(new Point(600, Config.TileSize * (Config.RowNumbers))));
+            drawingContext.DrawGeometry(null, new Pen(Brushes.Yellow, 2), text1.BuildGeometry(new Point(Config.TileSize / 2 + 550, (Config.TileSize * Config.RowNumbers) + 60)));
         }
         private void DrawWave(DrawingContext drawingContext)
         {
             FormattedText text = new FormattedText("Wave: " + this.model.Wave.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
-            drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(0, Config.TileSize * (Config.RowNumbers + 1))));
+            drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(Config.TileSize / 2, (Config.TileSize * Config.RowNumbers) + 100)));
         }
 
         private void DrawScore(DrawingContext drawingContext)
         {
-            FormattedText text = new FormattedText("Score: " + this.model.Score.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
-            drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(520, Config.TileSize * (Config.RowNumbers + 1))));
+            FormattedText text = new FormattedText($"{this.model.PlayerName}'s score: " + this.model.Score.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 30, Brushes.Black, 1);
+            drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), text.BuildGeometry(new Point(Config.TileSize / 2 + 465, (Config.TileSize * Config.RowNumbers) + 100)));
         }
 
         private void DrawAliedLevelsAndHps(DrawingContext drawingContext)

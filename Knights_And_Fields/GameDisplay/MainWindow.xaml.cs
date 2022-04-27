@@ -23,6 +23,8 @@ namespace GameDisplay
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        string playerName;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,14 +32,14 @@ namespace GameDisplay
             Loaded += MainWindow_Loaded;
         }
 
-        public MainWindow(string PlayerName) : this() { 
-            
+        public MainWindow(string PlayerName) : this() {
+            playerName = PlayerName;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e){
             this.Left = 0;
             this.Top = 0;
-            IModel model = new Model(myGrid.ActualHeight, myGrid.ActualWidth, "Péter");
+            IModel model = new Model(myGrid.ActualHeight, myGrid.ActualWidth, playerName);
             IDisplayLogic displayLogic = new DisplayLogic();
             IButtonLogic buttonLogic = new ButtonLogic(model);
             IAlliedLogic alliedLogic = new AlliedLogic(model);
