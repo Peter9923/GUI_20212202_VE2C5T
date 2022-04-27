@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameModel.Interfaces;
+using GameModel.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,8 @@ namespace GameModel
 {
     public class Model : IModel
     {
-        public Model(double h, double w)
+
+        public Model(double h, double w, string PlayerName)
         {
             Config.GameHeight = h;
             Config.GameWidth = w;
@@ -19,21 +22,31 @@ namespace GameModel
                 this.Map[i] = new IUnit[Config.ColumnNumbers];
             }
 
-            this.Gold = 1000000;
+            double tileSize1 = Config.GameWidth / (Config.ColumnNumbers+1);
+            double tileSize2 = Config.GameHeight / (Config.RowNumbers+2);
+            Config.TileSize = (tileSize1 >= tileSize2) ? tileSize2 : tileSize1;
+
+            this.Gold = 550;
             this.Wave = 0;
             this.CastleMaxHP = 500;
             this.CastleActualHP = this.CastleMaxHP;
             this.Score = 0;
-            Config.TileSize = 160;
             this.DeployKnight = false;
-
-            ShouldSpawnEnemies = new List<EnemyKnight>();
-            SpawnedEnemies = new List<EnemyKnight>();
+            this.PlayerName = PlayerName;
+            ShouldSpawnEnemies = new List<IEnemy>();
+            SpawnedEnemies = new List<IEnemy>();
+            DiedItems = new List<IDyingItems>();
+            SOUNDS = new MySounds();
         }
-        public IUnit[][] Map { get; set; }
-        public List<EnemyKnight> ShouldSpawnEnemies {get; set;}
-        public List<EnemyKnight> SpawnedEnemies {get; set;}
 
+        public IUnit[][] Map { get; set; }
+        public List<IEnemy> ShouldSpawnEnemies { get; set; }
+        public List<IEnemy> SpawnedEnemies { get; set; }
+
+        public List<IDyingItems> DiedItems { get; set; }
+
+        public MySounds SOUNDS { get; set; }
+        public string PlayerName { get; set; }
         public int Gold { get; set; }
         public int Wave { get; set; }
         public int CastleMaxHP { get; set; }

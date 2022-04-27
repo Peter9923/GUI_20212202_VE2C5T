@@ -35,7 +35,17 @@
       "ProjectGuid": "c4536843-ecd8-4370-b8da-1e111d863262",
       "DisplayName": "GameModel",
       "ColorIndex": 5
+    },
+    "374544ed-acb0-4b20-a8c6-849458aca8ad": {
+      "ProjectGuid": "374544ed-acb0-4b20-a8c6-849458aca8ad",
+      "DisplayName": "GameModel",
+      "ColorIndex": 6
+    },
+    "f43c5ff3-bf21-4f22-8834-4b2adc013d49": {
+      "ProjectGuid": "f43c5ff3-bf21-4f22-8834-4b2adc013d49",
+      "DisplayName": "GameDisplay",
+      "ColorIndex": 7
     }
   },
-  "NextColorIndex": 6
+  "NextColorIndex": 8
 }
