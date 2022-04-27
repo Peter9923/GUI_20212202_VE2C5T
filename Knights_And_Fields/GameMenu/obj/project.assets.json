@@ -78,11 +78,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
+      "projectUniqueName": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
       "projectName": "GameMenu",
-      "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
+      "projectPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
       "packagesPath": "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\obj\\",
+      "outputPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Szilágyi Péter\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -99,8 +99,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj": {
-              "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj"
+            "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj"
             }
           }
         }
