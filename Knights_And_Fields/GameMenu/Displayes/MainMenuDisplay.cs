@@ -20,7 +20,7 @@ namespace GameMenu.Displayes
 
         private bool selectedExit;
         private bool selectedStart;
-        private bool selectedScorteBoard;
+        private bool selectedScoreBoard;
         private bool selectedLoad;
         private bool selectedHelp;
         private bool selectedAbout;
@@ -36,6 +36,9 @@ namespace GameMenu.Displayes
 
         private Brush helpButtonBrush;
         private Brush helpButtonSelectedBrush;
+        
+        private Brush aboutButtonBrush;
+        private Brush aboutButtonSelectedBrush;
 
         private Brush backGroundBrush;
 
@@ -73,76 +76,56 @@ namespace GameMenu.Displayes
                 MousePos.Y -= win.Top;
                 //MousePos = this.PointFromScreen(Mouse.GetPosition(this));
 
-                if (MousePos.X >= ((win.ActualWidth / 10) * 4)
-                    && MousePos.X <= (((win.ActualWidth / 10) * 4) + 200))
+                if (MousePos.X >= 209 && MousePos.X <= 590
+                    && MousePos.Y >= 130 && MousePos.Y <= 223){
+                    selectedStart = true;
+                    selectedExit = false;
+                    selectedHelp = false;
+                    selectedLoad = false;
+                    selectedScoreBoard = false;
+                    selectedAbout = false;
+                }
+                else if (MousePos.X >= 293 && MousePos.X <= 538)
                 {
-                    //1.
-                    if (MousePos.Y >= ((win.ActualHeight / 10) * 1) && MousePos.Y <= (((win.ActualHeight / 10) * 1) + 50))
-                    {
-                        selectedStart = true;
-                        selectedExit = false;
-                        selectedHelp = false;
-                        selectedLoad = false;
-                        selectedScorteBoard = false;
-                        selectedAbout = false;
-                    }
-                    else
-                    {
-                        selectedStart = false;
-                    }
-
-                    //2.
-                    if (MousePos.Y >= ((win.ActualHeight / 10) * 2) && MousePos.Y <= (((win.ActualHeight / 10) * 2) + 50))
-                    {
+                    if (MousePos.Y >= 231 && MousePos.Y <= 284){
                         selectedLoad = true;
                         selectedStart = false;
                         selectedExit = false;
                         selectedHelp = false;
-                        selectedScorteBoard = false;
+                        selectedScoreBoard = false;
                         selectedAbout = false;
                     }
-                    else
-                    {
+                    else if (MousePos.Y >= 293 && MousePos.Y <= 346){
+                        selectedAbout = true;
                         selectedLoad = false;
+                        selectedStart = false;
+                        selectedExit = false;
+                        selectedHelp = false;
+                        selectedScoreBoard = false;
                     }
-
-                    //4.
-                    if (MousePos.Y >= ((win.ActualHeight / 10) * 4) && MousePos.Y <= (((win.ActualHeight / 10) * 4) + 50))
-                    {
+                    else if (MousePos.Y >= 351 && MousePos.Y <= 404){
                         selectedHelp = true;
                         selectedLoad = false;
                         selectedStart = false;
                         selectedExit = false;
-                        selectedScorteBoard = false;
+                        selectedScoreBoard = false;
                         selectedAbout = false;
                     }
-                    else
-                    {
-                        selectedHelp = false;
-                    }
-
-                    //5.
-                    if (MousePos.Y >= ((win.ActualHeight / 10) * 5) && MousePos.Y <= (((win.ActualHeight / 10) * 5) + 50))
-                    {
+                    else if (MousePos.Y >= 411 && MousePos.Y <= 464){
                         selectedExit = true;
                         selectedLoad = false;
                         selectedStart = false;
                         selectedHelp = false;
-                        selectedScorteBoard = false;
+                        selectedScoreBoard = false;
                         selectedAbout = false;
                     }
-                    else
-                    {
-                        selectedExit = false;
-                    }
                 }
-                else
-                {
+                else {
                     selectedExit = false;
                     selectedLoad = false;
                     selectedStart = false;
                     selectedHelp = false;
-                    selectedScorteBoard = false;
+                    selectedScoreBoard = false;
                     selectedAbout = false;
                 }
 
@@ -156,6 +139,7 @@ namespace GameMenu.Displayes
         private void MainMenuDisplay_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             anotherClick.Play();
+            //MessageBox.Show(MousePos.X + "  |  " + MousePos.Y + " | " + (win.ActualHeight - this.ActualHeight + " | " + (win.ActualHeight + " | " + this.ActualHeight)));
             anotherClick.Open(new Uri("Sounds\\AnotherClick.wav", UriKind.RelativeOrAbsolute));
             if (selectedStart)
             {
@@ -197,6 +181,9 @@ namespace GameMenu.Displayes
 
             helpButtonBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Menu\\help_idle.png", UriKind.RelativeOrAbsolute)));
             helpButtonSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Menu\\help_hover.png", UriKind.RelativeOrAbsolute)));
+            
+            aboutButtonBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Menu\\about_idle.png", UriKind.RelativeOrAbsolute)));
+            aboutButtonSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Menu\\about_hover.png", UriKind.RelativeOrAbsolute)));
 
         }
 
@@ -205,6 +192,7 @@ namespace GameMenu.Displayes
 
             DrawStartButton(drawingContext);
             DrawLoadButton(drawingContext);
+            DrawAboutButton(drawingContext);
             DrawExitButton(drawingContext);
             DrawHelpButton(drawingContext);
         }
@@ -212,7 +200,7 @@ namespace GameMenu.Displayes
         private void DrawStartButton(DrawingContext drawingContext)
         {
 
-            Geometry g = new RectangleGeometry(new Rect((win.ActualWidth / 10) * 4, (win.ActualHeight / 10) * 1, 200, 50));
+            Geometry g = new RectangleGeometry(new Rect(200 , 100, 383, 93));
 
             if (this.selectedStart)
             {
@@ -227,7 +215,7 @@ namespace GameMenu.Displayes
 
         private void DrawLoadButton(DrawingContext drawingContext)
         {
-            Geometry g = new RectangleGeometry(new Rect((win.ActualWidth / 10) * 4, (win.ActualHeight / 10) * 2, 200, 50));
+            Geometry g = new RectangleGeometry(new Rect(285, 200, 245, 53));
 
             if (this.selectedLoad)
             {
@@ -239,9 +227,36 @@ namespace GameMenu.Displayes
             }
         }
 
+        private void DrawAboutButton(DrawingContext drawingContext)
+        {
+            Geometry g = new RectangleGeometry(new Rect(285, 260, 245, 53));
+
+            if (this.selectedAbout)
+            {
+                drawingContext.DrawGeometry(this.aboutButtonSelectedBrush, null, g);
+            }
+            else
+            {
+                drawingContext.DrawGeometry(this.aboutButtonBrush, null, g);
+            }
+        }        
+        private void DrawHelpButton(DrawingContext drawingContext)
+        {
+            Geometry g = new RectangleGeometry(new Rect(285, 320, 245, 53));
+
+            if (this.selectedHelp)
+            {
+                drawingContext.DrawGeometry(this.helpButtonSelectedBrush, null, g);
+            }
+            else
+            {
+                drawingContext.DrawGeometry(this.helpButtonBrush, null, g);
+            }
+        }
+
         private void DrawExitButton(DrawingContext drawingContext)
         {
-            Geometry g = new RectangleGeometry(new Rect((win.ActualWidth / 10) * 4, (win.ActualHeight / 10) * 5, 200, 50));
+            Geometry g = new RectangleGeometry(new Rect(285, 380, 245, 53));
 
             if (this.selectedExit)
             {
@@ -253,18 +268,6 @@ namespace GameMenu.Displayes
             }
         }
 
-        private void DrawHelpButton(DrawingContext drawingContext)
-        {
-            Geometry g = new RectangleGeometry(new Rect((win.ActualWidth / 10) * 4, (win.ActualHeight / 10) * 4, 200, 50));
 
-            if (this.selectedHelp)
-            {
-                drawingContext.DrawGeometry(this.helpButtonSelectedBrush, null, g);
-            }
-            else
-            {
-                drawingContext.DrawGeometry(this.helpButtonBrush, null, g);
-            }
-        }
     }
 }
