@@ -62,6 +62,18 @@ namespace GameLogic.Classes
                                 {
                                     this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[k].Position.X, this.model.SpawnedEnemies[k].Position.Y, UnitsWhatCanDie.Ghost3));
                                 }
+                                else if (this.model.SpawnedEnemies[k] is EnemyOrc1)
+                                {
+                                    this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[k].Position.X, this.model.SpawnedEnemies[k].Position.Y, UnitsWhatCanDie.Orc1));
+                                }
+                                else if (this.model.SpawnedEnemies[k] is EnemyOrc2)
+                                {
+                                    this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[k].Position.X, this.model.SpawnedEnemies[k].Position.Y, UnitsWhatCanDie.Orc2));
+                                }
+                                else if (this.model.SpawnedEnemies[k] is EnemyOrc3)
+                                {
+                                    this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[k].Position.X, this.model.SpawnedEnemies[k].Position.Y, UnitsWhatCanDie.Orc3));
+                                }
 
                                 this.model.Score += this.model.SpawnedEnemies[k].Level * 5;
 
@@ -159,6 +171,18 @@ namespace GameLogic.Classes
                         else if (this.model.SpawnedEnemies[i] is EnemyGhost3)
                         {
                             this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[i].Position.X, this.model.SpawnedEnemies[i].Position.Y, UnitsWhatCanDie.Ghost3));
+                        }
+                        else if (this.model.SpawnedEnemies[i] is EnemyOrc1)
+                        {
+                            this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[i].Position.X, this.model.SpawnedEnemies[i].Position.Y, UnitsWhatCanDie.Orc1));
+                        }
+                        else if (this.model.SpawnedEnemies[i] is EnemyOrc2)
+                        {
+                            this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[i].Position.X, this.model.SpawnedEnemies[i].Position.Y, UnitsWhatCanDie.Orc2));
+                        }
+                        else if (this.model.SpawnedEnemies[i] is EnemyOrc3)
+                        {
+                            this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[i].Position.X, this.model.SpawnedEnemies[i].Position.Y, UnitsWhatCanDie.Orc3));
                         }
 
                         this.model.Score += this.model.SpawnedEnemies[i].Level * 5;

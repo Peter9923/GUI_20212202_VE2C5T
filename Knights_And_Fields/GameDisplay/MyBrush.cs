@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -37,6 +38,17 @@ namespace GameDisplay
         public List<Brush> Ghost3AttackBrushes;
         public List<Brush> Ghost3DyingBrushes;
 
+        public List<Brush> Orc_1_WalkingBrushes;
+        public List<Brush> Orc_1_AttackBrushes;
+        public List<Brush> Orc_1_DyingBrushes;
+
+        public List<Brush> Orc_2_WalkingBrushes;
+        public List<Brush> Orc_2_AttackBrushes;
+        public List<Brush> Orc_2_DyingBrushes;
+
+        public List<Brush> Orc_3_WalkingBrushes;
+        public List<Brush> Orc_3_AttackBrushes;
+        public List<Brush> Orc_3_DyingBrushes;
 
 
         //Button Brushes
@@ -64,9 +76,16 @@ namespace GameDisplay
         }
 
         public void SetBrushes() {
+            this.SetAlliedBrushes();
+            this.SetEnemyBrushes();
+            this.AnotherBrushes();
+        }
 
+
+        private void SetAlliedBrushes() {
             KnightBrushes = new List<Brush>();
-            for (int i = 0; i < 10; i++){
+            for (int i = 0; i < 10; i++)
+            {
                 KnightBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Knight3\\Knight_03__ATTACK_00{i}_prev_ui.png", UriKind.RelativeOrAbsolute))));
             }
             //KnightWaitingBrushes = new List<Brush>();
@@ -74,19 +93,22 @@ namespace GameDisplay
             //    KnightWaitingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Knight3\\Knight_03__IDLE_00{i}_prev_ui.png", UriKind.RelativeOrAbsolute))));
             //}
             KnightDieBrushes = new List<Brush>();
-            for (int i = 0; i < 10; i++){
+            for (int i = 0; i < 10; i++)
+            {
                 KnightDieBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Knight3\\Knight_03__DIE_00{i}_prev_ui.png", UriKind.RelativeOrAbsolute))));
             }
 
 
             ArcherBrushes = new List<Brush>();
-            for (int i = 0; i < 6; i++){
+            for (int i = 0; i < 6; i++)
+            {
                 ArcherBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Archer\\Warrior_03__ATTACK_00{i}.png", UriKind.RelativeOrAbsolute))));
             }
             ArrowBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Arrow.png", UriKind.RelativeOrAbsolute)));
 
             ArcherDieBrushes = new List<Brush>();
-            for (int i = 0; i < 10; i++){
+            for (int i = 0; i < 10; i++)
+            {
                 ArcherDieBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Archer\\Warrior_03__DIE_00{i}.png", UriKind.RelativeOrAbsolute))));
             }
 
@@ -100,26 +122,28 @@ namespace GameDisplay
             DeployKnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnight.png", UriKind.RelativeOrAbsolute)));
             DeployKnightBrush.Opacity = 0.7;
             DeployKnightSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnightSelected.png", UriKind.RelativeOrAbsolute)));
-            
+
             DeployArcherBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployArcher.png", UriKind.RelativeOrAbsolute)));
             DeployArcherBrush.Opacity = 0.7;
             DeployArcherSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployArcherSelected.png", UriKind.RelativeOrAbsolute)));
+        }
 
-
-            //ENemies
-            //EnemyKnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\EnemyKnight.png", UriKind.RelativeOrAbsolute)));
+        private void SetEnemyBrushes() {
             GhostWalkingBrushes = new List<Brush>();
-            for (int i = 0; i < 12; i++){
+            for (int i = 0; i < 12; i++)
+            {
                 GhostWalkingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost1\\ghostWalk{i}.png", UriKind.RelativeOrAbsolute))));
             }
 
             GhostAttackBrushes = new List<Brush>();
-            for (int i = 0; i < 12; i++){
+            for (int i = 0; i < 12; i++)
+            {
                 GhostAttackBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost1\\ghostAttack{i}.png", UriKind.RelativeOrAbsolute))));
             }
 
             GhostDyingBrushes = new List<Brush>();
-            for (int i = 0; i < 15; i++){
+            for (int i = 0; i < 15; i++)
+            {
                 GhostDyingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost1\\ghostDying{i}.png", UriKind.RelativeOrAbsolute))));
             }
 
@@ -137,7 +161,8 @@ namespace GameDisplay
             }
 
             Ghost2DyingBrushes = new List<Brush>();
-            for (int i = 0; i < 15; i++){
+            for (int i = 0; i < 15; i++)
+            {
                 Ghost2DyingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost2\\ghost2Dying{i}.png", UriKind.RelativeOrAbsolute))));
             }
 
@@ -161,7 +186,76 @@ namespace GameDisplay
             }
 
 
+            Orc_1_AttackBrushes = new List<Brush>();
+            for (int i = 0; i < 10; i++){
+                Orc_1_AttackBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Orc1\\ORK_01_ATTAK_00{i}.png", UriKind.RelativeOrAbsolute))));
+            }
 
+            Orc_1_DyingBrushes = new List<Brush>();
+            for (int i = 0; i < 10; i++){
+                Orc_1_DyingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Orc1\\ORK_01_DIE_00{i}.png", UriKind.RelativeOrAbsolute))));
+            }
+
+            Orc_1_WalkingBrushes = new List<Brush>();
+            for (int i = 0; i < 10; i++){
+                Orc_1_WalkingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Orc1\\ORK_01_WALK_00{i}.png", UriKind.RelativeOrAbsolute))));
+            }
+
+
+            Orc_2_AttackBrushes = new List<Brush>();
+            for (int i = 0; i < 10; i++)
+            {
+                var fullBitmap = new BitmapImage(new Uri($"Images\\Enemy\\Orc2\\ORK_02_ATTAK_00{i}.png", UriKind.RelativeOrAbsolute));
+                CroppedBitmap cb = new CroppedBitmap(fullBitmap, new Int32Rect(571, 359, 779, 779));
+                Orc_2_AttackBrushes.Add(new ImageBrush(cb));
+            }
+
+            Orc_2_DyingBrushes = new List<Brush>();
+            for (int i = 0; i < 10; i++)
+            {
+                //var fullBitmap = new BitmapImage(new Uri($"Images\\Enemy\\Orc2\\ORK_02_DIE_00{i}.png", UriKind.RelativeOrAbsolute));
+                //CroppedBitmap cb = new CroppedBitmap(fullBitmap, new Int32Rect(279, 301, 949 , 949));
+                //Orc_2_DyingBrushes.Add(new ImageBrush(cb));
+                Orc_2_DyingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Orc2\\ORK_02_DIE_00{i}.png", UriKind.RelativeOrAbsolute))));
+            }
+
+            Orc_2_WalkingBrushes = new List<Brush>();
+            for (int i = 0; i < 10; i++)
+            {
+                var fullBitmap = new BitmapImage(new Uri($"Images\\Enemy\\Orc2\\ORK_02_WALK_00{i}.png", UriKind.RelativeOrAbsolute));
+                CroppedBitmap cb = new CroppedBitmap(fullBitmap, new Int32Rect(571, 359, 779, 779));
+                Orc_2_WalkingBrushes.Add(new ImageBrush(cb));
+                
+            }
+
+            Orc_3_AttackBrushes = new List<Brush>();
+            for (int i = 0; i < 10; i++)
+            {
+                var fullBitmap = new BitmapImage(new Uri($"Images\\Enemy\\Orc3\\ORK_03_ATTAK_00{i}.png", UriKind.RelativeOrAbsolute));
+                CroppedBitmap cb = new CroppedBitmap(fullBitmap, new Int32Rect(571, 359, 779, 779));
+                Orc_3_AttackBrushes.Add(new ImageBrush(cb));
+            }
+
+            Orc_3_DyingBrushes = new List<Brush>();
+            for (int i = 0; i < 10; i++)
+            {
+                //var fullBitmap = new BitmapImage(new Uri($"Images\\Enemy\\Orc2\\ORK_02_DIE_00{i}.png", UriKind.RelativeOrAbsolute));
+                //CroppedBitmap cb = new CroppedBitmap(fullBitmap, new Int32Rect(279, 301, 949 , 949));
+                //Orc_2_DyingBrushes.Add(new ImageBrush(cb));
+                Orc_3_DyingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Orc3\\ORK_03_DIE_00{i}.png", UriKind.RelativeOrAbsolute))));
+            }
+
+            Orc_3_WalkingBrushes = new List<Brush>();
+            for (int i = 0; i < 10; i++)
+            {
+                var fullBitmap = new BitmapImage(new Uri($"Images\\Enemy\\Orc3\\ORK_03_WALK_00{i}.png", UriKind.RelativeOrAbsolute));
+                CroppedBitmap cb = new CroppedBitmap(fullBitmap, new Int32Rect(571, 359, 779, 779));
+                Orc_3_WalkingBrushes.Add(new ImageBrush(cb));
+
+            }
+        }
+
+        private void AnotherBrushes() {
             MoveButtonBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Move.png", UriKind.RelativeOrAbsolute)));
             MoveButtonBrush.Opacity = 0.7;
             MoveButtonSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\MoveSelected.png", UriKind.RelativeOrAbsolute)));
@@ -178,5 +272,7 @@ namespace GameDisplay
             ButtonBackgroundBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Menu\\gallery.png", UriKind.RelativeOrAbsolute)));
             ButtonBackgroundTopBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Menu\\galleryForTopButtons.png", UriKind.RelativeOrAbsolute)));
         }
+
+
     }
 }

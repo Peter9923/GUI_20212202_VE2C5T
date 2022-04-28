@@ -470,6 +470,72 @@ namespace GameDisplay
                             }
                         }
                     }
+                    else if (this.model.SpawnedEnemies[i] is EnemyOrc1)
+                    {
+                        if (this.model.SpawnedEnemies[i].ShouldAttack)
+                        {
+                            this.model.SpawnedEnemies[i].AttackAnimationIndex++;
+
+                            if (this.model.SpawnedEnemies[i].AttackAnimationIndex == BRUSHES.Orc_1_AttackBrushes.Count)
+                            {
+                                this.enemyLogic.AttackAlliedUnits(this.model.SpawnedEnemies[i]);
+                                this.model.SpawnedEnemies[i].AttackAnimationIndex = 0;
+                            }
+                        }
+                        else if (this.model.SpawnedEnemies[i].ShouldWalk)
+                        {
+                            this.model.SpawnedEnemies[i].WalkingIndex++;
+
+                            if (this.model.SpawnedEnemies[i].WalkingIndex == BRUSHES.Orc_1_WalkingBrushes.Count)
+                            {
+                                this.model.SpawnedEnemies[i].WalkingIndex = 0;
+                            }
+                        }
+                    }
+                    else if (this.model.SpawnedEnemies[i] is EnemyOrc2)
+                    {
+                        if (this.model.SpawnedEnemies[i].ShouldAttack)
+                        {
+                            this.model.SpawnedEnemies[i].AttackAnimationIndex++;
+
+                            if (this.model.SpawnedEnemies[i].AttackAnimationIndex == BRUSHES.Orc_2_AttackBrushes.Count)
+                            {
+                                this.enemyLogic.AttackAlliedUnits(this.model.SpawnedEnemies[i]);
+                                this.model.SpawnedEnemies[i].AttackAnimationIndex = 0;
+                            }
+                        }
+                        else if (this.model.SpawnedEnemies[i].ShouldWalk)
+                        {
+                            this.model.SpawnedEnemies[i].WalkingIndex++;
+
+                            if (this.model.SpawnedEnemies[i].WalkingIndex == BRUSHES.Orc_2_WalkingBrushes.Count)
+                            {
+                                this.model.SpawnedEnemies[i].WalkingIndex = 0;
+                            }
+                        }
+                    }
+                    else if (this.model.SpawnedEnemies[i] is EnemyOrc3)
+                    {
+                        if (this.model.SpawnedEnemies[i].ShouldAttack)
+                        {
+                            this.model.SpawnedEnemies[i].AttackAnimationIndex++;
+
+                            if (this.model.SpawnedEnemies[i].AttackAnimationIndex == BRUSHES.Orc_3_AttackBrushes.Count)
+                            {
+                                this.enemyLogic.AttackAlliedUnits(this.model.SpawnedEnemies[i]);
+                                this.model.SpawnedEnemies[i].AttackAnimationIndex = 0;
+                            }
+                        }
+                        else if (this.model.SpawnedEnemies[i].ShouldWalk)
+                        {
+                            this.model.SpawnedEnemies[i].WalkingIndex++;
+
+                            if (this.model.SpawnedEnemies[i].WalkingIndex == BRUSHES.Orc_3_WalkingBrushes.Count)
+                            {
+                                this.model.SpawnedEnemies[i].WalkingIndex = 0;
+                            }
+                        }
+                    }
 
 
                 }
@@ -506,6 +572,27 @@ namespace GameDisplay
                     else if (this.model.DiedItems[i].WhoDied == UnitsWhatCanDie.Ghost3)
                     {
                         if (this.model.DiedItems[i].DieIndex == BRUSHES.Ghost3DyingBrushes.Count)
+                        {
+                            this.model.DiedItems[i] = null;
+                        }
+                    }
+                    else if (this.model.DiedItems[i].WhoDied == UnitsWhatCanDie.Orc1)
+                    {
+                        if (this.model.DiedItems[i].DieIndex == BRUSHES.Orc_1_DyingBrushes.Count)
+                        {
+                            this.model.DiedItems[i] = null;
+                        }
+                    }
+                    else if (this.model.DiedItems[i].WhoDied == UnitsWhatCanDie.Orc2)
+                    {
+                        if (this.model.DiedItems[i].DieIndex == BRUSHES.Orc_2_DyingBrushes.Count)
+                        {
+                            this.model.DiedItems[i] = null;
+                        }
+                    }
+                    else if (this.model.DiedItems[i].WhoDied == UnitsWhatCanDie.Orc3)
+                    {
+                        if (this.model.DiedItems[i].DieIndex == BRUSHES.Orc_3_DyingBrushes.Count)
                         {
                             this.model.DiedItems[i] = null;
                         }
@@ -874,6 +961,39 @@ namespace GameDisplay
                         drawingContext.DrawGeometry(this.BRUSHES.Ghost3AttackBrushes[enemy.AttackAnimationIndex], null, enemy.RealArea);
                     }
                 }
+                else if (enemy is EnemyOrc1)
+                {
+                    if (enemy.ShouldWalk)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Orc_1_WalkingBrushes[enemy.WalkingIndex], null, enemy.RealArea);
+                    }
+                    else if (enemy.ShouldAttack)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Orc_1_AttackBrushes[enemy.AttackAnimationIndex], null, enemy.RealArea);
+                    }
+                }
+                else if (enemy is EnemyOrc2)
+                {
+                    if (enemy.ShouldWalk)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Orc_2_WalkingBrushes[enemy.WalkingIndex], null, enemy.RealArea);
+                    }
+                    else if (enemy.ShouldAttack)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Orc_2_AttackBrushes[enemy.AttackAnimationIndex], null, enemy.RealArea);
+                    }
+                }
+                else if (enemy is EnemyOrc3)
+                {
+                    if (enemy.ShouldWalk)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Orc_3_WalkingBrushes[enemy.WalkingIndex], null, enemy.RealArea);
+                    }
+                    else if (enemy.ShouldAttack)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Orc_3_AttackBrushes[enemy.AttackAnimationIndex], null, enemy.RealArea);
+                    }
+                }
 
 
                 Geometry rect1 = new RectangleGeometry(new Rect(enemy.Position.X + Config.TileSize / 2, enemy.Position.Y, Config.TileSize/2, 15));
@@ -974,6 +1094,18 @@ namespace GameDisplay
                     else if (diedItem.WhoDied == UnitsWhatCanDie.Ghost3)
                     {
                         drawingContext.DrawGeometry(this.BRUSHES.Ghost3DyingBrushes[diedItem.DieIndex], null, diedItem.RealArea);
+                    }
+                    else if (diedItem.WhoDied == UnitsWhatCanDie.Orc1)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Orc_1_DyingBrushes[diedItem.DieIndex], null, diedItem.RealArea);
+                    }
+                    else if (diedItem.WhoDied == UnitsWhatCanDie.Orc2)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Orc_2_DyingBrushes[diedItem.DieIndex], null, diedItem.RealArea);
+                    }
+                    else if (diedItem.WhoDied == UnitsWhatCanDie.Orc3)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Orc_3_DyingBrushes[diedItem.DieIndex], null, diedItem.RealArea);
                     }
                     else if (diedItem.WhoDied == UnitsWhatCanDie.Archer)
                     {

@@ -13,7 +13,10 @@ namespace GameModel.Interfaces
         Archer,
         Ghost,
         Ghost2,
-        Ghost3
+        Ghost3,
+        Orc1,
+        Orc2,
+        Orc3
     }
     public interface IDyingItems{
 

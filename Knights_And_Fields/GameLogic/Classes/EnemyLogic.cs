@@ -27,7 +27,7 @@ namespace GameLogic.Classes
 
             for (int i = 0; i < enemyCount; i++)
             {
-                int rand = rnd.Next(3, 4);
+                int rand = rnd.Next(1, 4);
                 if (rand == 1){
                     this.model.ShouldSpawnEnemies.Add(
                     new EnemyGhost((10 * Config.TileSize), ((rnd.Next(0, Config.RowNumbers)) * Config.TileSize), rnd.Next(1, (this.model.Wave + 1)))
@@ -43,6 +43,26 @@ namespace GameLogic.Classes
                 {
                     this.model.ShouldSpawnEnemies.Add(
                     new EnemyGhost3((10 * Config.TileSize), ((rnd.Next(0, Config.RowNumbers)) * Config.TileSize), rnd.Next(1, (this.model.Wave + 1)))
+                    );
+                }
+
+                rand = rnd.Next(1, 4);
+                if (rand == 1)
+                {
+                    this.model.ShouldSpawnEnemies.Add(
+                    new EnemyOrc1((10 * Config.TileSize), ((rnd.Next(0, Config.RowNumbers)) * Config.TileSize), rnd.Next(1, (this.model.Wave + 1)))
+                    );
+                }
+                else if (rand == 2)
+                {
+                    this.model.ShouldSpawnEnemies.Add(
+                    new EnemyOrc2((10 * Config.TileSize), ((rnd.Next(0, Config.RowNumbers)) * Config.TileSize), rnd.Next(1, (this.model.Wave + 1)))
+                    );
+                }
+                else if (rand == 3)
+                {
+                    this.model.ShouldSpawnEnemies.Add(
+                    new EnemyOrc3((10 * Config.TileSize), ((rnd.Next(0, Config.RowNumbers)) * Config.TileSize), rnd.Next(1, (this.model.Wave + 1)))
                     );
                 }
             }
@@ -156,6 +176,10 @@ namespace GameLogic.Classes
                         if (this.model.Map[i][j].ActualLife <= 0)
                         {
                             if (enemy is EnemyGhost || enemy is EnemyGhost2 || enemy is EnemyGhost3){
+                                this.model.SOUNDS.GhostKilledAlliedUnit.Open(new Uri("Sounds\\ghostKilledAlliedUnit.mp3", UriKind.RelativeOrAbsolute));
+                                this.model.SOUNDS.GhostKilledAlliedUnit.Play();
+                            }
+                            else if (enemy is EnemyOrc1 || enemy is EnemyOrc2 || enemy is EnemyOrc3){
                                 this.model.SOUNDS.GhostKilledAlliedUnit.Open(new Uri("Sounds\\ghostKilledAlliedUnit.mp3", UriKind.RelativeOrAbsolute));
                                 this.model.SOUNDS.GhostKilledAlliedUnit.Play();
                             }
