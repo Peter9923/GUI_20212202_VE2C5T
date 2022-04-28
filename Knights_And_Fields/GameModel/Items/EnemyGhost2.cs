@@ -17,7 +17,7 @@ namespace GameModel.Items
             this.MaxLife = level * 100;
             this.ActualLife = MaxLife;
             this.Position = new Point(X, Y);
-            this.Damage = level * 10;
+            this.Damage = level * 8;
 
             this.ShouldWalk = true;
             this.AttackAnimationIndex = 0;

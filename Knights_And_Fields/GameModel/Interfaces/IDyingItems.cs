@@ -12,7 +12,8 @@ namespace GameModel.Interfaces
         Knight,
         Archer,
         Ghost,
-        Ghost2
+        Ghost2,
+        Ghost3
     }
     public interface IDyingItems{
 

@@ -31,8 +31,12 @@ namespace GameDisplay
 
         public List<Brush> Ghost2WalkingBrushes;
         public List<Brush> Ghost2AttackBrushes;
-        public List<Brush> Ghost2DyingBrushes;       
-        
+        public List<Brush> Ghost2DyingBrushes;
+
+        public List<Brush> Ghost3WalkingBrushes;
+        public List<Brush> Ghost3AttackBrushes;
+        public List<Brush> Ghost3DyingBrushes;
+
 
 
         //Button Brushes
@@ -106,36 +110,56 @@ namespace GameDisplay
             //EnemyKnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\EnemyKnight.png", UriKind.RelativeOrAbsolute)));
             GhostWalkingBrushes = new List<Brush>();
             for (int i = 0; i < 12; i++){
-                GhostWalkingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\ghostWalk{i}.png", UriKind.RelativeOrAbsolute))));
+                GhostWalkingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost1\\ghostWalk{i}.png", UriKind.RelativeOrAbsolute))));
             }
 
             GhostAttackBrushes = new List<Brush>();
             for (int i = 0; i < 12; i++){
-                GhostAttackBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\ghostAttack{i}.png", UriKind.RelativeOrAbsolute))));
+                GhostAttackBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost1\\ghostAttack{i}.png", UriKind.RelativeOrAbsolute))));
             }
 
             GhostDyingBrushes = new List<Brush>();
             for (int i = 0; i < 15; i++){
-                GhostDyingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\ghostDying{i}.png", UriKind.RelativeOrAbsolute))));
+                GhostDyingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost1\\ghostDying{i}.png", UriKind.RelativeOrAbsolute))));
             }
 
 
             Ghost2WalkingBrushes = new List<Brush>();
             for (int i = 0; i < 11; i++)
             {
-                Ghost2WalkingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\ghost2Walk{i}.png", UriKind.RelativeOrAbsolute))));
+                Ghost2WalkingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost2\\ghost2Walk{i}.png", UriKind.RelativeOrAbsolute))));
             }
 
             Ghost2AttackBrushes = new List<Brush>();
             for (int i = 0; i < 11; i++)
             {
-                Ghost2AttackBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\ghost2Attack{i}.png", UriKind.RelativeOrAbsolute))));
+                Ghost2AttackBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost2\\ghost2Attack{i}.png", UriKind.RelativeOrAbsolute))));
             }
 
             Ghost2DyingBrushes = new List<Brush>();
             for (int i = 0; i < 15; i++){
-                Ghost2DyingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\ghost2Dying{i}.png", UriKind.RelativeOrAbsolute))));
+                Ghost2DyingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost2\\ghost2Dying{i}.png", UriKind.RelativeOrAbsolute))));
             }
+
+
+            Ghost3WalkingBrushes = new List<Brush>();
+            for (int i = 0; i < 12; i++)
+            {
+                Ghost3WalkingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost3\\ghost3Walk{i}.png", UriKind.RelativeOrAbsolute))));
+            }
+
+            Ghost3AttackBrushes = new List<Brush>();
+            for (int i = 0; i < 12; i++)
+            {
+                Ghost3AttackBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost3\\Wraith_03_Attack_{i}.png", UriKind.RelativeOrAbsolute))));
+            }
+
+            Ghost3DyingBrushes = new List<Brush>();
+            for (int i = 0; i < 15; i++)
+            {
+                Ghost3DyingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Enemy\\Ghost3\\Wraith_03_Dying_{i}.png", UriKind.RelativeOrAbsolute))));
+            }
+
 
 
             MoveButtonBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Move.png", UriKind.RelativeOrAbsolute)));

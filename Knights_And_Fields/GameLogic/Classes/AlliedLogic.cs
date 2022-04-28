@@ -58,10 +58,14 @@ namespace GameLogic.Classes
                                 {
                                     this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[k].Position.X, this.model.SpawnedEnemies[k].Position.Y, UnitsWhatCanDie.Ghost2));
                                 }
+                                else if (this.model.SpawnedEnemies[k] is EnemyGhost3)
+                                {
+                                    this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[k].Position.X, this.model.SpawnedEnemies[k].Position.Y, UnitsWhatCanDie.Ghost3));
+                                }
 
                                 this.model.Score += this.model.SpawnedEnemies[k].Level * 5;
 
-                                if (this.model.SpawnedEnemies[k] is EnemyGhost || this.model.SpawnedEnemies[k] is EnemyGhost2)
+                                if (this.model.SpawnedEnemies[k] is EnemyGhost || this.model.SpawnedEnemies[k] is EnemyGhost2 || this.model.SpawnedEnemies[k] is EnemyGhost3)
                                 {
                                     this.model.SOUNDS.GhostDied.Open(new Uri("Sounds\\ghostDied.mp3", UriKind.RelativeOrAbsolute));
                                     this.model.SOUNDS.GhostDied.Play();
@@ -150,7 +154,11 @@ namespace GameLogic.Classes
                         }
                         else if (this.model.SpawnedEnemies[i] is EnemyGhost2)
                         {
-                            this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[i].Position.X, this.model.SpawnedEnemies[i].Position.Y, UnitsWhatCanDie.Ghost));
+                            this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[i].Position.X, this.model.SpawnedEnemies[i].Position.Y, UnitsWhatCanDie.Ghost2));
+                        }
+                        else if (this.model.SpawnedEnemies[i] is EnemyGhost3)
+                        {
+                            this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[i].Position.X, this.model.SpawnedEnemies[i].Position.Y, UnitsWhatCanDie.Ghost3));
                         }
 
                         this.model.Score += this.model.SpawnedEnemies[i].Level * 5;

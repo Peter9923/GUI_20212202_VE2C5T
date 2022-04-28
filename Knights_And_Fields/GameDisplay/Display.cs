@@ -426,7 +426,7 @@ namespace GameDisplay
                             }
                         }
                     }
-                    if (this.model.SpawnedEnemies[i] is EnemyGhost2)
+                    else if (this.model.SpawnedEnemies[i] is EnemyGhost2)
                     {
                         if (this.model.SpawnedEnemies[i].ShouldAttack)
                         {
@@ -443,6 +443,28 @@ namespace GameDisplay
                             this.model.SpawnedEnemies[i].WalkingIndex++;
 
                             if (this.model.SpawnedEnemies[i].WalkingIndex == BRUSHES.Ghost2WalkingBrushes.Count)
+                            {
+                                this.model.SpawnedEnemies[i].WalkingIndex = 0;
+                            }
+                        }
+                    }
+                    else if (this.model.SpawnedEnemies[i] is EnemyGhost3)
+                    {
+                        if (this.model.SpawnedEnemies[i].ShouldAttack)
+                        {
+                            this.model.SpawnedEnemies[i].AttackAnimationIndex++;
+
+                            if (this.model.SpawnedEnemies[i].AttackAnimationIndex == BRUSHES.Ghost3AttackBrushes.Count)
+                            {
+                                this.enemyLogic.AttackAlliedUnits(this.model.SpawnedEnemies[i]);
+                                this.model.SpawnedEnemies[i].AttackAnimationIndex = 0;
+                            }
+                        }
+                        else if (this.model.SpawnedEnemies[i].ShouldWalk)
+                        {
+                            this.model.SpawnedEnemies[i].WalkingIndex++;
+
+                            if (this.model.SpawnedEnemies[i].WalkingIndex == BRUSHES.Ghost3WalkingBrushes.Count)
                             {
                                 this.model.SpawnedEnemies[i].WalkingIndex = 0;
                             }
@@ -477,6 +499,13 @@ namespace GameDisplay
                     }
                     else if (this.model.DiedItems[i].WhoDied == UnitsWhatCanDie.Ghost2){
                         if (this.model.DiedItems[i].DieIndex == BRUSHES.Ghost2DyingBrushes.Count)
+                        {
+                            this.model.DiedItems[i] = null;
+                        }
+                    }
+                    else if (this.model.DiedItems[i].WhoDied == UnitsWhatCanDie.Ghost3)
+                    {
+                        if (this.model.DiedItems[i].DieIndex == BRUSHES.Ghost3DyingBrushes.Count)
                         {
                             this.model.DiedItems[i] = null;
                         }
@@ -834,6 +863,17 @@ namespace GameDisplay
                         drawingContext.DrawGeometry(this.BRUSHES.Ghost2AttackBrushes[enemy.AttackAnimationIndex], null, enemy.RealArea);
                     }
                 }
+                else if (enemy is EnemyGhost3)
+                {
+                    if (enemy.ShouldWalk)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Ghost3WalkingBrushes[enemy.WalkingIndex], null, enemy.RealArea);
+                    }
+                    else if (enemy.ShouldAttack)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Ghost3AttackBrushes[enemy.AttackAnimationIndex], null, enemy.RealArea);
+                    }
+                }
 
 
                 Geometry rect1 = new RectangleGeometry(new Rect(enemy.Position.X + Config.TileSize / 2, enemy.Position.Y, Config.TileSize/2, 15));
@@ -930,6 +970,10 @@ namespace GameDisplay
                     else if (diedItem.WhoDied == UnitsWhatCanDie.Ghost2)
                     {
                         drawingContext.DrawGeometry(this.BRUSHES.Ghost2DyingBrushes[diedItem.DieIndex], null, diedItem.RealArea);
+                    }
+                    else if (diedItem.WhoDied == UnitsWhatCanDie.Ghost3)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.Ghost3DyingBrushes[diedItem.DieIndex], null, diedItem.RealArea);
                     }
                     else if (diedItem.WhoDied == UnitsWhatCanDie.Archer)
                     {
