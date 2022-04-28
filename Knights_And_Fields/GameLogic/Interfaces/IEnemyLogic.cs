@@ -9,7 +9,7 @@ namespace GameLogic.Interfaces
 {
     public interface IEnemyLogic
     {
-        public void SpawnAnEnemy();
+        public bool SpawnAnEnemy();
         public void DeleteNullEnemies();
         public void EnemyMove();
         public void AttackAlliedUnits(IEnemy enemy);

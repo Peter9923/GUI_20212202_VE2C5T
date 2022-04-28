@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GameModel.Interfaces
 {
-    public interface IAllied : IUnit{
-        public int Cost { get; set; }
+    public interface IAllied : IUnit { 
         public int UpgradeCost { get; }
+        public int Cost { get; }
     }
 }

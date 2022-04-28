@@ -22,7 +22,7 @@ namespace GameModel.Items
             this.AttackAnimationIndex = 0;
             this.WalkingIndex = 0;
 
-            speedX = -1;
+            speedX = -1.5;
             
         }
 
@@ -30,8 +30,6 @@ namespace GameModel.Items
         private static Random rnd = new Random();
         private double speedX;
         public double SpeedX { get { return speedX; } set { speedX = value; } }
-        public int Cost { get; set; }
-        public int UpgradeCost { get { return Level * Cost; } }
         public double MaxLife { get; set; }
         public double ActualLife { get; set; }
         public int Level { get; set; }

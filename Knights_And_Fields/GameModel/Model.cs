@@ -26,7 +26,7 @@ namespace GameModel
             double tileSize2 = Config.GameHeight / (Config.RowNumbers+2);
             Config.TileSize = (tileSize1 >= tileSize2) ? tileSize2 : tileSize1;
 
-            this.Gold = 550;
+            this.Gold = 1200;
             this.Wave = 0;
             this.CastleMaxHP = 500;
             this.CastleActualHP = this.CastleMaxHP;

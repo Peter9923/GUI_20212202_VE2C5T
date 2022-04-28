@@ -48,11 +48,13 @@ namespace GameLogic.Classes
             this.model.SpawnedEnemies = this.model.SpawnedEnemies.Where(x => x != null).ToList();
         }
 
-        public void SpawnAnEnemy()
+        public bool SpawnAnEnemy()
         {
+            bool result = false;
             if (this.model.ShouldSpawnEnemies.Count == 0 && this.model.SpawnedEnemies.Count == 0)
             {
                 CreateEnemies();
+                result = true;
             }
             for (int i = 0; i < this.model.ShouldSpawnEnemies.Count; i++){
 
@@ -78,6 +80,7 @@ namespace GameLogic.Classes
 
             }
             this.model.ShouldSpawnEnemies = this.model.ShouldSpawnEnemies.Where(x => x != null).ToList();
+            return result;
         }
 
         public void EnemyMove() {
@@ -148,17 +151,16 @@ namespace GameLogic.Classes
 
                         if (this.model.Map[i][j].ActualLife <= 0)
                         {
-                            if (enemy is EnemyGhost || enemy is EnemyGhost2)
-                            {
+                            if (enemy is EnemyGhost || enemy is EnemyGhost2){
                                 this.model.SOUNDS.GhostKilledAlliedUnit.Open(new Uri("Sounds\\ghostKilledAlliedUnit.mp3", UriKind.RelativeOrAbsolute));
                                 this.model.SOUNDS.GhostKilledAlliedUnit.Play();
                             }
 
                             if (this.model.Map[i][j] is Archer){
-
-                                this.model.DiedItems.Add( new DyingItems( (this.model.Map[i][j].Position.X+1) * Config.TileSize, this.model.Map[i][j].Position.Y * Config.TileSize, UnitsWhatCanDie.Archer));
-                                
-
+                                this.model.DiedItems.Add(new DyingItems((this.model.Map[i][j].Position.X + 1) * Config.TileSize, this.model.Map[i][j].Position.Y * Config.TileSize, UnitsWhatCanDie.Archer));
+                            }
+                            else if (this.model.Map[i][j] is Knight) {
+                                this.model.DiedItems.Add(new DyingItems((this.model.Map[i][j].Position.X + 1) * Config.TileSize, this.model.Map[i][j].Position.Y * Config.TileSize, UnitsWhatCanDie.Knight));
                             }
 
                             this.model.Map[i][j] = null;

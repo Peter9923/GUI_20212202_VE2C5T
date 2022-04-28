@@ -29,6 +29,7 @@ namespace GameDisplay
 
         Stopwatch _alliedAnimationStopWatch;
         Stopwatch _bulletsMoveStopWatch;
+        Stopwatch _alliedMeleeAttackStopWatch;
 
         Stopwatch _enemySpawnerStopWatch;
         Stopwatch _enemyMoveStopWatch;
@@ -40,11 +41,16 @@ namespace GameDisplay
         Stopwatch _giveGoldStopwatch;
 
 
+        Stopwatch _waveDrawAnimation;
+
+
         Stopwatch _backGroundMusicStopwatch;
 
         List<Geometry> ButtonsGeometry;
 
         bool EXIT = false;
+        bool shouldDrawWave = false;
+        int waweIndex = 1;
 
         Point MovedMouseTilePos;
         Point MovedUnitPrevPos;
@@ -96,9 +102,9 @@ namespace GameDisplay
             if (EXIT == false){
                 MovedMouseTilePos = this.displayLogic.GetTilePos(this.PointToScreen(Mouse.GetPosition(this)));
             }
-            
 
 
+            this.MeleeAnimation();
             this.AlliedAnimation();
             this.BulletsMoving();
             this.SpawnAnEnemy();
@@ -129,6 +135,8 @@ namespace GameDisplay
             _dyingStopwatch = new Stopwatch();
             _giveGoldStopwatch = new Stopwatch();
             _backGroundMusicStopwatch = new Stopwatch();
+            _waveDrawAnimation = new Stopwatch();
+            _alliedMeleeAttackStopWatch = new Stopwatch();
 
             _attackStopwatch.Start();
             _alliedAnimationStopWatch.Start();
@@ -139,6 +147,7 @@ namespace GameDisplay
             _dyingStopwatch.Start();
             _giveGoldStopwatch.Start();
             _backGroundMusicStopwatch.Start();
+            _alliedMeleeAttackStopWatch.Start();
         }
 
 
@@ -291,9 +300,34 @@ namespace GameDisplay
 
 
 
+        private void MeleeAnimation() {
+            if (_alliedMeleeAttackStopWatch.ElapsedMilliseconds >= 80)
+            {
+                this.alliedLogic.CheckWhichAlliedShouldAttack();
 
+                for (int y = 0; y < this.model.Map.Length; y++)
+                {
+                    for (int x = 0; x < this.model.Map[y].Length; x++)
+                    {
+                        if (this.model.Map[y][x] is Knight knight){
+                            if (knight.ShouldAttack){
+                                knight.AttackAnimationIndex++;
 
+                                if (knight.AttackAnimationIndex == BRUSHES.KnightBrushes.Count){
+                                    this.alliedLogic.AlliedAttackAnEnemy(knight);
+                                    knight.AttackAnimationIndex = 0;
+                                }
+                            }
+                        }
+                    }
+                }
 
+                _alliedMeleeAttackStopWatch.Stop();
+                _alliedMeleeAttackStopWatch.Reset();
+                _alliedMeleeAttackStopWatch.Start();
+            }
+
+        }
 
         private void AlliedAnimation() {
             if (_alliedAnimationStopWatch.ElapsedMilliseconds >= 200)
@@ -302,11 +336,7 @@ namespace GameDisplay
                 {
                     for (int x = 0; x < this.model.Map[y].Length; x++)
                     {
-                        if (this.model.Map[y][x] is Knight knight)
-                        {
-                            //To do
-                        }
-                        else if (this.model.Map[y][x] is Archer archer)
+                        if (this.model.Map[y][x] is Archer archer)
                         {
                             if (archer.AttackAnimationIndex == this.BRUSHES.ArcherBrushes.Count - 1)
                             {
@@ -346,8 +376,11 @@ namespace GameDisplay
         private void SpawnAnEnemy() {
             if (_enemySpawnerStopWatch.ElapsedMilliseconds >= 3000)
             {
-                
-                this.enemyLogic.SpawnAnEnemy();
+                shouldDrawWave = this.enemyLogic.SpawnAnEnemy();
+
+                if (shouldDrawWave && waweIndex == 1){
+                    _waveDrawAnimation.Start();
+                }
 
                 _enemySpawnerStopWatch.Stop();
                 _enemySpawnerStopWatch.Reset();
@@ -455,6 +488,13 @@ namespace GameDisplay
                             this.model.DiedItems[i] = null;
                         }
                     }
+                    else if (this.model.DiedItems[i].WhoDied == UnitsWhatCanDie.Knight)
+                    {
+                        if (this.model.DiedItems[i].DieIndex == BRUSHES.KnightDieBrushes.Count)
+                        {
+                            this.model.DiedItems[i] = null;
+                        }
+                    }
 
                 }
 
@@ -500,6 +540,9 @@ namespace GameDisplay
                     DrawForegroundElements(drawingContext);
                     DrawArrows(drawingContext);
                     DrawDiyingItems(drawingContext);
+
+                    DrawActualWave(drawingContext);
+                    DrawActualCost(drawingContext);
 
                 }
             }
@@ -728,7 +771,14 @@ namespace GameDisplay
                 {
                     if (this.model.Map[y][x] is Knight knight)
                     {
-                        drawingContext.DrawGeometry(this.BRUSHES.KnightBrush, null, knight.RealArea);
+                        if (knight.ShouldWalk){
+                            drawingContext.DrawGeometry(this.BRUSHES.KnightBrushes[0], null, knight.RealArea);
+                        }
+                        else if (knight.ShouldAttack){
+                            drawingContext.DrawGeometry(this.BRUSHES.KnightBrushes[knight.AttackAnimationIndex], null, knight.RealArea);
+                        }
+
+
                     }
                     else if (this.model.Map[y][x] is Archer archer)
                     {
@@ -804,7 +854,7 @@ namespace GameDisplay
             if (MovedMouseTilePos.X >= 0 && MovedMouseTilePos.X < Config.ColumnNumbers-1 && MovedMouseTilePos.Y >= 0 && MovedMouseTilePos.Y < Config.RowNumbers){
                 if (this.model.Map[(int)MovedMouseTilePos.Y][(int)MovedMouseTilePos.X] == null){
                     if (this.model.DeployKnight){
-                        drawingContext.DrawGeometry(this.BRUSHES.TemporaryKnightBruesh, new Pen(Brushes.Gray, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
+                        drawingContext.DrawGeometry(this.BRUSHES.TemporaryKnightBrush, new Pen(Brushes.Gray, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
 
                     }
                     else if (this.model.DeployArcher){
@@ -813,7 +863,7 @@ namespace GameDisplay
                     else if (this.model.MoveUnit && MovedUnitPrevPos.X != -1 && MovedUnitPrevPos.X < Config.ColumnNumbers && MovedUnitPrevPos.Y < Config.RowNumbers){
 
                         if (this.model.Map[(int)MovedUnitPrevPos.Y][(int)MovedUnitPrevPos.X] is Knight){
-                            drawingContext.DrawGeometry(this.BRUSHES.TemporaryKnightBruesh, new Pen(Brushes.Aqua, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
+                            drawingContext.DrawGeometry(this.BRUSHES.TemporaryKnightBrush, new Pen(Brushes.Aqua, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
                         }
                         else if (this.model.Map[(int)MovedUnitPrevPos.Y][(int)MovedUnitPrevPos.X] is Archer){
                             drawingContext.DrawGeometry(this.BRUSHES.TemporaryArcherBrush, new Pen(Brushes.Aqua, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
@@ -885,11 +935,129 @@ namespace GameDisplay
                     {
                         drawingContext.DrawGeometry(this.BRUSHES.ArcherDieBrushes[diedItem.DieIndex], null, diedItem.RealArea);
                     }
+                    else if (diedItem.WhoDied == UnitsWhatCanDie.Knight)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.KnightDieBrushes[diedItem.DieIndex], null, diedItem.RealArea);
+                    }
                 }
                 
 
             }
 
         }
+
+        [Obsolete]
+        private void DrawActualWave(DrawingContext drawingContext) {
+
+            if (waweIndex <= 301 && shouldDrawWave){
+                FormattedText formattedText = new FormattedText("WAAAVE" + this.model.Wave.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                            new Typeface(
+                                new FontFamily("Arial"),
+                                FontStyles.Italic,
+                                FontWeights.Bold,
+                                FontStretches.Normal), (waweIndex + 1), Brushes.LightYellow);
+
+                drawingContext.DrawGeometry(null, new Pen(Brushes.LightYellow, 3), formattedText.BuildGeometry(new Point(Config.TileSize, Config.TileSize)));
+                waweIndex++;
+            }
+            else if (waweIndex == 1){
+
+            }
+            else if (waweIndex <= 301){
+                FormattedText formattedText = new FormattedText("WAAAVE" + this.model.Wave.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                            new Typeface(
+                                new FontFamily("Arial"),
+                                FontStyles.Italic,
+                                FontWeights.Bold,
+                                FontStretches.Normal), (waweIndex + 1), Brushes.LightYellow);
+
+                drawingContext.DrawGeometry(null, new Pen(Brushes.LightYellow, 3), formattedText.BuildGeometry(new Point(Config.TileSize, Config.TileSize)));
+                waweIndex++;
+            }
+            if (waweIndex == 301){
+                waweIndex = 1;
+                _waveDrawAnimation.Stop();
+                _waveDrawAnimation.Reset();
+                shouldDrawWave = false;
+            }
+        }
+
+        [Obsolete]
+        private void DrawActualCost(DrawingContext drawingContext) {
+
+            if (MovedMouseTilePos.X >= 0 && MovedMouseTilePos.Y >= 0 && MovedMouseTilePos.X < Config.ColumnNumbers && MovedMouseTilePos.Y < Config.RowNumbers)
+            {
+                FormattedText formattedText = new FormattedText("", CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                           new Typeface(
+                               new FontFamily("Arial"),
+                               FontStyles.Italic,
+                               FontWeights.Bold,
+                               FontStretches.Normal), 40, Brushes.Black);
+                if (this.model.Map[(int)MovedMouseTilePos.Y][(int)MovedMouseTilePos.X] != null &&
+                    this.model.Map[(int)MovedMouseTilePos.Y][(int)MovedMouseTilePos.X] is IAllied allied)
+                {
+
+                    if (this.model.MoveUnit)
+                    {
+                        formattedText = new FormattedText($"COST: {allied.UpgradeCost / 2}.",
+                                    CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                                     new Typeface(
+                                         new FontFamily("Arial"),
+                                         FontStyles.Italic,
+                                         FontWeights.Bold,
+                                         FontStretches.Normal), 40, Brushes.Black);
+                    }
+                    else if (this.model.UpgradeUnit)
+                    {
+                        formattedText = new FormattedText($"COST: {allied.UpgradeCost}.",
+                                    CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                                     new Typeface(
+                                         new FontFamily("Arial"),
+                                         FontStyles.Italic,
+                                         FontWeights.Bold,
+                                         FontStretches.Normal), 40, Brushes.Black);
+                    }
+                    else if (this.model.RemoveUnit)
+                    {
+                        formattedText = new FormattedText($"GET: {allied.UpgradeCost / 2}.",
+                                    CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                                     new Typeface(
+                                         new FontFamily("Arial"),
+                                         FontStyles.Italic,
+                                         FontWeights.Bold,
+                                         FontStretches.Normal), 40, Brushes.Black);
+                    }
+                }
+                else if (this.model.Map[(int)MovedMouseTilePos.Y][(int)MovedMouseTilePos.X] == null)
+                {
+                    if (this.model.DeployArcher){
+                        formattedText = new FormattedText($"COST: " + 250,
+                                    CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                                     new Typeface(
+                                         new FontFamily("Arial"),
+                                         FontStyles.Italic,
+                                         FontWeights.Bold,
+                                         FontStretches.Normal), 40, Brushes.Black);
+                    }
+                    else if (this.model.DeployKnight)
+                    {
+                        formattedText = new FormattedText($"COST: " + 150,
+                                    CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                                     new Typeface(
+                                         new FontFamily("Arial"),
+                                         FontStyles.Italic,
+                                         FontWeights.Bold,
+                                         FontStretches.Normal), 40, Brushes.Black);
+                    }
+                    
+
+                }
+
+                
+
+                drawingContext.DrawGeometry(null, new Pen(Brushes.Black, 2), formattedText.BuildGeometry(new Point(Config.TileSize * (Config.ColumnNumbers + 1), Config.TileSize * (Config.RowNumbers - 1))));
+            }  
+        }
+
     }
 }

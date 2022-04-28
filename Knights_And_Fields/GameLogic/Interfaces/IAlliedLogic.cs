@@ -12,5 +12,8 @@ namespace GameLogic.Interfaces
         public void GenerateArrow(int x, int y);
         public void CheckWhichArrowShouldDraw(IUnit allied);
         public void BulletsMoving();
+
+        public void CheckWhichAlliedShouldAttack();
+        public void AlliedAttackAnEnemy(IUnit allied);
     }
 }

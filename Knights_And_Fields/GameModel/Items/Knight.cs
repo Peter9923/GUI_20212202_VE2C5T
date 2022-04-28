@@ -12,17 +12,18 @@ namespace GameModel.Items
     public class Knight : IAllied
     {
         public Knight(int X, int Y){
-            this.Cost = 150;
             this.level = 1;
             this.MaxLife = 100;
             this.ActualLife = MaxLife;
             this.Position = new Point(X, Y);
             this.AttackAnimationIndex = 0;
             this.WalkingIndex = 0;
+            this.ShouldAttack = false;
+            this.ShouldWalk = true;
         }
 
 
-        public int Cost { get; set; }
+        public int Cost { get { return 150; } }
         public int UpgradeCost { get { return Level * Cost; }}
         public double MaxLife { get; set; }
         public double ActualLife { get; set; }
@@ -65,7 +66,7 @@ namespace GameModel.Items
             }
         }
         public int WalkingIndex { get; set; }
-        public double Damage { get; set; }
+        public double Damage { get { return level * 10; } }
         public Point Position { get; set; }
 
         public Geometry RealArea {

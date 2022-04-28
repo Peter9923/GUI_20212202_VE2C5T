@@ -45,7 +45,17 @@
       "ProjectGuid": "f43c5ff3-bf21-4f22-8834-4b2adc013d49",
       "DisplayName": "GameDisplay",
       "ColorIndex": 7
+    },
+    "cb063297-1dd5-4c71-aad6-dd5759b5fca1": {
+      "ProjectGuid": "cb063297-1dd5-4c71-aad6-dd5759b5fca1",
+      "DisplayName": "GameMenu",
+      "ColorIndex": 8
+    },
+    "e39b3b58-c78b-40cb-be47-6a0b3e5b2563": {
+      "ProjectGuid": "e39b3b58-c78b-40cb-be47-6a0b3e5b2563",
+      "DisplayName": "GameLogic",
+      "ColorIndex": 9
     }
   },
-  "NextColorIndex": 8
+  "NextColorIndex": 10
 }

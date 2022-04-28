@@ -7,7 +7,6 @@
         xmlns:display="clr-namespace:GameMenu.Displayes"
         mc:Ignorable="d"
         Height="800" Width="800" 
-        WindowStyle="None"
         ResizeMode="NoResize"
         >
     <display:MainMenuDisplay />

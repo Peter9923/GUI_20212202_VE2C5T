@@ -12,7 +12,6 @@ namespace GameModel.Items
     public class Archer : IAllied {
         public Archer(int X, int Y)
         {
-            this.Cost = 250;
             this.level = 1;
             this.MaxLife = 100;
             this.ActualLife = MaxLife;
@@ -24,7 +23,7 @@ namespace GameModel.Items
         }
 
         public List<Bullet> Arrows { get; set; }
-        public int Cost { get; set; }
+        public int Cost { get { return 250; } }
         public int UpgradeCost { get { return (Level * Cost); } }
         public double MaxLife { get; set; }
         public double ActualLife { get; set; }

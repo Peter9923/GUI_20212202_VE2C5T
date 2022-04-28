@@ -11,26 +11,28 @@ namespace GameDisplay
     public class MyBrush{
 
         //Brushes
-        public Brush KnightBrush;
-        //public Brush EnemyKnightBrush;
+        //Allieds
+        public List<Brush> KnightBrushes;
+        //public List<Brush> KnightWaitingBrushes;
+        public List<Brush> KnightDieBrushes;
+        public Brush TemporaryKnightBrush;
 
 
         public List<Brush> ArcherBrushes;
         public Brush ArrowBrush;
         public List<Brush> ArcherDieBrushes;
+        public Brush TemporaryArcherBrush;
 
 
+        //enemies
         public List<Brush> GhostWalkingBrushes;
         public List<Brush> GhostAttackBrushes;
         public List<Brush> GhostDyingBrushes;
 
         public List<Brush> Ghost2WalkingBrushes;
         public List<Brush> Ghost2AttackBrushes;
-        public List<Brush> Ghost2DyingBrushes;
-
-        //
-        public Brush TemporaryKnightBruesh;
-        public Brush TemporaryArcherBrush;
+        public List<Brush> Ghost2DyingBrushes;       
+        
 
 
         //Button Brushes
@@ -58,8 +60,21 @@ namespace GameDisplay
         }
 
         public void SetBrushes() {
-            KnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Knight.png", UriKind.RelativeOrAbsolute)));
-            
+
+            KnightBrushes = new List<Brush>();
+            for (int i = 0; i < 10; i++){
+                KnightBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Knight3\\Knight_03__ATTACK_00{i}_prev_ui.png", UriKind.RelativeOrAbsolute))));
+            }
+            //KnightWaitingBrushes = new List<Brush>();
+            //for (int i = 0; i < 5; i++){
+            //    KnightWaitingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Knight3\\Knight_03__IDLE_00{i}_prev_ui.png", UriKind.RelativeOrAbsolute))));
+            //}
+            KnightDieBrushes = new List<Brush>();
+            for (int i = 0; i < 10; i++){
+                KnightDieBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Knight3\\Knight_03__DIE_00{i}_prev_ui.png", UriKind.RelativeOrAbsolute))));
+            }
+
+
             ArcherBrushes = new List<Brush>();
             for (int i = 0; i < 6; i++){
                 ArcherBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Archer\\Warrior_03__ATTACK_00{i}.png", UriKind.RelativeOrAbsolute))));
@@ -72,8 +87,8 @@ namespace GameDisplay
             }
 
 
-            TemporaryKnightBruesh = new ImageBrush(new BitmapImage(new Uri("Images\\Knight.png", UriKind.RelativeOrAbsolute)));
-            TemporaryKnightBruesh.Opacity = 0.5;
+            TemporaryKnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Allied\\Knight3\\Knight_03__ATTACK_000_prev_ui.png", UriKind.RelativeOrAbsolute)));
+            TemporaryKnightBrush.Opacity = 0.5;
 
             TemporaryArcherBrush = new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Archer\\Warrior_03__ATTACK_000.png", UriKind.RelativeOrAbsolute)));
             TemporaryArcherBrush.Opacity = 0.5;

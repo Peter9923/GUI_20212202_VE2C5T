@@ -67,6 +67,8 @@ namespace GameLogic.Classes
                                     this.model.SOUNDS.GhostDied.Play();
                                 }
 
+                                this.model.Score += (this.model.SpawnedEnemies[k].Level * 3);
+                                this.model.Gold += (this.model.SpawnedEnemies[k].Level * 5);
                                 this.model.SpawnedEnemies[k] = null;
                             }
 
@@ -94,6 +96,74 @@ namespace GameLogic.Classes
                     }
                 }
             }
+        }
+
+        public void CheckWhichAlliedShouldAttack() {
+
+
+            for (int i = 0; i < this.model.Map.Length; i++)
+            {
+                for (int j = 0; j < this.model.Map[i].Length; j++){
+
+
+                    if (this.model.Map[i][j] != null || this.model.Map[i][j] is Knight){
+
+                        foreach (var enemy in this.model.SpawnedEnemies)
+                        {
+
+                            if (enemy != null && (this.model.Map[i][j].IsCollision(enemy) == true || enemy.IsCollision(this.model.Map[i][j]))){
+                                this.model.Map[i][j].ShouldAttack = true;
+                                this.model.Map[i][j].ShouldWalk = false;
+                                break;
+                            }
+                            else{
+                                this.model.Map[i][j].ShouldAttack = false;
+                                this.model.Map[i][j].ShouldWalk = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        public void AlliedAttackAnEnemy(IUnit allied) {
+            for (int i = 0; i < this.model.SpawnedEnemies.Count; i++)
+            {
+                if (allied != null && this.model.SpawnedEnemies[i] != null &&
+                        (this.model.SpawnedEnemies[i].IsCollision(allied) == true ||allied.IsCollision(this.model.SpawnedEnemies[i]) == true))
+                {
+                    this.model.SpawnedEnemies[i].ActualLife -= allied.Damage;
+
+                    if (this.model.SpawnedEnemies[i].ActualLife <= 0)
+                    {
+                        if (this.model.SpawnedEnemies[i] is EnemyGhost || this.model.SpawnedEnemies[i] is EnemyGhost2)
+                        {
+                            this.model.SOUNDS.GhostDied.Open(new Uri("Sounds\\ghostDied.mp3", UriKind.RelativeOrAbsolute));
+                            this.model.SOUNDS.GhostDied.Play();
+                        }
+
+                        if (this.model.SpawnedEnemies[i] is EnemyGhost)
+                        {
+                            this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[i].Position.X, this.model.SpawnedEnemies[i].Position.Y, UnitsWhatCanDie.Ghost));
+                        }
+                        else if (this.model.SpawnedEnemies[i] is EnemyGhost2)
+                        {
+                            this.model.DiedItems.Add(new DyingItems(this.model.SpawnedEnemies[i].Position.X, this.model.SpawnedEnemies[i].Position.Y, UnitsWhatCanDie.Ghost));
+                        }
+
+                        this.model.Score += this.model.SpawnedEnemies[i].Level * 5;
+                        this.model.Gold += this.model.SpawnedEnemies[i].Level * 10;
+
+                        this.model.SpawnedEnemies[i] = null;
+
+                    }
+
+                }
+
+            }
+
         }
 
     }

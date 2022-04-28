@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameMenu.Windows"
         mc:Ignorable="d"
-        Title="CreateNewGameWindow" Height="200" Width="450"
-        WindowStyle="None"
+        Height="200" Width="450"
         ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush Stretch="Fill" ImageSource="/Images/Menu/gallery.png" />
