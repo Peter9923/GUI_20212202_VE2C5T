@@ -24,6 +24,8 @@ namespace GameDisplay
         public List<Brush> ArcherDieBrushes;
         public Brush TemporaryArcherBrush;
 
+        public List<Brush> WallBrushes;
+
 
         //enemies
         public List<Brush> GhostWalkingBrushes;
@@ -92,6 +94,13 @@ namespace GameDisplay
             //for (int i = 0; i < 5; i++){
             //    KnightWaitingBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Knight3\\Knight_03__IDLE_00{i}_prev_ui.png", UriKind.RelativeOrAbsolute))));
             //}
+
+            WallBrushes = new List<Brush>();
+            for (int i = 0; i < 1; i++)
+            {
+                WallBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Wall\\Wall{i}.png", UriKind.RelativeOrAbsolute))));
+            }
+            
             KnightDieBrushes = new List<Brush>();
             for (int i = 0; i < 10; i++)
             {
