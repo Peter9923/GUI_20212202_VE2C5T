@@ -17,6 +17,7 @@ namespace GameLogic.Classes
 
         private const int KnightCost = 150;
         private const int ArcherCost = 250;
+        private const int WallCost = 100;
 
         private const int ScorePointForDeployUnit = 5;
 
@@ -41,6 +42,12 @@ namespace GameLogic.Classes
                     {
                         this.Model.Map[y][x] = new Archer(x, y);
                         this.Model.Gold -= ArcherCost;
+                        this.Model.Score += 5;
+                    }
+                    else if (this.Model.DeployWall && this.Model.Gold >= WallCost)
+                    {
+                        this.Model.Map[y][x] = new Wall(x, y);
+                        this.Model.Gold -= WallCost;
                         this.Model.Score += 5;
                     }
                 }
