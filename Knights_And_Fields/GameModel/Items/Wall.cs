@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace GameModel.Items
 {
-    class Wall : IAllied
+    public class Wall : IAllied
     {
         public Wall(int X, int Y)
         {

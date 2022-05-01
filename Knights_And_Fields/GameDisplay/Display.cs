@@ -780,6 +780,18 @@ namespace GameDisplay
             }
         }
 
+        private void DeployWallButton(DrawingContext drawingContext)
+        {
+            if (this.model.DeployArcher)
+            {
+                drawingContext.DrawGeometry(this.BRUSHES.DeployWallSelectedBrush, null, ButtonsGeometry[2]);
+            }
+            else
+            {
+                drawingContext.DrawGeometry(this.BRUSHES.DeployWallBrush, null, ButtonsGeometry[2]);
+            }
+        }
+
         private void MoveButton(DrawingContext drawingContext)
         {
             if (this.model.MoveUnit)
@@ -899,6 +911,10 @@ namespace GameDisplay
                     else if (this.model.Map[y][x] is Archer archer)
                     {
                         drawingContext.DrawGeometry(this.BRUSHES.ArcherBrushes[archer.AttackAnimationIndex], null, archer.RealArea);
+                    }
+                    else if (this.model.Map[y][x] is Wall wall)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.WallBrushes[wall.AttackAnimationIndex], null, wall.RealArea);
                     }
                 }
             }
@@ -1126,7 +1142,7 @@ namespace GameDisplay
         private void DrawActualWave(DrawingContext drawingContext) {
 
             if (waweIndex <= 301 && shouldDrawWave){
-                FormattedText formattedText = new FormattedText("WAAAVE" + this.model.Wave.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                FormattedText formattedText = new FormattedText("WAVE" + this.model.Wave.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
                             new Typeface(
                                 new FontFamily("Arial"),
                                 FontStyles.Italic,
@@ -1140,7 +1156,7 @@ namespace GameDisplay
 
             }
             else if (waweIndex <= 301){
-                FormattedText formattedText = new FormattedText("WAAAVE" + this.model.Wave.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                FormattedText formattedText = new FormattedText("WAVE" + this.model.Wave.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
                             new Typeface(
                                 new FontFamily("Arial"),
                                 FontStyles.Italic,
