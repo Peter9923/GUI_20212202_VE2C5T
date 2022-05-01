@@ -25,6 +25,7 @@ namespace GameDisplay
         public Brush TemporaryArcherBrush;
 
         public List<Brush> WallBrushes;
+        public Brush TemporaryWallBrush;
 
 
         //enemies
@@ -130,13 +131,16 @@ namespace GameDisplay
             TemporaryArcherBrush = new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Archer\\Warrior_03__ATTACK_000.png", UriKind.RelativeOrAbsolute)));
             TemporaryArcherBrush.Opacity = 0.5;
 
+            TemporaryWallBrush = new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Wall\\Wall.png", UriKind.RelativeOrAbsolute)));
+            TemporaryWallBrush.Opacity = 0.5;
+
             DeployKnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnight.png", UriKind.RelativeOrAbsolute)));
             DeployKnightBrush.Opacity = 0.7;
             DeployKnightSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnightSelected.png", UriKind.RelativeOrAbsolute)));
 
             DeployWallBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployWall.png", UriKind.RelativeOrAbsolute)));
-            DeployKnightBrush.Opacity = 0.7;
-            DeployKnightSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployWallSelected.png", UriKind.RelativeOrAbsolute)));
+            DeployWallBrush.Opacity = 0.7;
+            DeployWallSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployWallSelected.png", UriKind.RelativeOrAbsolute)));
 
             DeployArcherBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployArcher.png", UriKind.RelativeOrAbsolute)));
             DeployArcherBrush.Opacity = 0.7;

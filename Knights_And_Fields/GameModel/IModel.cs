@@ -11,6 +11,7 @@ namespace GameModel
         int CastleMaxHP { get; set; }
         bool DeployArcher { get; set; }
         bool DeployKnight { get; set; }
+        bool DeployWall { get; set; }
         int Gold { get; set; }
         IUnit[][] Map { get; set; }
         public List<IDyingItems> DiedItems { get; set; }

@@ -175,6 +175,7 @@ namespace GameDisplay
                         this.model.MoveUnit = false;
                         this.model.UpgradeUnit = false;
                         this.model.DeployArcher = false;
+                        this.model.DeployWall = false;
                     }
                 }
                 if (tilePos.Y == 1)
@@ -190,6 +191,23 @@ namespace GameDisplay
                         this.model.MoveUnit = false;
                         this.model.UpgradeUnit = false;
                         this.model.DeployKnight = false;
+                        this.model.DeployWall = false;
+                    }
+                }
+                if (tilePos.Y == 2)
+                {
+                    if (this.model.DeployWall)
+                    {
+                        this.model.DeployWall = false;
+                    }
+                    else
+                    {
+                        this.model.DeployWall = true;
+                        this.model.RemoveUnit = false;
+                        this.model.MoveUnit = false;
+                        this.model.UpgradeUnit = false;
+                        this.model.DeployKnight = false;
+                        this.model.DeployArcher = false;
                     }
                 }
             }
@@ -268,6 +286,11 @@ namespace GameDisplay
             {
                 this.buttonLogic.DeployUnit((int)tilePos.X, (int)tilePos.Y);
                 this.model.DeployArcher = false;
+            }
+            else if (!nowCLicked && this.model.DeployWall)
+            {
+                this.buttonLogic.DeployUnit((int)tilePos.X, (int)tilePos.Y);
+                this.model.DeployWall = false;
             }
             else if (!nowCLicked && this.model.RemoveUnit)
             {
@@ -739,6 +762,9 @@ namespace GameDisplay
                    (this.model.Map[0].Length + 1) * Config.TileSize, 1 * Config.TileSize, Config.TileSize, Config.TileSize)));
 
             ButtonsGeometry.Add(new RectangleGeometry(new Rect(
+                   (this.model.Map[0].Length + 1) * Config.TileSize, 2 * Config.TileSize, Config.TileSize, Config.TileSize)));
+
+            ButtonsGeometry.Add(new RectangleGeometry(new Rect(
                     (this.model.Map[0].Length - 1) * Config.TileSize, 5 * Config.TileSize, Config.TileSize, Config.TileSize)));
 
             ButtonsGeometry.Add(new RectangleGeometry(new Rect(
@@ -751,7 +777,7 @@ namespace GameDisplay
         {
             DeployKnightButton(drawingContext);
             DeployArcherButton(drawingContext);
-
+            DeployWallButton(drawingContext);
 
             MoveButton(drawingContext);
             RemoveButton(drawingContext);
@@ -782,7 +808,7 @@ namespace GameDisplay
 
         private void DeployWallButton(DrawingContext drawingContext)
         {
-            if (this.model.DeployArcher)
+            if (this.model.DeployWall)
             {
                 drawingContext.DrawGeometry(this.BRUSHES.DeployWallSelectedBrush, null, ButtonsGeometry[2]);
             }
@@ -796,33 +822,33 @@ namespace GameDisplay
         {
             if (this.model.MoveUnit)
             {
-                drawingContext.DrawGeometry(this.BRUSHES.MoveButtonSelectedBrush, null, ButtonsGeometry[2]);
+                drawingContext.DrawGeometry(this.BRUSHES.MoveButtonSelectedBrush, null, ButtonsGeometry[3]);
             }
             else
             {
-                drawingContext.DrawGeometry(this.BRUSHES.MoveButtonBrush, null, ButtonsGeometry[2]);
+                drawingContext.DrawGeometry(this.BRUSHES.MoveButtonBrush, null, ButtonsGeometry[3]);
             }
         }
         private void RemoveButton(DrawingContext drawingContext)
         {
             if (this.model.RemoveUnit)
             {
-                drawingContext.DrawGeometry(this.BRUSHES.RemoveButtonSelectedBrush, null, ButtonsGeometry[3]);
+                drawingContext.DrawGeometry(this.BRUSHES.RemoveButtonSelectedBrush, null, ButtonsGeometry[4]);
             }
             else
             {
-                drawingContext.DrawGeometry(this.BRUSHES.RemoveButtonBrush, null, ButtonsGeometry[3]);
+                drawingContext.DrawGeometry(this.BRUSHES.RemoveButtonBrush, null, ButtonsGeometry[4]);
             }
         }
         private void UpgradeButton(DrawingContext drawingContext)
         {
             if (this.model.UpgradeUnit)
             {
-                drawingContext.DrawGeometry(this.BRUSHES.UpgradeButtonSelectedBrush, null, ButtonsGeometry[4]);
+                drawingContext.DrawGeometry(this.BRUSHES.UpgradeButtonSelectedBrush, null, ButtonsGeometry[5]);
             }
             else
             {
-                drawingContext.DrawGeometry(this.BRUSHES.UpgradeButtonBrush, null, ButtonsGeometry[4]);
+                drawingContext.DrawGeometry(this.BRUSHES.UpgradeButtonBrush, null, ButtonsGeometry[5]);
             }
         }
         #endregion
@@ -1036,6 +1062,10 @@ namespace GameDisplay
                     else if (this.model.DeployArcher){
                         drawingContext.DrawGeometry(this.BRUSHES.TemporaryArcherBrush, new Pen(Brushes.Gray, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
                     }
+                    else if (this.model.DeployWall)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.TemporaryWallBrush, new Pen(Brushes.Gray, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
+                    }
                     else if (this.model.MoveUnit && MovedUnitPrevPos.X != -1 && MovedUnitPrevPos.X < Config.ColumnNumbers && MovedUnitPrevPos.Y < Config.RowNumbers){
 
                         if (this.model.Map[(int)MovedUnitPrevPos.Y][(int)MovedUnitPrevPos.X] is Knight){
@@ -1043,6 +1073,10 @@ namespace GameDisplay
                         }
                         else if (this.model.Map[(int)MovedUnitPrevPos.Y][(int)MovedUnitPrevPos.X] is Archer){
                             drawingContext.DrawGeometry(this.BRUSHES.TemporaryArcherBrush, new Pen(Brushes.Aqua, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
+                        }
+                        else if (this.model.Map[(int)MovedUnitPrevPos.Y][(int)MovedUnitPrevPos.X] is Wall)
+                        {
+                            drawingContext.DrawGeometry(this.BRUSHES.TemporaryWallBrush, new Pen(Brushes.Aqua, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
                         }
                         else
                         {
@@ -1241,7 +1275,17 @@ namespace GameDisplay
                                          FontWeights.Bold,
                                          FontStretches.Normal), 40, Brushes.Black);
                     }
-                    
+                    else if (this.model.DeployWall)
+                    {
+                        formattedText = new FormattedText($"COST: " + 100,
+                                    CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                                     new Typeface(
+                                         new FontFamily("Arial"),
+                                         FontStyles.Italic,
+                                         FontWeights.Bold,
+                                         FontStretches.Normal), 40, Brushes.Black);
+                    }
+
 
                 }
 
