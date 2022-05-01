@@ -58,6 +58,8 @@ namespace GameDisplay
         public Brush DeployKnightSelectedBrush;
         public Brush DeployArcherBrush;
         public Brush DeployArcherSelectedBrush;
+        public Brush DeployWallBrush;
+        public Brush DeployWallSelectedBrush;
 
         public Brush MoveButtonBrush;
         public Brush MoveButtonSelectedBrush;
@@ -131,6 +133,10 @@ namespace GameDisplay
             DeployKnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnight.png", UriKind.RelativeOrAbsolute)));
             DeployKnightBrush.Opacity = 0.7;
             DeployKnightSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnightSelected.png", UriKind.RelativeOrAbsolute)));
+
+            DeployWallBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployWall.png", UriKind.RelativeOrAbsolute)));
+            DeployKnightBrush.Opacity = 0.7;
+            DeployKnightSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployWallSelected.png", UriKind.RelativeOrAbsolute)));
 
             DeployArcherBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployArcher.png", UriKind.RelativeOrAbsolute)));
             DeployArcherBrush.Opacity = 0.7;
