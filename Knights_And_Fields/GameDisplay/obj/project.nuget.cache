@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "O70IbIpVPrNcEA1GZduwD5Y7xM5xgXGrZcQaDeQZomuhdmdfvfmz37YGRiyknbdw8U0qvTjxPkV4LrgnY/vGBQ==",
+  "dgSpecHash": "I4hpAYotTqtw6XA9vcpQ1ovS83vE2MR6ugZDgnRc/TmCXfEinIueteDeu9KdVxbbcP7ujJo6mipdMBnvQr5eSQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj",
+  "projectFilePath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

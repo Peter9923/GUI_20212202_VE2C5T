@@ -179,6 +179,7 @@ namespace GameDisplay
                         this.model.UpgradeUnit = false;
                         this.model.DeployArcher = false;
                         this.model.SelectedSave = false;
+                        this.model.DeployWall = false;
                     }
                 }
                 if (tilePos.Y == 1)
@@ -194,6 +195,24 @@ namespace GameDisplay
                         this.model.MoveUnit = false;
                         this.model.UpgradeUnit = false;
                         this.model.DeployKnight = false;
+                        this.model.SelectedSave = false;
+                        this.model.DeployWall = false;
+                    }
+                }
+                if (tilePos.Y == 2)
+                {
+                    if (this.model.DeployWall)
+                    {
+                        this.model.DeployWall = false;
+                    }
+                    else
+                    {
+                        this.model.DeployWall = true;
+                        this.model.RemoveUnit = false;
+                        this.model.MoveUnit = false;
+                        this.model.UpgradeUnit = false;
+                        this.model.DeployKnight = false;
+                        this.model.DeployArcher = false;
                         this.model.SelectedSave = false;
                     }
                 }
@@ -215,6 +234,7 @@ namespace GameDisplay
                     this.model.UpgradeUnit = false;
                     this.model.DeployArcher = false;
                     this.model.SelectedSave = false;
+                    this.model.DeployWall = false;
                 }
             }
             else if (tilePos.X == this.model.Map[0].Length - 1 && tilePos.Y == 5)
@@ -232,7 +252,7 @@ namespace GameDisplay
                     this.model.UpgradeUnit = false;
                     this.model.DeployArcher = false;
                     this.model.SelectedSave = false;
-
+                    this.model.DeployWall = false;
                 }
             }
             else if (tilePos.X == this.model.Map[0].Length - 3 && tilePos.Y == 5)
@@ -250,7 +270,7 @@ namespace GameDisplay
                     this.model.RemoveUnit = false;
                     this.model.DeployArcher = false;
                     this.model.SelectedSave = false;
-
+                    this.model.DeployWall = false;
                 }
             }
             else if (tilePos.X == this.model.Map[0].Length + 1 && tilePos.Y == 1) {
@@ -267,7 +287,7 @@ namespace GameDisplay
                     this.model.MoveUnit = false;
                     this.model.RemoveUnit = false;
                     this.model.DeployArcher = false;
-
+                    this.model.DeployWall = false;
                 }
             }
 
@@ -293,6 +313,11 @@ namespace GameDisplay
             {
                 this.buttonLogic.DeployUnit((int)tilePos.X, (int)tilePos.Y);
                 this.model.DeployArcher = false;
+            }
+            else if (!nowCLicked && this.model.DeployWall)
+            {
+                this.buttonLogic.DeployUnit((int)tilePos.X, (int)tilePos.Y);
+                this.model.DeployWall = false;
             }
             else if (!nowCLicked && this.model.RemoveUnit)
             {
@@ -788,7 +813,7 @@ namespace GameDisplay
         {
             DeployKnightButton(drawingContext);
             DeployArcherButton(drawingContext);
-
+            DeployWallButton(drawingContext);
 
             MoveButton(drawingContext);
             RemoveButton(drawingContext);

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Release\net5.0-windows\
+C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Release\net5.0-windows\
 GameMenu
 none
 false
 TRACE;RELEASE;NET;NET5_0;NETCOREAPP
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\App.xaml
-21941884890
-3834879981
-51224989644
-196647728678
-MainWindow.xaml;Windows\CreateNewGameWindow.xaml;
+C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\App.xaml
+31702058733
+11-1796498547
+7537278729
+198314206693
+MainWindow.xaml;Windows\CreateNewGameWindow.xaml;Windows\LoadMenu.xaml;
 
 True
 
