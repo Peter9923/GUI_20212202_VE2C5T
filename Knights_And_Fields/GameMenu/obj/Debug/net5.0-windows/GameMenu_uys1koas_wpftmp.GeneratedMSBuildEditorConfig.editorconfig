@@ -1,0 +1,10 @@
+is_global = true
+build_property.TargetFramework = net5.0-windows
+build_property.TargetPlatformMinVersion = 7.0
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GameMenu_uys1koas_wpftmp
+build_property.ProjectDir = C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\

@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net5.0-windows7.0": {
+      "Microsoft.Toolkit.Mvvm/7.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Microsoft.Toolkit.Mvvm.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.Toolkit.Mvvm.dll": {}
+        }
+      },
       "GameDisplay/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -51,6 +60,32 @@
     }
   },
   "libraries": {
+    "Microsoft.Toolkit.Mvvm/7.1.2": {
+      "sha512": "tUQn6ar9oP7kmYaZ6pWabxpQaqw95Bsf+GG7prEL0y5MV5F60z76lI/Ppps9zcTqwd7e5CrdZBcdfor9WuvohA==",
+      "type": "package",
+      "path": "microsoft.toolkit.mvvm/7.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "License.md",
+        "ThirdPartyNotices.txt",
+        "analyzers/dotnet/cs/Microsoft.Toolkit.Mvvm.SourceGenerators.dll",
+        "analyzers/dotnet/cs/Microsoft.Toolkit.Mvvm.SourceGenerators.pdb",
+        "analyzers/dotnet/cs/Microsoft.Toolkit.Mvvm.SourceGenerators.xml",
+        "lib/net5.0/Microsoft.Toolkit.Mvvm.dll",
+        "lib/net5.0/Microsoft.Toolkit.Mvvm.pdb",
+        "lib/net5.0/Microsoft.Toolkit.Mvvm.xml",
+        "lib/netstandard2.0/Microsoft.Toolkit.Mvvm.dll",
+        "lib/netstandard2.0/Microsoft.Toolkit.Mvvm.pdb",
+        "lib/netstandard2.0/Microsoft.Toolkit.Mvvm.xml",
+        "lib/netstandard2.1/Microsoft.Toolkit.Mvvm.dll",
+        "lib/netstandard2.1/Microsoft.Toolkit.Mvvm.pdb",
+        "lib/netstandard2.1/Microsoft.Toolkit.Mvvm.xml",
+        "microsoft.toolkit.mvvm.7.1.2.nupkg.sha512",
+        "microsoft.toolkit.mvvm.nuspec"
+      ]
+    },
     "GameDisplay/1.0.0": {
       "type": "project",
       "path": "../GameDisplay/GameDisplay.csproj",
@@ -69,23 +104,24 @@
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
-      "GameDisplay >= 1.0.0"
+      "GameDisplay >= 1.0.0",
+      "Microsoft.Toolkit.Mvvm >= 7.1.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
+      "projectUniqueName": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
       "projectName": "GameMenu",
-      "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\obj\\",
+      "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
+      "packagesPath": "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Szilágyi Péter\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -99,8 +135,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj"
+            "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj"
             }
           }
         }
@@ -114,6 +150,12 @@
     "frameworks": {
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
+        "dependencies": {
+          "Microsoft.Toolkit.Mvvm": {
+            "target": "Package",
+            "version": "[7.1.2, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -132,7 +174,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
