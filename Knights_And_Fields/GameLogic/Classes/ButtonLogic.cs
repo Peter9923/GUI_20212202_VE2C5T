@@ -43,6 +43,8 @@ namespace GameLogic.Classes
                         this.Model.Gold -= ArcherCost;
                         this.Model.Score += 5;
                     }
+
+                    playGoldDown();
                 }
 
             }
@@ -57,6 +59,7 @@ namespace GameLogic.Classes
                 {
                     this.Model.Gold += (int)((double)alliedUnit.UpgradeCost / (double)2);
                     this.Model.Map[y][x] = null;
+                    playGoldUp();
                 }
             }
         }
@@ -70,6 +73,7 @@ namespace GameLogic.Classes
                 {
                     this.Model.Gold -= alliedUnit.UpgradeCost;
                     this.Model.Map[y][x].Level++;
+                    playGoldDown();
                 }
             }
         }
@@ -89,12 +93,22 @@ namespace GameLogic.Classes
                     this.Model.Map[actualY][actualX] = this.Model.Map[prevY][prevX];
                     this.Model.Map[actualY][actualX].Position = new Point(actualX, actualY);
                     this.Model.Map[prevY][prevX] = null;
+                    playGoldDown();
                 }
             }
 
             
         }
 
+        private void playGoldDown() {
+            this.Model.SOUNDS.goldDown.Open(new Uri("Sounds\\goldDown.mp3", UriKind.RelativeOrAbsolute));
+            this.Model.SOUNDS.goldDown.Play();
+        }
+        private void playGoldUp()
+        {
+            this.Model.SOUNDS.goldDown.Open(new Uri("Sounds\\goldUp.mp3", UriKind.RelativeOrAbsolute));
+            this.Model.SOUNDS.goldDown.Play();
+        }
 
     }
 }

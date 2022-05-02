@@ -22,5 +22,6 @@ namespace GameModel
         List<IEnemy> SpawnedEnemies { get; set; }
         bool UpgradeUnit { get; set; }
         int Wave { get; set; }
+        public bool SelectedSave { get; set; }
     }
 }

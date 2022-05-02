@@ -75,7 +75,7 @@ namespace GameModel.Items
         public Geometry CollisionArea{
             get
             {
-                return new RectangleGeometry(new Rect((Position.X + 1) * Config.TileSize, Position.Y * Config.TileSize, Config.TileSize - 70, Config.TileSize));
+                return new RectangleGeometry(new Rect((Position.X + 1) * Config.TileSize, Position.Y * Config.TileSize, (Config.TileSize/4)*3, Config.TileSize));
             }
         }
 

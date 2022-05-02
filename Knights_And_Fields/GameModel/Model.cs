@@ -57,6 +57,7 @@ namespace GameModel
         public bool MoveUnit { get; set; }
         public bool RemoveUnit { get; set; }
         public bool UpgradeUnit { get; set; }
+        public bool SelectedSave { get; set; }
 
     }
 }

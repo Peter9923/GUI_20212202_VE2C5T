@@ -2,10 +2,12 @@
 using GameModel;
 using GameModel.Interfaces;
 using GameModel.Items;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -51,6 +53,7 @@ namespace GameDisplay
         bool EXIT = false;
         bool shouldDrawWave = false;
         int waweIndex = 1;
+        bool clickedSave;
 
         Point MovedMouseTilePos;
         Point MovedUnitPrevPos;
@@ -175,6 +178,7 @@ namespace GameDisplay
                         this.model.MoveUnit = false;
                         this.model.UpgradeUnit = false;
                         this.model.DeployArcher = false;
+                        this.model.SelectedSave = false;
                     }
                 }
                 if (tilePos.Y == 1)
@@ -190,6 +194,7 @@ namespace GameDisplay
                         this.model.MoveUnit = false;
                         this.model.UpgradeUnit = false;
                         this.model.DeployKnight = false;
+                        this.model.SelectedSave = false;
                     }
                 }
             }
@@ -209,6 +214,7 @@ namespace GameDisplay
                     this.model.RemoveUnit = false;
                     this.model.UpgradeUnit = false;
                     this.model.DeployArcher = false;
+                    this.model.SelectedSave = false;
                 }
             }
             else if (tilePos.X == this.model.Map[0].Length - 1 && tilePos.Y == 5)
@@ -225,6 +231,7 @@ namespace GameDisplay
                     this.model.MoveUnit = false;
                     this.model.UpgradeUnit = false;
                     this.model.DeployArcher = false;
+                    this.model.SelectedSave = false;
 
                 }
             }
@@ -238,6 +245,24 @@ namespace GameDisplay
                 else
                 {
                     this.model.UpgradeUnit = true;
+                    this.model.DeployKnight = false;
+                    this.model.MoveUnit = false;
+                    this.model.RemoveUnit = false;
+                    this.model.DeployArcher = false;
+                    this.model.SelectedSave = false;
+
+                }
+            }
+            else if (tilePos.X == this.model.Map[0].Length + 1 && tilePos.Y == 1) {
+                nowCLicked = true;
+                if (this.model.SelectedSave)
+                {
+                    this.model.SelectedSave = false;
+                }
+                else
+                {
+                    this.model.SelectedSave = true;
+                    this.model.UpgradeUnit = false;
                     this.model.DeployKnight = false;
                     this.model.MoveUnit = false;
                     this.model.RemoveUnit = false;
@@ -292,6 +317,15 @@ namespace GameDisplay
                 { // == -1
                     MovedUnitPrevPos = this.displayLogic.GetTilePos(mousePos);
                 }
+            }
+            else if (nowCLicked && this.model.SelectedSave)
+            {
+                clickedSave = true;
+                string jsonData = JsonConvert.SerializeObject(this.model);
+                var a = Directory.GetCurrentDirectory() + "\\Saves\\";
+                var path = Path.Combine(a, $"{this.model.PlayerName}_{DateTime.Now.ToShortDateString()}_{this.model.Score}.json");
+                File.WriteAllText(path, jsonData);
+                this.model.SelectedSave = false;
             }
 
 
@@ -746,6 +780,9 @@ namespace GameDisplay
 
             ButtonsGeometry.Add(new RectangleGeometry(new Rect(
                     (this.model.Map[0].Length - 2) * Config.TileSize, 5 * Config.TileSize, Config.TileSize, Config.TileSize)));
+
+            ButtonsGeometry.Add(new RectangleGeometry(new Rect(
+                    (this.model.Map[0].Length + 2) * Config.TileSize, 1 * Config.TileSize, Config.TileSize, Config.TileSize)));
         }
         private void DrawButtons(DrawingContext drawingContext)
         {
@@ -756,6 +793,8 @@ namespace GameDisplay
             MoveButton(drawingContext);
             RemoveButton(drawingContext);
             UpgradeButton(drawingContext);
+
+            SaveButton(drawingContext);
         }
         private void DeployKnightButton(DrawingContext drawingContext)
         {
@@ -811,6 +850,20 @@ namespace GameDisplay
             else
             {
                 drawingContext.DrawGeometry(this.BRUSHES.UpgradeButtonBrush, null, ButtonsGeometry[4]);
+            }
+        }
+
+        private async void SaveButton(DrawingContext drawingContext)
+        {
+            if (this.model.SelectedSave || clickedSave)
+            {
+                drawingContext.DrawGeometry(this.BRUSHES.SaveButtonSelectedBrush, null, ButtonsGeometry[5]);
+                await Task.Delay(1500);
+                clickedSave = false;
+            }
+            else
+            {
+                drawingContext.DrawGeometry(this.BRUSHES.SaveButtondBrush, null, ButtonsGeometry[5]);
             }
         }
         #endregion

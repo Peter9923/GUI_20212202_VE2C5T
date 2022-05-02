@@ -64,6 +64,9 @@ namespace GameDisplay
         public Brush UpgradeButtonBrush;
         public Brush UpgradeButtonSelectedBrush;
 
+        public Brush SaveButtondBrush;
+        public Brush SaveButtonSelectedBrush;
+
         //Backround Brushes
         public Brush GrassBrush;
         public Brush EnemyGrassBrush;
@@ -271,6 +274,9 @@ namespace GameDisplay
             CastleWallBrush = new ImageBrush(new BitmapImage(new Uri("Images\\CastleWall.png", UriKind.RelativeOrAbsolute)));
             ButtonBackgroundBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Menu\\gallery.png", UriKind.RelativeOrAbsolute)));
             ButtonBackgroundTopBrush = new ImageBrush(new BitmapImage(new Uri("Images\\Menu\\galleryForTopButtons.png", UriKind.RelativeOrAbsolute)));
+
+            SaveButtondBrush = new ImageBrush(new BitmapImage(new Uri("Images\\saveButton.png", UriKind.RelativeOrAbsolute)));
+            SaveButtonSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\saveButtonSelected.png", UriKind.RelativeOrAbsolute)));
         }
 
 

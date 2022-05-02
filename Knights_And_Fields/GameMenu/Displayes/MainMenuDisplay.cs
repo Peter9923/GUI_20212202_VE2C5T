@@ -1,4 +1,5 @@
-﻿using GameMenu.Windows;
+﻿using GameMenu.ViewModels;
+using GameMenu.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -145,6 +146,16 @@ namespace GameMenu.Displayes
             {
                 CreateNewGameWindow newGameWindow = new CreateNewGameWindow();
                 newGameWindow.ShowDialog();
+            }
+            else if (selectedLoad)
+            {
+                var vm = new LoadMenuViewModel();
+                var loginWindow = new LoadMenu
+                {
+                    DataContext = vm
+                };
+                vm.OnRequestClose += (s, e) => loginWindow.Close();
+                loginWindow.ShowDialog();
             }
             else if (selectedExit)
             {

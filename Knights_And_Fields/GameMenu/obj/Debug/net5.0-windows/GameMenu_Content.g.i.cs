@@ -8,7 +8,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/delete_hover.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/delete_idle.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/gallery.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/galleryfortopbuttons.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/game_menu.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/load_hover.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/load_idle.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/return_hover.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/return_idle.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/start_hover.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/start_idle.png")]
 

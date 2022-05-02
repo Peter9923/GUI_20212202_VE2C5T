@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:GameDisplay"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1344"
-        ResizeMode="NoResize"
         LocationChanged="Window_LocationChanged"
         WindowState="Maximized"
         >

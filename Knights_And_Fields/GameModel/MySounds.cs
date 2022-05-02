@@ -18,6 +18,8 @@ namespace GameModel
         public MediaPlayer GhostKilledAlliedUnit { get; set; }
         public List<MediaPlayer> BackgroundMusics { get; set; }
 
+        public MediaPlayer goldDown { get; set; }
+
         public MySounds()
         {
             SetSounds();
@@ -43,6 +45,8 @@ namespace GameModel
             MediaPlayer background1 = new MediaPlayer();
             background1.Volume = 0.3f;
             BackgroundMusics.Add(background1);
+
+            goldDown = new MediaPlayer();
 
         }
     }

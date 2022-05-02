@@ -8,13 +8,45 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Menu\delete_hover.png" />
+    <None Remove="Images\Menu\delete_idle.png" />
     <None Remove="Images\Menu\gallery.png" />
+    <None Remove="Images\Menu\galleryForTopButtons.png" />
+    <None Remove="Images\Menu\game_menu.png" />
+    <None Remove="Images\Menu\load_hover.png" />
+    <None Remove="Images\Menu\load_idle.png" />
+    <None Remove="Images\Menu\return_hover.png" />
+    <None Remove="Images\Menu\return_idle.png" />
     <None Remove="Images\Menu\start_hover.png" />
     <None Remove="Images\Menu\start_idle.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\Menu\delete_hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\delete_idle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Menu\gallery.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\galleryForTopButtons.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\game_menu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\load_hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\load_idle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\return_hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\return_idle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Menu\start_hover.png">
@@ -23,6 +55,10 @@
     <Content Include="Images\Menu\start_idle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
   </ItemGroup>
 
   <ItemGroup>
