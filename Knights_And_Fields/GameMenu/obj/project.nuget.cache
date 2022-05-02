@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "K4p06MuV5/n+kdR+oE51HStYoDPepVux5FXkiTC6YdX83sWZOP+ZNAd2H2toaKJPTZHJ+TcXT4pSo6yaDdhc/g==",
+  "dgSpecHash": "n86RozxC4Q4vL6B4f7O+GdNoXibGUEIDakHSVNfO4B6eMwoQzx4lw7/f32M8SMJSE0eZAZRGbcfyuwr8bW5wQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
+  "projectFilePath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\microsoft.toolkit.mvvm\\7.1.2\\microsoft.toolkit.mvvm.7.1.2.nupkg.sha512",
-    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.toolkit.mvvm\\7.1.2\\microsoft.toolkit.mvvm.7.1.2.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }
