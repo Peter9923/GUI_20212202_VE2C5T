@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Jbmlm8XPojWzxZCVRXsWKPwdvCgOSkvaZdL6eVRxC1Pyfx4yuyQ8CWTYiu7BZ1lgAUKev2FWBK6jb0SfpTBxEw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\microsoft.toolkit.mvvm\\7.1.2\\microsoft.toolkit.mvvm.7.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}
