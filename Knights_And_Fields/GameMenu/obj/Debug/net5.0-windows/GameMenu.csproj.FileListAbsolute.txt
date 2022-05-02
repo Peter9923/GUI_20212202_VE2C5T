@@ -1,51 +1,3 @@
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameMenu.exe
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameMenu.deps.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameMenu.runtimeconfig.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameMenu.runtimeconfig.dev.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameMenu.dll
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\ref\GameMenu.dll
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameMenu.pdb
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\MainWindow.g.cs
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\App.g.cs
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu_MarkupCompile.cache
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu_MarkupCompile.lref
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\MainWindow.baml
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.g.resources
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.AssemblyInfoInputs.cache
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.AssemblyInfo.cs
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.csproj.CoreCompileInputs.cache
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.dll
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\ref\GameMenu.dll
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.pdb
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.genruntimeconfig.cache
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\Images\Menu\gallery.png
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu_Content.g.cs
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameDisplay.deps.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameDisplay.runtimeconfig.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameDisplay.runtimeconfig.dev.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameLogic.deps.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameLogic.runtimeconfig.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameLogic.runtimeconfig.dev.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameModel.deps.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameModel.runtimeconfig.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameModel.runtimeconfig.dev.json
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameModel.exe
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameLogic.exe
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameDisplay.exe
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameDisplay.dll
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameLogic.dll
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameModel.dll
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameDisplay.pdb
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameLogic.pdb
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameModel.pdb
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.csproj.AssemblyReference.cache
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.csproj.CopyComplete
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\Windows\CreateNewGameWindow.g.cs
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\Windows\CreateNewGameWindow.baml
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\Images\Menu\start_hover.png
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\Images\Menu\start_idle.png
 C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameDisplay.deps.json
 C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameDisplay.runtimeconfig.json
 C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\GameDisplay.runtimeconfig.dev.json
@@ -94,6 +46,3 @@ C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\D
 C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\ref\GameMenu.dll
 C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.pdb
 C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\GameMenu.genruntimeconfig.cache
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\Windows\LoadMenu.g.cs
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\Microsoft.Toolkit.Mvvm.dll
-C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\Windows\LoadMenu.baml
