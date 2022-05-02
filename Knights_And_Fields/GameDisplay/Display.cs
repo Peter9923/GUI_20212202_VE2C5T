@@ -844,6 +844,18 @@ namespace GameDisplay
             }
         }
 
+        private void DeployWallButton(DrawingContext drawingContext)
+        {
+            if (this.model.DeployWall)
+            {
+                drawingContext.DrawGeometry(this.BRUSHES.DeployWallSelectedBrush, null, ButtonsGeometry[2]);
+            }
+            else
+            {
+                drawingContext.DrawGeometry(this.BRUSHES.DeployWallBrush, null, ButtonsGeometry[2]);
+            }
+        }
+
         private void MoveButton(DrawingContext drawingContext)
         {
             if (this.model.MoveUnit)
