@@ -8,16 +8,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/about_hover.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/about_idle.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/confirm.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/delete_hover.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/delete_idle.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/frame.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/gallery.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/galleryfortopbuttons.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/gallery_hover.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/gallery_idle.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/game_menu.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/game_menu_.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/help_hover.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/help_idle.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/load_hover.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/load_idle.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/main_menu.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/options_hover.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/options_idle.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/quit_hover.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/quit_idle.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/return_hover.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/return_idle.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/start_hover.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/start_idle.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/textbox.png")]
 
 

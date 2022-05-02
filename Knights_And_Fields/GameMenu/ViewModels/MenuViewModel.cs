@@ -18,7 +18,9 @@ namespace GameMenu.ViewModels
         MediaPlayer clickSound;
         public ICommand StartCommand { get; set; }
         public ICommand LoadCommand { get; set; }
+        public ICommand AboutCommand { get; set; }
         public ICommand ExitCommand { get; set; }
+    
 
         public MenuViewModel()
         {

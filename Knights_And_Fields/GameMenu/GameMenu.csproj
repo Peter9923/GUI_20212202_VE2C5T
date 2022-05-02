@@ -8,24 +8,51 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Menu\about_hover.png" />
+    <None Remove="Images\Menu\about_idle.png" />
+    <None Remove="Images\Menu\confirm.png" />
     <None Remove="Images\Menu\delete_hover.png" />
     <None Remove="Images\Menu\delete_idle.png" />
+    <None Remove="Images\Menu\frame.png" />
     <None Remove="Images\Menu\gallery.png" />
     <None Remove="Images\Menu\galleryForTopButtons.png" />
+    <None Remove="Images\Menu\gallery_hover.png" />
+    <None Remove="Images\Menu\gallery_idle.png" />
     <None Remove="Images\Menu\game_menu.png" />
+    <None Remove="Images\Menu\game_menu_.png" />
+    <None Remove="Images\Menu\help_hover.png" />
+    <None Remove="Images\Menu\help_idle.png" />
     <None Remove="Images\Menu\load_hover.png" />
     <None Remove="Images\Menu\load_idle.png" />
+    <None Remove="Images\Menu\main_menu.png" />
+    <None Remove="Images\Menu\options_hover.png" />
+    <None Remove="Images\Menu\options_idle.png" />
+    <None Remove="Images\Menu\quit_hover.png" />
+    <None Remove="Images\Menu\quit_idle.png" />
     <None Remove="Images\Menu\return_hover.png" />
     <None Remove="Images\Menu\return_idle.png" />
     <None Remove="Images\Menu\start_hover.png" />
     <None Remove="Images\Menu\start_idle.png" />
+    <None Remove="Images\Menu\textbox.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\Menu\about_hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\about_idle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\confirm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Menu\delete_hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Menu\delete_idle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\frame.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Menu\gallery.png">
@@ -34,13 +61,43 @@
     <Content Include="Images\Menu\galleryForTopButtons.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Menu\gallery_hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\gallery_idle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Menu\game_menu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\game_menu_.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\help_hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\help_idle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Menu\load_hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Menu\load_idle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\main_menu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\options_hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\options_idle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\quit_hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\quit_idle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Menu\return_hover.png">
@@ -53,6 +110,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Menu\start_idle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu\textbox.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
