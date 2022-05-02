@@ -47,16 +47,6 @@ namespace GameMenu.Windows
             anotherClick.Play();
         }
 
-        private void Button_MouseEnter(object sender, MouseEventArgs e)
-        {
-            startButton.Background = new ImageBrush(new BitmapImage(new Uri("Images\\Menu\\start_hover.png", UriKind.RelativeOrAbsolute)));
-        }
-
-        private void Button_MouseLeave(object sender, MouseEventArgs e)
-        {
-            startButton.Background = new ImageBrush(new BitmapImage(new Uri("Images\\Menu\\start_idle.png", UriKind.RelativeOrAbsolute)));
-        }
-
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
             anotherClick.Play();
@@ -67,6 +57,10 @@ namespace GameMenu.Windows
             }
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            anotherClick.Play();
+            this.Close();
+        }
     }
 }
