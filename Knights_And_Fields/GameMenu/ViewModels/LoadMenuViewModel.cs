@@ -1,5 +1,7 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using GameModel;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -52,10 +54,23 @@ namespace GameMenu.ViewModels
         {
             if (!IsInDesignMode)
             {
+                LoadCommand = new RelayCommand(() => {
+                    if (SelectedFile != null){
+                        if (File.Exists(SelectedFile.PathName)){
+                            IModel model = JsonConvert.DeserializeObject<Model>(File.ReadAllText(SelectedFile.PathName));
+                            GameDisplay.MainWindow game = new GameDisplay.MainWindow(model);
+                            game.Show();
+                            OnRequestClose(this, new EventArgs());
+                        }
+                    }
+                });
+
                 DeleteCommand = new RelayCommand(() => {
                     if (SelectedFile != null){
-                        File.Delete(SelectedFile.PathName);
-                        SavedFiles.Remove(SelectedFile);
+                        if (MessageBox.Show($"Are you sure you want to delete {SelectedFile.DisplayName}?","DELETE", MessageBoxButton.YesNoCancel) == MessageBoxResult.Yes){
+                            File.Delete(SelectedFile.PathName);
+                            SavedFiles.Remove(SelectedFile);
+                        }
                     }
                 });
 

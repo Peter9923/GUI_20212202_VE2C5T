@@ -94,11 +94,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj",
+      "projectUniqueName": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj",
       "projectName": "GameDisplay",
-      "projectPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj",
+      "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj",
       "packagesPath": "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\obj\\",
+      "outputPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Szilágyi Péter\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -115,11 +115,11 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj": {
-              "projectPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj"
+            "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj"
             },
-            "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
-              "projectPath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
+            "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
             }
           }
         }

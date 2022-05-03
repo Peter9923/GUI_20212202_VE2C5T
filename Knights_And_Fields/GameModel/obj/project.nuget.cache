@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WMfI5G3F66CUlhI5RZ4EzFKrx4ncJfCxJLO5Xp+TtkYto1Z4hjw71119jh40dNw9TNekVsxYbQ0FsuJFWSQe4w==",
+  "dgSpecHash": "Bfb8tld35+vW8Y3pNkIYWl8+z80I2N5x1peMTFooZ5BjSQ8xuLe+ff0Bil0sk8H2NtHRObZ7AF6C0gpaRPqPmw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Szilágyi Péter\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj",
+  "projectFilePath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

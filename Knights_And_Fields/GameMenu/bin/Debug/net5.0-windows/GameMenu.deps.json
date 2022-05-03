@@ -9,6 +9,7 @@
       "GameMenu/1.0.0": {
         "dependencies": {
           "GameDisplay": "1.0.0",
+          "GameModel": "1.0.0",
           "Microsoft.Toolkit.Mvvm": "7.1.2"
         },
         "runtime": {

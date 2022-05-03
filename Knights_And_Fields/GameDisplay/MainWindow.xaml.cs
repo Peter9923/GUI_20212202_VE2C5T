@@ -36,6 +36,11 @@ namespace GameDisplay
             playerName = PlayerName;
         }
 
+        public MainWindow(IModel loadedModel) : this()
+        {
+            model = loadedModel;
+        }
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e){
             this.Left = 0;
             this.Top = 0;

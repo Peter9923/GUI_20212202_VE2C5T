@@ -123,6 +123,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GameDisplay\GameDisplay.csproj" />
+    <ProjectReference Include="..\GameModel\GameModel.csproj" />
   </ItemGroup>
 
 </Project>
