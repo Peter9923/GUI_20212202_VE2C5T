@@ -60,6 +60,8 @@ namespace GameDisplay
 
         public Display(IModel model, IDisplayLogic displayLogic, IButtonLogic buttonLogic, IAlliedLogic alliedLogic, IEnemyLogic enemyLogic)
         {
+
+            
             this.model = model;
             this.displayLogic = displayLogic;
             this.buttonLogic = buttonLogic;
@@ -346,7 +348,33 @@ namespace GameDisplay
             else if (nowCLicked && this.model.SelectedSave)
             {
                 clickedSave = true;
-                string jsonData = JsonConvert.SerializeObject(this.model);
+                //string json = JsonConvert.SerializeObject(garage, new JsonSerializerSettings
+                //{
+                //    TypeNameHandling = TypeNameHandling.Auto
+                //});
+
+                string jsonData = JsonConvert.SerializeObject(this.model, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.Auto,
+                    SerializationBinder = new KnownTypesBinder
+                    {
+                        KnownTypes = new List<Type>
+                        {
+                            typeof(EnemyGhost),
+                            typeof(EnemyGhost2),
+                            typeof(EnemyGhost3),
+                            typeof(EnemyOrc1),
+                            typeof(EnemyOrc2),
+                            typeof(EnemyOrc3),
+                            typeof(RectangleGeometry),
+                            typeof(Geometry),
+                            typeof(Archer),
+                            typeof(Knight),
+                            typeof(Wall),
+                            
+                        }
+                    }
+                });
                 var a = Directory.GetCurrentDirectory() + "\\Saves\\";
                 var path = Path.Combine(a, $"{this.model.PlayerName}_{DateTime.Now.ToShortDateString()}_{this.model.Score}.json");
                 File.WriteAllText(path, jsonData);

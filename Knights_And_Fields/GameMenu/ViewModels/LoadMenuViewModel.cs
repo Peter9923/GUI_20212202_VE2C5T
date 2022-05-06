@@ -1,4 +1,6 @@
-﻿using GameModel;
+﻿using GameDisplay;
+using GameModel;
+using GameModel.Items;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Newtonsoft.Json;
@@ -12,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace GameMenu.ViewModels
 {
@@ -57,9 +60,34 @@ namespace GameMenu.ViewModels
                 LoadCommand = new RelayCommand(() => {
                     if (SelectedFile != null){
                         if (File.Exists(SelectedFile.PathName)){
-                            IModel model = JsonConvert.DeserializeObject<Model>(File.ReadAllText(SelectedFile.PathName));
+                            //Garage result = JsonConvert.DeserializeObject<Garage>(json, new JsonSerializerSettings
+                            //{
+                            //    TypeNameHandling = TypeNameHandling.Auto
+                            //});
+
+                            Model model = JsonConvert.DeserializeObject<Model>(File.ReadAllText(SelectedFile.PathName), new JsonSerializerSettings
+                            {
+                                TypeNameHandling = TypeNameHandling.Auto,
+                                SerializationBinder = new KnownTypesBinder
+                                {
+                                    KnownTypes = new List<Type>
+                                    {
+                                        typeof(EnemyGhost),
+                                        typeof(EnemyGhost2),
+                                        typeof(EnemyGhost3),
+                                        typeof(EnemyOrc1),
+                                        typeof(EnemyOrc2),
+                                        typeof(EnemyOrc3),
+                                        typeof(RectangleGeometry),
+                                        typeof(Geometry),
+                                        typeof(Archer),
+                                        typeof(Knight),
+                                        typeof(Wall),
+                                    }
+                                }
+                            });
                             GameDisplay.MainWindow game = new GameDisplay.MainWindow(model);
-                            game.Show();
+                            game.ShowDialog();
                             OnRequestClose(this, new EventArgs());
                         }
                     }

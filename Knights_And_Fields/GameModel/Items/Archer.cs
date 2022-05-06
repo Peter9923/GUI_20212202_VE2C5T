@@ -1,4 +1,5 @@
 ﻿using GameModel.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,6 @@ namespace GameModel.Items
             this.Arrows = new List<Bullet>();
         }
 
-        public List<Bullet> Arrows { get; set; }
         public int Cost { get { return 250; } }
         public int UpgradeCost { get { return (Level * Cost); } }
         public double MaxLife { get; set; }
@@ -65,14 +65,18 @@ namespace GameModel.Items
         public double Damage { get { return (level * 10); }}
         public Point Position { get; set; }
 
-        public Geometry RealArea{
+        [JsonIgnore]
+        public RectangleGeometry RealArea
+        {
             get
             {
                 return new RectangleGeometry(new Rect((Position.X + 1) * Config.TileSize, Position.Y * Config.TileSize, Config.TileSize, Config.TileSize));
             }
         }
 
-        public Geometry CollisionArea{
+        [JsonIgnore]
+        public RectangleGeometry CollisionArea
+        {
             get
             {
                 return new RectangleGeometry(new Rect((Position.X + 1) * Config.TileSize, Position.Y * Config.TileSize, (Config.TileSize/4)*3, Config.TileSize));
@@ -93,5 +97,7 @@ namespace GameModel.Items
             }
             return false;
         }
+
+        public List<Bullet> Arrows { get; set; }
     }
 }

@@ -47,6 +47,16 @@ namespace GameDisplay
             if (model == null){
                 model = new Model(myGrid.ActualHeight, myGrid.ActualWidth, playerName);
             }
+            else
+            {
+                Config.GameHeight = myGrid.ActualHeight;
+                Config.GameWidth = myGrid.ActualWidth;
+
+                double tileSize1 = Config.GameWidth / (Config.ColumnNumbers + 1);
+                double tileSize2 = Config.GameHeight / (Config.RowNumbers + 2);
+                Config.TileSize = (tileSize1 >= tileSize2) ? tileSize2 : tileSize1;
+            }
+            
             IDisplayLogic displayLogic = new DisplayLogic();
             IButtonLogic buttonLogic = new ButtonLogic(model);
             IAlliedLogic alliedLogic = new AlliedLogic(model);

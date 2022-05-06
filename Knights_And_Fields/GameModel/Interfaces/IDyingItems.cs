@@ -22,7 +22,7 @@ namespace GameModel.Interfaces
 
         public UnitsWhatCanDie WhoDied { get; set; }
         public Point Position{ get; set; }
-        public Geometry RealArea { get; }
+        public RectangleGeometry RealArea { get; }
         public int DieIndex { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GameModel.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,7 +71,8 @@ namespace GameModel.Items
         public double Damage { get { return level * 0; } }
         public Point Position { get; set; }
 
-        public Geometry RealArea
+        [JsonIgnore]
+        public RectangleGeometry RealArea
         {
             get
             {
@@ -78,7 +80,8 @@ namespace GameModel.Items
             }
         }
 
-        public Geometry CollisionArea
+        [JsonIgnore]
+        public RectangleGeometry CollisionArea
         {
             get
             {
