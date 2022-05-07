@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\App.xaml
-3-282708239
+4-1576057572
 26-862268443
-7-1767858802
+91909697829
 198-678149070
-Windows\CreateNewGameWindow.xaml;Windows\LoadMenu.xaml;Windows\Menu.xaml;
+Windows\CreateNewGameWindow.xaml;Windows\LoadMenu.xaml;Windows\Menu.xaml;Windows\Scoreboard.xaml;
 
 False
 

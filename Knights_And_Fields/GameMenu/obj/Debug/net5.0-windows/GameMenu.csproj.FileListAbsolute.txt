@@ -148,3 +148,5 @@ C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\D
 C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\bin\Debug\net5.0-windows\Images\Menu\textbox.png
 C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\Windows\Menu.g.cs
 C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\Windows\Menu.baml
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\Windows\Scoreboard.g.cs
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameMenu\obj\Debug\net5.0-windows\Windows\Scoreboard.baml
