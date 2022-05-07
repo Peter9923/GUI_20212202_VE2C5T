@@ -15,11 +15,6 @@ namespace GameLogic.Classes
 
         }
 
-        private void SetSoundPlayers()
-        {
-
-        }
-
         public Point GetTilePos(Point mousePos)
         {
             return new Point(

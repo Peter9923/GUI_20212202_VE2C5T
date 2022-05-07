@@ -57,6 +57,9 @@
       "GameModel/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
         "compile": {
           "bin/placeholder/GameModel.dll": {}
         },
@@ -142,6 +145,7 @@
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
       "GameDisplay >= 1.0.0",
+      "GameModel >= 1.0.0",
       "Microsoft.Toolkit.Mvvm >= 7.1.2"
     ]
   },
@@ -174,6 +178,9 @@
           "projectReferences": {
             "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj": {
               "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj"
+            },
+            "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
             }
           }
         }

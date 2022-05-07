@@ -60,6 +60,8 @@ namespace GameDisplay
 
         public Display(IModel model, IDisplayLogic displayLogic, IButtonLogic buttonLogic, IAlliedLogic alliedLogic, IEnemyLogic enemyLogic)
         {
+
+            
             this.model = model;
             this.displayLogic = displayLogic;
             this.buttonLogic = buttonLogic;
@@ -179,6 +181,7 @@ namespace GameDisplay
                         this.model.UpgradeUnit = false;
                         this.model.DeployArcher = false;
                         this.model.SelectedSave = false;
+                        this.model.DeployWall = false;
                     }
                 }
                 if (tilePos.Y == 1)
@@ -194,6 +197,24 @@ namespace GameDisplay
                         this.model.MoveUnit = false;
                         this.model.UpgradeUnit = false;
                         this.model.DeployKnight = false;
+                        this.model.SelectedSave = false;
+                        this.model.DeployWall = false;
+                    }
+                }
+                if (tilePos.Y == 2)
+                {
+                    if (this.model.DeployWall)
+                    {
+                        this.model.DeployWall = false;
+                    }
+                    else
+                    {
+                        this.model.DeployWall = true;
+                        this.model.RemoveUnit = false;
+                        this.model.MoveUnit = false;
+                        this.model.UpgradeUnit = false;
+                        this.model.DeployKnight = false;
+                        this.model.DeployArcher = false;
                         this.model.SelectedSave = false;
                     }
                 }
@@ -215,6 +236,7 @@ namespace GameDisplay
                     this.model.UpgradeUnit = false;
                     this.model.DeployArcher = false;
                     this.model.SelectedSave = false;
+                    this.model.DeployWall = false;
                 }
             }
             else if (tilePos.X == this.model.Map[0].Length - 1 && tilePos.Y == 5)
@@ -232,7 +254,7 @@ namespace GameDisplay
                     this.model.UpgradeUnit = false;
                     this.model.DeployArcher = false;
                     this.model.SelectedSave = false;
-
+                    this.model.DeployWall = false;
                 }
             }
             else if (tilePos.X == this.model.Map[0].Length - 3 && tilePos.Y == 5)
@@ -250,7 +272,7 @@ namespace GameDisplay
                     this.model.RemoveUnit = false;
                     this.model.DeployArcher = false;
                     this.model.SelectedSave = false;
-
+                    this.model.DeployWall = false;
                 }
             }
             else if (tilePos.X == this.model.Map[0].Length + 1 && tilePos.Y == 1) {
@@ -267,7 +289,7 @@ namespace GameDisplay
                     this.model.MoveUnit = false;
                     this.model.RemoveUnit = false;
                     this.model.DeployArcher = false;
-
+                    this.model.DeployWall = false;
                 }
             }
 
@@ -293,6 +315,11 @@ namespace GameDisplay
             {
                 this.buttonLogic.DeployUnit((int)tilePos.X, (int)tilePos.Y);
                 this.model.DeployArcher = false;
+            }
+            else if (!nowCLicked && this.model.DeployWall)
+            {
+                this.buttonLogic.DeployUnit((int)tilePos.X, (int)tilePos.Y);
+                this.model.DeployWall = false;
             }
             else if (!nowCLicked && this.model.RemoveUnit)
             {
@@ -321,7 +348,33 @@ namespace GameDisplay
             else if (nowCLicked && this.model.SelectedSave)
             {
                 clickedSave = true;
-                string jsonData = JsonConvert.SerializeObject(this.model);
+                //string json = JsonConvert.SerializeObject(garage, new JsonSerializerSettings
+                //{
+                //    TypeNameHandling = TypeNameHandling.Auto
+                //});
+
+                string jsonData = JsonConvert.SerializeObject(this.model, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.Auto,
+                    SerializationBinder = new KnownTypesBinder
+                    {
+                        KnownTypes = new List<Type>
+                        {
+                            typeof(EnemyGhost),
+                            typeof(EnemyGhost2),
+                            typeof(EnemyGhost3),
+                            typeof(EnemyOrc1),
+                            typeof(EnemyOrc2),
+                            typeof(EnemyOrc3),
+                            typeof(RectangleGeometry),
+                            typeof(Geometry),
+                            typeof(Archer),
+                            typeof(Knight),
+                            typeof(Wall),
+                            
+                        }
+                    }
+                });
                 var a = Directory.GetCurrentDirectory() + "\\Saves\\";
                 var path = Path.Combine(a, $"{this.model.PlayerName}_{DateTime.Now.ToShortDateString()}_{this.model.Score}.json");
                 File.WriteAllText(path, jsonData);
@@ -783,12 +836,15 @@ namespace GameDisplay
 
             ButtonsGeometry.Add(new RectangleGeometry(new Rect(
                     (this.model.Map[0].Length + 2) * Config.TileSize, 1 * Config.TileSize, Config.TileSize, Config.TileSize)));
+
+            ButtonsGeometry.Add(new RectangleGeometry(new Rect(
+                   (this.model.Map[0].Length + 1) * Config.TileSize, 2 * Config.TileSize, Config.TileSize, Config.TileSize)));
         }
         private void DrawButtons(DrawingContext drawingContext)
         {
             DeployKnightButton(drawingContext);
             DeployArcherButton(drawingContext);
-
+            DeployWallButton(drawingContext);
 
             MoveButton(drawingContext);
             RemoveButton(drawingContext);
@@ -816,6 +872,18 @@ namespace GameDisplay
             else
             {
                 drawingContext.DrawGeometry(this.BRUSHES.DeployArcherBrush, null, ButtonsGeometry[1]);
+            }
+        }
+
+        private void DeployWallButton(DrawingContext drawingContext)
+        {
+            if (this.model.DeployWall)
+            {
+                drawingContext.DrawGeometry(this.BRUSHES.DeployWallSelectedBrush, null, ButtonsGeometry[6]);
+            }
+            else
+            {
+                drawingContext.DrawGeometry(this.BRUSHES.DeployWallBrush, null, ButtonsGeometry[6]);
             }
         }
 
@@ -953,6 +1021,10 @@ namespace GameDisplay
                     {
                         drawingContext.DrawGeometry(this.BRUSHES.ArcherBrushes[archer.AttackAnimationIndex], null, archer.RealArea);
                     }
+                    else if (this.model.Map[y][x] is Wall wall)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.WallBrushes[wall.AttackAnimationIndex], null, wall.RealArea);
+                    }
                 }
             }
         }
@@ -1073,6 +1145,10 @@ namespace GameDisplay
                     else if (this.model.DeployArcher){
                         drawingContext.DrawGeometry(this.BRUSHES.TemporaryArcherBrush, new Pen(Brushes.Gray, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
                     }
+                    else if (this.model.DeployWall)
+                    {
+                        drawingContext.DrawGeometry(this.BRUSHES.TemporaryWallBrush, new Pen(Brushes.Gray, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
+                    }
                     else if (this.model.MoveUnit && MovedUnitPrevPos.X != -1 && MovedUnitPrevPos.X < Config.ColumnNumbers && MovedUnitPrevPos.Y < Config.RowNumbers){
 
                         if (this.model.Map[(int)MovedUnitPrevPos.Y][(int)MovedUnitPrevPos.X] is Knight){
@@ -1080,6 +1156,10 @@ namespace GameDisplay
                         }
                         else if (this.model.Map[(int)MovedUnitPrevPos.Y][(int)MovedUnitPrevPos.X] is Archer){
                             drawingContext.DrawGeometry(this.BRUSHES.TemporaryArcherBrush, new Pen(Brushes.Aqua, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
+                        }
+                        else if (this.model.Map[(int)MovedUnitPrevPos.Y][(int)MovedUnitPrevPos.X] is Wall)
+                        {
+                            drawingContext.DrawGeometry(this.BRUSHES.TemporaryWallBrush, new Pen(Brushes.Aqua, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
                         }
                         else
                         {
@@ -1278,7 +1358,17 @@ namespace GameDisplay
                                          FontWeights.Bold,
                                          FontStretches.Normal), 40, Brushes.Black);
                     }
-                    
+                    else if (this.model.DeployWall)
+                    {
+                        formattedText = new FormattedText($"COST: " + 100,
+                                    CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                                     new Typeface(
+                                         new FontFamily("Arial"),
+                                         FontStyles.Italic,
+                                         FontWeights.Bold,
+                                         FontStretches.Normal), 40, Brushes.Black);
+                    }
+
 
                 }
 

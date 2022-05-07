@@ -1,5 +1,9 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using GameDisplay;
+using GameModel;
+using GameModel.Items;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace GameMenu.ViewModels
 {
@@ -52,10 +57,48 @@ namespace GameMenu.ViewModels
         {
             if (!IsInDesignMode)
             {
+                LoadCommand = new RelayCommand(() => {
+                    if (SelectedFile != null){
+                        if (File.Exists(SelectedFile.PathName)){
+                            //Garage result = JsonConvert.DeserializeObject<Garage>(json, new JsonSerializerSettings
+                            //{
+                            //    TypeNameHandling = TypeNameHandling.Auto
+                            //});
+
+                            Model model = JsonConvert.DeserializeObject<Model>(File.ReadAllText(SelectedFile.PathName), new JsonSerializerSettings
+                            {
+                                TypeNameHandling = TypeNameHandling.Auto,
+                                SerializationBinder = new KnownTypesBinder
+                                {
+                                    KnownTypes = new List<Type>
+                                    {
+                                        typeof(EnemyGhost),
+                                        typeof(EnemyGhost2),
+                                        typeof(EnemyGhost3),
+                                        typeof(EnemyOrc1),
+                                        typeof(EnemyOrc2),
+                                        typeof(EnemyOrc3),
+                                        typeof(RectangleGeometry),
+                                        typeof(Geometry),
+                                        typeof(Archer),
+                                        typeof(Knight),
+                                        typeof(Wall),
+                                    }
+                                }
+                            });
+                            GameDisplay.MainWindow game = new GameDisplay.MainWindow(model);
+                            game.ShowDialog();
+                            OnRequestClose(this, new EventArgs());
+                        }
+                    }
+                });
+
                 DeleteCommand = new RelayCommand(() => {
                     if (SelectedFile != null){
-                        File.Delete(SelectedFile.PathName);
-                        SavedFiles.Remove(SelectedFile);
+                        if (MessageBox.Show($"Are you sure you want to delete {SelectedFile.DisplayName}?","DELETE", MessageBoxButton.YesNoCancel) == MessageBoxResult.Yes){
+                            File.Delete(SelectedFile.PathName);
+                            SavedFiles.Remove(SelectedFile);
+                        }
                     }
                 });
 

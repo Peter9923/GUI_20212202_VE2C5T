@@ -1,4 +1,5 @@
 ﻿using GameModel.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,23 +15,24 @@ namespace GameModel.Items
         public double Damage { get; set; }
         public Point Position { get; set; }
 
-        private double speedX;
+        public double speedX { get; set; }
+
 
         public Bullet(double X, double Y, int speed){
             this.speedX = speed;
             this.Position = new Point(X, Y);
             
         }
-
-        public Geometry RealArea
+        [JsonIgnore]
+        public RectangleGeometry RealArea
         {
             get
             {
                 return new RectangleGeometry(new Rect(Position.X, Position.Y, Config.TileSize, Config.TileSize));
             }
         }
-
-        public Geometry CollisionArea
+        [JsonIgnore]
+        public RectangleGeometry CollisionArea
         {
             get
             {

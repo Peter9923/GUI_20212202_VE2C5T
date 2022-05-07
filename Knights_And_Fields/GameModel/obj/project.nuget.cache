@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Bfb8tld35+vW8Y3pNkIYWl8+z80I2N5x1peMTFooZ5BjSQ8xuLe+ff0Bil0sk8H2NtHRObZ7AF6C0gpaRPqPmw==",
+  "dgSpecHash": "K9TGEh79fxajOV98AmzhCwjbkZ8x74AHm8JETULKMt89Io9c1n0Q/6RBoBSMEsM8MRtw2E/Is+otgRRYsTUyYA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Szilágyi Péter\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

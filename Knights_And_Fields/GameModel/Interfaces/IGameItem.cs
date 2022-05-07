@@ -10,9 +10,9 @@ namespace GameModel.Interfaces
 {
     public interface IGameItem{
         double Damage { get; }
-        public Point Position { get; set; }
-        Geometry RealArea { get; }
-        Geometry CollisionArea { get; }
         bool IsCollision(IGameItem other);
+        public Point Position { get; set; }
+        RectangleGeometry RealArea { get; }
+        RectangleGeometry CollisionArea { get; }
     }
 }

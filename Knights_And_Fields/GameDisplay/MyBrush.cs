@@ -24,6 +24,9 @@ namespace GameDisplay
         public List<Brush> ArcherDieBrushes;
         public Brush TemporaryArcherBrush;
 
+        public List<Brush> WallBrushes;
+        public Brush TemporaryWallBrush;
+
 
         //enemies
         public List<Brush> GhostWalkingBrushes;
@@ -56,6 +59,8 @@ namespace GameDisplay
         public Brush DeployKnightSelectedBrush;
         public Brush DeployArcherBrush;
         public Brush DeployArcherSelectedBrush;
+        public Brush DeployWallBrush;
+        public Brush DeployWallSelectedBrush;
 
         public Brush MoveButtonBrush;
         public Brush MoveButtonSelectedBrush;
@@ -101,6 +106,11 @@ namespace GameDisplay
                 KnightDieBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Knight3\\Knight_03__DIE_00{i}_prev_ui.png", UriKind.RelativeOrAbsolute))));
             }
 
+            WallBrushes = new List<Brush>();
+            for (int i = 0; i < 1; i++)
+            {
+                WallBrushes.Add(new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Wall\\Wall{i}.png", UriKind.RelativeOrAbsolute))));
+            }
 
             ArcherBrushes = new List<Brush>();
             for (int i = 0; i < 6; i++)
@@ -122,6 +132,9 @@ namespace GameDisplay
             TemporaryArcherBrush = new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Archer\\Warrior_03__ATTACK_000.png", UriKind.RelativeOrAbsolute)));
             TemporaryArcherBrush.Opacity = 0.5;
 
+            TemporaryWallBrush = new ImageBrush(new BitmapImage(new Uri($"Images\\Allied\\Wall\\Wall.png", UriKind.RelativeOrAbsolute)));
+            TemporaryWallBrush.Opacity = 0.5;
+
             DeployKnightBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnight.png", UriKind.RelativeOrAbsolute)));
             DeployKnightBrush.Opacity = 0.7;
             DeployKnightSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployKnightSelected.png", UriKind.RelativeOrAbsolute)));
@@ -129,6 +142,11 @@ namespace GameDisplay
             DeployArcherBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployArcher.png", UriKind.RelativeOrAbsolute)));
             DeployArcherBrush.Opacity = 0.7;
             DeployArcherSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployArcherSelected.png", UriKind.RelativeOrAbsolute)));
+
+            DeployWallBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployWall.png", UriKind.RelativeOrAbsolute)));
+            DeployWallBrush.Opacity = 0.7;
+            DeployWallSelectedBrush = new ImageBrush(new BitmapImage(new Uri("Images\\DeployWallSelected.png", UriKind.RelativeOrAbsolute)));
+
         }
 
         private void SetEnemyBrushes() {

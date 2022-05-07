@@ -1,4 +1,5 @@
 ﻿using GameModel.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace GameModel.Items
 
         }
 
+       
 
         private static Random rnd = new Random();
         private double speedX;
@@ -68,7 +70,8 @@ namespace GameModel.Items
         public double Damage { get; set; }
         public Point Position { get; set; }
 
-        public Geometry RealArea
+        [JsonIgnore]
+        public RectangleGeometry RealArea
         {
             get
             {
@@ -76,7 +79,8 @@ namespace GameModel.Items
             }
         }
 
-        public Geometry CollisionArea
+        [JsonIgnore]
+        public RectangleGeometry CollisionArea
         {
             get
             {

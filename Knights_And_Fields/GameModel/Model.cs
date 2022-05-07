@@ -1,5 +1,6 @@
 ﻿using GameModel.Interfaces;
 using GameModel.Items;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +40,11 @@ namespace GameModel
             SOUNDS = new MySounds();
         }
 
+
         public IUnit[][] Map { get; set; }
+
         public List<IEnemy> ShouldSpawnEnemies { get; set; }
+       
         public List<IEnemy> SpawnedEnemies { get; set; }
 
         public List<IDyingItems> DiedItems { get; set; }
@@ -54,6 +58,7 @@ namespace GameModel
         public int Score { get; set; }
         public bool DeployKnight { get; set; }
         public bool DeployArcher { get; set; }
+        public bool DeployWall { get; set; }
         public bool MoveUnit { get; set; }
         public bool RemoveUnit { get; set; }
         public bool UpgradeUnit { get; set; }
