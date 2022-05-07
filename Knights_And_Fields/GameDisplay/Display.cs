@@ -376,7 +376,7 @@ namespace GameDisplay
                     }
                 });
                 var a = Directory.GetCurrentDirectory() + "\\Saves\\";
-                var path = Path.Combine(a, $"{this.model.PlayerName}_{DateTime.Now.ToShortDateString()}_{this.model.Score}.json");
+                var path = Path.Combine(a, $"{this.model.PlayerName}_{this.model.Score}.json");
                 File.WriteAllText(path, jsonData);
                 this.model.SelectedSave = false;
             }
@@ -1140,7 +1140,7 @@ namespace GameDisplay
                 if (this.model.Map[(int)MovedMouseTilePos.Y][(int)MovedMouseTilePos.X] == null){
                     if (this.model.DeployKnight){
                         drawingContext.DrawGeometry(this.BRUSHES.TemporaryKnightBrush, new Pen(Brushes.Gray, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
-
+                        ;
                     }
                     else if (this.model.DeployArcher){
                         drawingContext.DrawGeometry(this.BRUSHES.TemporaryArcherBrush, new Pen(Brushes.Gray, 8), new RectangleGeometry(new Rect((MovedMouseTilePos.X + 1) * Config.TileSize, MovedMouseTilePos.Y * Config.TileSize, Config.TileSize, Config.TileSize)));
