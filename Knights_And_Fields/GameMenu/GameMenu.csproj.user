@@ -13,18 +13,12 @@
     <Compile Update="Windows\LoadMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\Menu.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Windows\CreateNewGameWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\LoadMenu.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Windows\Menu.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

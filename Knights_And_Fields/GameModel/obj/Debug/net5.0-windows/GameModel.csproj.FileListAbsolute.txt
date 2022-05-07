@@ -36,3 +36,5 @@ C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\obj\
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\obj\Debug\net5.0-windows\GameModel.csproj.AssemblyReference.cache
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\obj\Debug\net5.0-windows\GameModel.csproj.CopyComplete
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameModel\obj\Debug\net5.0-windows\GameModel.csproj.CopyComplete
