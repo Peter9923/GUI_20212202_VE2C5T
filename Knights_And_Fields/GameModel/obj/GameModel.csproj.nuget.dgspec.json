@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {}
+    "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
+    "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj",
         "projectName": "GameModel",
-        "projectPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

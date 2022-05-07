@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj": {}
+    "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj": {
+    "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj",
         "projectName": "GameDisplay",
-        "projectPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj": {
-                "projectPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj"
+              "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj"
               },
-              "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
-                "projectPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
+              "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
               }
             }
           }
@@ -74,14 +74,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj": {
+    "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj",
         "projectName": "GameLogic",
-        "projectPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\GameLogic.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameLogic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -98,8 +98,8 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
-                "projectPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
+              "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
               }
             }
           }
@@ -135,14 +135,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj": {
+    "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
         "projectName": "GameMenu",
-        "projectPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -159,8 +159,8 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj": {
-                "projectPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj"
+              "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj"
               }
             }
           }
@@ -202,14 +202,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
+    "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj",
         "projectName": "GameModel",
-        "projectPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Source\\Repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
