@@ -54,7 +54,7 @@ namespace GameMenu.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/GameMenu;component/windows/menu.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/GameMenu;V1.0.0.0;component/windows/menu.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\Menu.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
