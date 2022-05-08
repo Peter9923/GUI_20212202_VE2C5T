@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -45,6 +46,9 @@ namespace GameMenu.ViewModels
                 allSaves = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\Saves");
                 Model model;
 
+                ICollectionView view = CollectionViewSource.GetDefaultView(Players);
+                view.SortDescriptions.Add(new SortDescription("Score", ListSortDirection.Descending));
+
                 foreach (var item in allSaves)
                 {
                     model = JsonConvert.DeserializeObject<Model>(File.ReadAllText(item), new JsonSerializerSettings
@@ -71,9 +75,8 @@ namespace GameMenu.ViewModels
 
                     Player player = new Player(model.PlayerName, model.Score);
                     Players.Add(player);
+                    OnRequestClose(this, new EventArgs());
                 }
-
-                Players.OrderByDescending(x => x.Score);
 
                 ExitCommand = new RelayCommand(() =>
                 {
