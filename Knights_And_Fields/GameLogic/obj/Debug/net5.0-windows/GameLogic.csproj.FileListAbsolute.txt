@@ -23,30 +23,30 @@ C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\Ga
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\ref\GameLogic.dll
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.pdb
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.genruntimeconfig.cache
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.deps.json
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.runtimeconfig.json
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.runtimeconfig.dev.json
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.exe
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.exe
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.deps.json
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.runtimeconfig.json
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.runtimeconfig.dev.json
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.dll
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\ref\GameLogic.dll
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.pdb
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.dll
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.pdb
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.csproj.AssemblyReference.cache
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\App.g.cs
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic_MarkupCompile.cache
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.AssemblyInfoInputs.cache
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.AssemblyInfo.cs
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.csproj.CoreCompileInputs.cache
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.csproj.CopyComplete
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.dll
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\ref\GameLogic.dll
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.pdb
-C:\Users\User\Source\Repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.genruntimeconfig.cache
 C:\Users\Szilágyi Péter\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.deps.json
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.runtimeconfig.json
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.runtimeconfig.dev.json
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.exe
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.exe
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.deps.json
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.runtimeconfig.json
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.runtimeconfig.dev.json
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.dll
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\ref\GameLogic.dll
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameLogic.pdb
 C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.dll
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\bin\Debug\net5.0-windows\GameModel.pdb
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\App.g.cs
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic_MarkupCompile.cache
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.AssemblyInfo.cs
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.csproj.CopyComplete
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.dll
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\ref\GameLogic.dll
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.pdb
+C:\Users\User\source\repos\GUI_20212202_VE2C5T\Knights_And_Fields\GameLogic\obj\Debug\net5.0-windows\GameLogic.genruntimeconfig.cache

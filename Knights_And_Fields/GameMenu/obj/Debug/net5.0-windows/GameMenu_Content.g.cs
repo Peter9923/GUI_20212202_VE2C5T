@@ -10,6 +10,8 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/about_hover.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/about_idle.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/scoreboard_hover.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/scoreboard_idle.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/confirm.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/delete_hover.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/delete_idle.png")]
