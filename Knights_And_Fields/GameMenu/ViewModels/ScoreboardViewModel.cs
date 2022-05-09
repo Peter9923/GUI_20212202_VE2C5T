@@ -75,7 +75,7 @@ namespace GameMenu.ViewModels
 
                     Player player = new Player(model.PlayerName, model.Score);
                     Players.Add(player);
-                    OnRequestClose(this, new EventArgs());
+                    //OnRequestClose(this, new EventArgs());
                 }
 
                 ExitCommand = new RelayCommand(() =>

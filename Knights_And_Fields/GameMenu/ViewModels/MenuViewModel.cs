@@ -59,7 +59,12 @@ namespace GameMenu.ViewModels
                 ScoreboardCommand = new RelayCommand(() => {
                     clickSound.Play();
                     clickSound.Open(new Uri("Sounds\\AnotherClick.wav", UriKind.RelativeOrAbsolute));
-                    var scoreboardWindow = new Scoreboard();
+                    var vm = new ScoreboardViewModel();
+                    var scoreboardWindow = new Scoreboard {
+                        DataContext = vm
+                    };
+
+                    vm.OnRequestClose += (s, e) => scoreboardWindow.Close();
                     scoreboardWindow.ShowDialog();
                 });
             }
