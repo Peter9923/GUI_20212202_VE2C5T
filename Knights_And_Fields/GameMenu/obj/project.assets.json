@@ -150,19 +150,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
+      "projectUniqueName": "C:\\Users\\Szilágyi Péter\\Desktop\\GUI2\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
       "projectName": "GameMenu",
-      "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameMenu\\obj\\",
+      "projectPath": "C:\\Users\\Szilágyi Péter\\Desktop\\GUI2\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
+      "packagesPath": "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Szilágyi Péter\\Desktop\\GUI2\\Knights_And_Fields\\GameMenu\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Szilágyi Péter\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -176,11 +176,11 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj"
+            "C:\\Users\\Szilágyi Péter\\Desktop\\GUI2\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\Desktop\\GUI2\\Knights_And_Fields\\GameDisplay\\GameDisplay.csproj"
             },
-            "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\GUI_20212202_VE2C5T\\Knights_And_Fields\\GameModel\\GameModel.csproj"
+            "C:\\Users\\Szilágyi Péter\\Desktop\\GUI2\\Knights_And_Fields\\GameModel\\GameModel.csproj": {
+              "projectPath": "C:\\Users\\Szilágyi Péter\\Desktop\\GUI2\\Knights_And_Fields\\GameModel\\GameModel.csproj"
             }
           }
         }
@@ -218,7 +218,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
