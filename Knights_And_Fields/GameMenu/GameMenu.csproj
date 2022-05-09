@@ -29,6 +29,8 @@
     <None Remove="Images\Menu\options_idle.png" />
     <None Remove="Images\Menu\quit_hover.png" />
     <None Remove="Images\Menu\quit_idle.png" />
+	<None Remove="Images\Menu\scoreboard_hover.png" />
+	<None Remove="Images\Menu\scoreboard_idle.png" />
     <None Remove="Images\Menu\return_hover.png" />
     <None Remove="Images\Menu\return_idle.png" />
     <None Remove="Images\Menu\start_hover.png" />
@@ -43,6 +45,12 @@
     <Content Include="Images\Menu\about_idle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+	 <Content Include="Images\Menu\scoreboard_hover.png">
+	   <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	 </Content>
+	  <Content Include="Images\Menu\scoreboard_idle.png">
+		 <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
     <Content Include="Images\Menu\confirm.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -20,6 +20,7 @@ namespace GameMenu.ViewModels
         public ICommand LoadCommand { get; set; }
         public ICommand AboutCommand { get; set; }
         public ICommand ExitCommand { get; set; }
+        public ICommand ScoreboardCommand { get; set; }
     
 
         public MenuViewModel()
@@ -53,6 +54,13 @@ namespace GameMenu.ViewModels
                     clickSound.Play();
                     clickSound.Open(new Uri("Sounds\\AnotherClick.wav", UriKind.RelativeOrAbsolute));
                     Environment.Exit(0);
+                });
+
+                ScoreboardCommand = new RelayCommand(() => {
+                    clickSound.Play();
+                    clickSound.Open(new Uri("Sounds\\AnotherClick.wav", UriKind.RelativeOrAbsolute));
+                    var scoreboardWindow = new Scoreboard();
+                    scoreboardWindow.ShowDialog();
                 });
             }
         }
