@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameModel", "GameModel\GameModel.csproj", "{374544ED-ACB0-4B20-A8C6-849458ACA8AD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDisplay", "GameDisplay\GameDisplay.csproj", "{F43C5FF3-BF21-4F22-8834-4B2ADC013D49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic", "GameLogic\GameLogic.csproj", "{E39B3B58-C78B-40CB-BE47-6A0B3E5B2563}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameLogic", "GameLogic\GameLogic.csproj", "{E39B3B58-C78B-40CB-BE47-6A0B3E5B2563}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameMenu", "GameMenu\GameMenu.csproj", "{CB063297-1DD5-4C71-AAD6-DD5759B5FCA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMenu", "GameMenu\GameMenu.csproj", "{CB063297-1DD5-4C71-AAD6-DD5759B5FCA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
