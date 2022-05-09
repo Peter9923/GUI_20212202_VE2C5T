@@ -40,7 +40,6 @@ namespace GameModel
             SOUNDS = new MySounds();
         }
 
-
         public IUnit[][] Map { get; set; }
 
         public List<IEnemy> ShouldSpawnEnemies { get; set; }

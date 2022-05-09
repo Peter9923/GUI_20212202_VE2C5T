@@ -376,7 +376,7 @@ namespace GameDisplay
                     }
                 });
                 var a = Directory.GetCurrentDirectory() + "\\Saves\\";
-                var path = Path.Combine(a, $"{this.model.PlayerName}_{this.model.Score}.json");
+                var path = Path.Combine(a, $"{this.model.PlayerName}__{this.model.Score}.json");
                 File.WriteAllText(path, jsonData);
                 this.model.SelectedSave = false;
             }
