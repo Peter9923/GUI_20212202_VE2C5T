@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2UUFQ3fCXMGOw3kNLMuXtNsqiQTydfOGgaLw+9B8D/3ef1OXHZrocX49uF3pgB+c19ET9LA30GI7p27O/zjTAg==",
+  "dgSpecHash": "TA9K7Ju9Uxbsh1FOxEbJMQ59CEMT9417R6fnclm6Gb0Qo/dVAy3GqziSSMi/wmYbB4KTuhjHjAV7B08bmFpHig==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Szilágyi Péter\\Desktop\\GUI2\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
+  "projectFilePath": "C:\\Users\\Szilágyi Péter\\Desktop\\Prog\\Csharp\\GUI_feleves\\Knights_And_Fields\\GameMenu\\GameMenu.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\microsoft.toolkit.mvvm\\7.1.2\\microsoft.toolkit.mvvm.7.1.2.nupkg.sha512",
     "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"

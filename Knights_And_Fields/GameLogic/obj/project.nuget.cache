@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "h7hhcleMhHB9S4ipmKAHkfw/XGMHRq1m2kTDRusf/B9njHbowkT5qpLFaJsvH9H+x9DIiLmayJSAwaW3mBT/KQ==",
+  "dgSpecHash": "0ilMpaBzeFaiI8ZVg7KkMSf3kajZzhcIddIxYO2e+LBHCj+Wgm5cEnDl0yCoEqlp5TvEJLMEHJmpdkRGO1Vrpw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Szilágyi Péter\\Desktop\\GUI2\\Knights_And_Fields\\GameLogic\\GameLogic.csproj",
+  "projectFilePath": "C:\\Users\\Szilágyi Péter\\Desktop\\Prog\\Csharp\\GUI_feleves\\Knights_And_Fields\\GameLogic\\GameLogic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Szilágyi Péter\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
